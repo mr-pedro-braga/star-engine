@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/ui_default_typewriter.wav-1dc460b76f3790ece466a34a6f33aabf.sample"
+
+[deps]
+
+source_file="res://core/audio/sounds/ui_default_typewriter.wav"
+dest_files=[ "res://.import/ui_default_typewriter.wav-1dc460b76f3790ece466a34a6f33aabf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,62 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Reference",
+"class": "SSON",
+"language": "GDScript",
+"path": "res://addons/builtin/resource_sson/SSON.gd"
+}, {
+"base": "Resource",
+"class": "SSObject",
+"language": "GDScript",
+"path": "res://addons/builtin/resource_sson/SSObject.gd"
+}, {
+"base": "TextEdit",
+"class": "ShellInput",
+"language": "GDScript",
+"path": "res://core/scripts/architecture/ui/TextShellInput.gd"
+}, {
+"base": "RichTextLabel",
+"class": "SmartRichTextLabel",
+"language": "GDScript",
+"path": "res://addons/builtin/SmartRichTextLabel/SmartRichTextLabel.gd"
+} ]
+_global_script_class_icons={
+"SSON": "",
+"SSObject": "",
+"ShellInput": "res://core/scripts/icons/icon_console.svg",
+"SmartRichTextLabel": ""
+}
+
+[application]
+
+config/name="Inner Voices Engine"
+config/description="An engine capable of running all kinds of games... but mainly RPGs... and mainly Inner Voices."
+config/use_custom_user_dir=true
+config/custom_user_dir_name="inner_voices"
+config/icon="res://icon.png"
+
+[display]
+
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/QOL/improved_resource_picker/plugin.cfg", "res://addons/QOL/repl/plugin.cfg", "res://addons/builtin/SmartRichTextLabel/plugin.cfg", "res://addons/builtin/max_size_container/plugin.cfg", "res://addons/builtin/resource_sson/plugin.cfg" )
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
