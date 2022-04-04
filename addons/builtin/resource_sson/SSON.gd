@@ -13,8 +13,6 @@ class_name SSON
 
 # Some cool RegExs for parsing things
 const regex_sobj_text = "(?m)^(?<colon>--)?(?<key>\\w+) *(?<colon>:)? *(?<params>.*)?(?<block>(?:\\n\\t.*)*)?"
-const regex_params_text = " (?: *\"(.*)\"|([^ ]+))"
-const regex_indent_text = "\\t(?<content>.*)\\n"
 
 # Loads 
 static func load_sson(path):
@@ -51,10 +49,6 @@ static func load_sson(path):
 static func parse_object(raw, top_level=true):
 	var regex_sobj   := RegEx.new()
 	regex_sobj.compile(regex_sobj_text)
-	var regex_params := RegEx.new()
-	regex_params.compile(regex_params_text)
-	var regex_indent := RegEx.new()
-	regex_indent.compile(regex_indent_text)
 	
 	# Match the entire raw file for SObject entries
 	var results = {
@@ -101,3 +95,19 @@ static func remove_indentation(string, indentation_character="\t"):
 	var r = RegEx.new()
 	r.compile("(?m)^"+indentation_character)
 	return r.sub(string, "", true)
+
+static func split_params(params) -> Array:
+	if not params:
+		return []
+	var r := RegEx.new()
+	r.compile('[^\\s"\']+|"([^"]*)"|\'([^\']*)\'')
+	var result = []
+	for m in r.search_all(params):
+		var mn = m.get_names()
+		if mn.has('b'):
+			result.push_back(m.get_string('b'))
+		elif mn.has('a'):
+			result.push_back(m.get_string('a'))
+		else:
+			result.push_back(m.get_string(0))
+	return result

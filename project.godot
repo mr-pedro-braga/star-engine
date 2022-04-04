@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Menu",
+"language": "GDScript",
+"path": "res://core/scripts/components/Menu.gd"
+}, {
 "base": "Reference",
 "class": "SSON",
 "language": "GDScript",
@@ -30,6 +35,7 @@ _global_script_classes=[ {
 "path": "res://addons/builtin/SmartRichTextLabel/SmartRichTextLabel.gd"
 } ]
 _global_script_class_icons={
+"Menu": "",
 "SSON": "",
 "SSObject": "",
 "ShellInput": "res://core/scripts/icons/icon_console.svg",
@@ -40,9 +46,14 @@ _global_script_class_icons={
 
 config/name="Inner Voices Engine"
 config/description="An engine capable of running all kinds of games... but mainly RPGs... and mainly Inner Voices."
+run/main_scene="res://core/Game.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="inner_voices"
 config/icon="res://icon.png"
+
+[autoload]
+
+Core="*res://core/scripts/architecture/Core.tscn"
 
 [display]
 
