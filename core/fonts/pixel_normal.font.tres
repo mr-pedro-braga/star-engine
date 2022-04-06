@@ -3,6 +3,6 @@
 [ext_resource path="res://core/fonts/Steelflight.ttf" type="DynamicFontData" id=1]
 
 [resource]
-size = 32
+size = 36
 extra_spacing_char = 1
 font_data = ExtResource( 1 )

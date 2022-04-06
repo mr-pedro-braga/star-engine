@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://core/scripts/components/Menu.gd"
 }, {
+"base": "Node2D",
+"class": "Movement2D",
+"language": "GDScript",
+"path": "res://core/scripts/components/Movement.gd"
+}, {
 "base": "Reference",
 "class": "SSON",
 "language": "GDScript",
@@ -33,36 +38,74 @@ _global_script_classes=[ {
 "class": "SmartRichTextLabel",
 "language": "GDScript",
 "path": "res://addons/builtin/SmartRichTextLabel/SmartRichTextLabel.gd"
+}, {
+"base": "Node",
+"class": "__GameplayCoreBase",
+"language": "GDScript",
+"path": "res://core/scripts/gameplay/__GameplayCoreBase.gd"
+}, {
+"base": "Node",
+"class": "__GameplayStateBase",
+"language": "GDScript",
+"path": "res://core/scripts/gameplay/__GameplayStateBase.gd"
 } ]
 _global_script_class_icons={
 "Menu": "",
+"Movement2D": "res://core/scripts/icons/icon_component_movement.svg",
 "SSON": "",
 "SSObject": "",
 "ShellInput": "res://core/scripts/icons/icon_console.svg",
-"SmartRichTextLabel": ""
+"SmartRichTextLabel": "",
+"__GameplayCoreBase": "",
+"__GameplayStateBase": ""
 }
 
 [application]
 
 config/name="Inner Voices Engine"
 config/description="An engine capable of running all kinds of games... but mainly RPGs... and mainly Inner Voices."
-run/main_scene="res://core/Game.tscn"
+run/main_scene="res://core/Main Scene.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="inner_voices"
-config/icon="res://icon.png"
+config/icon="res://core/scripts/icons/icon_component_movement.svg"
 
 [autoload]
 
-Core="*res://core/scripts/architecture/Core.tscn"
+Shell="*res://core/scripts/architecture/Shell.tscn"
+Game="*res://core/scripts/gameplay/Game.gd"
+
+[debug]
+
+gdscript/completion/autocomplete_setters_and_getters=true
 
 [display]
 
+window/size/width=1600
+window/size/height=900
+window/size/test_width=800
+window/size/test_height=450
+mouse_cursor/custom_image="res://core/images/user_interface/cursor.png"
 window/stretch/mode="2d"
 window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/QOL/improved_resource_picker/plugin.cfg", "res://addons/QOL/repl/plugin.cfg", "res://addons/builtin/SmartRichTextLabel/plugin.cfg", "res://addons/builtin/max_size_container/plugin.cfg", "res://addons/builtin/resource_sson/plugin.cfg" )
+enabled=PoolStringArray(  )
+
+[input]
+
+OK={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":90,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777221,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
+CANCEL={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":88,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [physics]
 
@@ -70,4 +113,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

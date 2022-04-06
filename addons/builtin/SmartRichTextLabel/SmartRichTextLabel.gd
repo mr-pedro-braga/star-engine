@@ -41,7 +41,7 @@ func _ready():
 	add_user_signal("cancel_pressed")
 	connect("cancel_pressed", self, "cancel_write")
 
-func _process(delta):
+func _input(_ev):
 	if Input.is_action_just_pressed(text_wait_action):
 		emit_signal("ok_pressed")
 	if Input.is_action_just_pressed(text_cancel_action):

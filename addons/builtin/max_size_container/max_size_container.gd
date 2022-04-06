@@ -27,7 +27,6 @@ func _ready() -> void:
 	_set_custom_margins(TOP, 0)
 	_set_custom_margins(BOTTOM, 0)
 	
-	print("reaaaaady")
 	# Sets up the Container
 	connect("resized", self, "_on_self_resized")
 	
