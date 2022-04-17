@@ -39,7 +39,7 @@ This class has no actual behaviour on its own, you should use some menu handler 
 ## Some Code
 
 **Menus in general have these members:**
-```gd
+```gdscript
 signal on_index_changed(index)
 signal on_selected(index)
 signal on_updated()
@@ -57,7 +57,7 @@ var _open_submenu : Menu
 func select(index) -> [...]
 func cancel() -> [...]
 func accept() -> [...]
-func from_array(array) --> Loads the submenus from an array of option... tries to keep the same item selected if it's a Reference.
+func from_array(array) --> Loads the submenus from an array of option... tries to keep the same item selected if it is a Reference.
 func insert(node, position) --> Inserts a node somewhere. If necessary, the current index will be updated and call on_updated, but on_index_changed will not be called.
 func remove(index) --> The object at index is removed. If necessary, the current index will be updated and call on_updated, but on_index_changed will not be called.
 ```
