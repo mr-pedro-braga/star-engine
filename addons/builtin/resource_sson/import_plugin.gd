@@ -47,6 +47,7 @@ func import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	
 	# Check if some error ocurred when parsing! (Should never happen...)
 	if not sdictionary is Dictionary:
+		print("(!) Critical error, return of the load function is not a Dictionary.")
 		return ERR_PARSE_ERROR
 	
 	var sobject = SSObject.new()

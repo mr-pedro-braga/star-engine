@@ -12,7 +12,7 @@ tool
 class_name SSON
 
 # Some cool RegExs for parsing things
-const regex_sobj_text = "(?m)^(?<colon>--)?(?<key>\\w+) *(?<colon>:)? *(?<params>.*)?(?<block>(?:\\n\\t.*)*)?"
+const regex_sobj_text = "(?m)^(?<colon>--)?(?<key>(?:\\w+|-|\\*)) *(?<colon>:)? *(?<params>.*)?(?<block>(?:\\n\\t.*)*)?"
 
 # Loads 
 static func load_sson(path):
@@ -71,6 +71,7 @@ static func parse_object(raw, top_level=true):
 				if block.data:
 					r["data"] = block.data; is_dict = true
 			elif not names.has("params"):
+				print("(!) Data element without any parameters.")
 				return ERR_PARSE_ERROR
 			results.data[result.get_string("key")] = r if is_dict else result.get_string("params")
 		else:

@@ -117,6 +117,7 @@ func write(_text):
 	is_typing = false
 	is_emitting_physical_sound = false
 	yield(self, "ok_pressed")
+	text = ""
 	emit_signal("resumed")
 	emit_signal("finished")
 
