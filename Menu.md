@@ -39,7 +39,7 @@ This class has no actual behaviour on its own, you should use some menu handler 
 ## Some Code
 
 **Menus in general have these members:**
-```
+```gd
 signal on_index_changed(index)
 signal on_selected(index)
 signal on_updated()
@@ -75,11 +75,7 @@ If this Menu is a submenu of another Menu, it will pass the 'current' status to 
 ('Accept'ing a menu keeps its selected index intact.)
 
 **"Array" menus have a list of Menu nodes it will call in sequence.**
-```
-var smenu_index := 1
-var max_smenu_index := 3
-var smenu_nodes = [BMenuClaire, BMenuAndy] # As references!!!
-```
+
 When 'accept' is called on one of its submenus the index increases, unless the index is 'max_smenu_index', which then calls 'accept' on the Array Menu itself.
 
 When 'cancel' is called on one of its submenus the index decreases, unless the index is 0, which then calls 'cancel' on the Array Menu itself.
