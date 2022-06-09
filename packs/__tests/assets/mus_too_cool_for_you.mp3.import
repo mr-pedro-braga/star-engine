@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mus_too_cool_for_you.mp3-e57ead75c3806030f9f10d7e6e8496fb.mp3str"
+
+[deps]
+
+source_file="res://packs/__tests/assets/mus_too_cool_for_you.mp3"
+dest_files=[ "res://.import/mus_too_cool_for_you.mp3-e57ead75c3806030f9f10d7e6e8496fb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

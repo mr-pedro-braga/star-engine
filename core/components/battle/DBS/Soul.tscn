@@ -1,0 +1,177 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://core/images/battle_system/DBS/soul_1.png" type="Texture" id=1]
+[ext_resource path="res://core/images/battle_system/DBS/soul_heart.png" type="Texture" id=2]
+[ext_resource path="res://core/scripts/gameplay/components/Movement.gd" type="Script" id=3]
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 1 )
+region = Rect2( 48, 16, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 16, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 2 ) ],
+"loop": true,
+"name": "andy",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 3 ) ],
+"loop": true,
+"name": "ollie",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 4 ) ],
+"loop": true,
+"name": "valentino",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 5 ) ],
+"loop": true,
+"name": "claire",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "hank",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "heart",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 6 ) ],
+"loop": true,
+"name": "elliott",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 7 ) ],
+"loop": true,
+"name": "bruno",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 8 ) ],
+"loop": true,
+"name": "trevor",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "lily",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 10 ) ],
+"loop": true,
+"name": "rodrick",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "sam",
+"speed": 5.0
+} ]
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 2
+emission_box_extents = Vector3( 16, 16, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 12.0
+scale_curve = SubResource( 13 )
+
+[sub_resource type="CircleShape2D" id=15]
+radius = 25.0
+
+[node name="Soul" type="KinematicBody2D"]
+
+[node name="Movement2D" type="Node2D" parent="."]
+script = ExtResource( 3 )
+"Input/Action UP" = "ui_up"
+"Input/Action LEFT" = "ui_left"
+"Input/Action DOWN" = "ui_down"
+"Input/Action RIGHT" = "ui_right"
+"Input/Action SPECIAL" = "OK"
+Input/Scale = Vector2( 1, 0.5 )
+Motion/Mode = 0
+"Motion/Maximum Speed" = 768
+Motion/Acceleration = 12288
+Motion/Gravity/Active = false
+Motion/Sidescroller = false
+"Animation/Visual Sprite" = NodePath("../Texture")
+Animation/Active = true
+"Animation/Squash and Stretch/Active" = true
+"Animation/Squash and Stretch/Target Scale" = Vector2( 6, 6 )
+
+[node name="Shadow" type="ColorRect" parent="."]
+margin_left = -24.0
+margin_top = 8.0
+margin_right = 24.0
+margin_bottom = 24.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Texture" type="AnimatedSprite" parent="."]
+scale = Vector2( 6, 6 )
+frames = SubResource( 11 )
+animation = "lily"
+
+[node name="Trail" type="Particles2D" parent="Texture"]
+self_modulate = Color( 0.643137, 0.117647, 0.733333, 1 )
+show_behind_parent = true
+scale = Vector2( 0.166667, 0.166667 )
+amount = 16
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( 14 )
+
+[node name="ShapeTransformer" type="RemoteTransform2D" parent="Texture"]
+scale = Vector2( 0.166667, 0.166667 )
+remote_path = NodePath("../../Shape")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2( 1, 1 )
+shape = SubResource( 15 )

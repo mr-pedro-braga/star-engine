@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mus_hearts_in_kitchen_sink.wav-5b9c19b3325d9c5f289781b6a86a8679.sample"
+
+[deps]
+
+source_file="res://packs/__tests/assets/mus_hearts_in_kitchen_sink.wav"
+dest_files=[ "res://.import/mus_hearts_in_kitchen_sink.wav-5b9c19b3325d9c5f289781b6a86a8679.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

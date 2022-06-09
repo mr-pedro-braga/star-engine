@@ -1,0 +1,187 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://core/fonts/CascadiaCode.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://addons/builtin/SmartRichTextLabel/SmartRichTextLabel.gd" type="Script" id=2]
+[ext_resource path="res://core/fonts/pixel_italic.font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://core/fonts/pixel_bold.font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://core/fonts/pixel_normal.font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://core/audio/sounds/ui_default_typewriter.wav" type="AudioStream" id=6]
+[ext_resource path="res://addons/editor_only/sscript_editor/editor.gd" type="Script" id=7]
+[ext_resource path="res://core/components/battle/DBS/Soul.tscn" type="PackedScene" id=8]
+[ext_resource path="res://core/images/battle_system/DBS/battle_screen_bgs/BattleBG.tscn" type="PackedScene" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="GDScript" id=4]
+script/source = "tool
+extends Viewport
+
+func _ready():
+	get_parent().connect(\"resized\", self, \"update_size\")
+	update_size()
+
+func update_size():
+	size = get_parent().rect_size
+"
+
+[node name="Behaviour" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 7 )
+
+[node name="Menu" type="HBoxContainer" parent="."]
+margin_right = 1600.0
+margin_bottom = 22.0
+
+[node name="BtnFile" type="ToolButton" parent="Menu"]
+margin_right = 35.0
+margin_bottom = 22.0
+text = "File"
+
+[node name="BtnSearch" type="ToolButton" parent="Menu"]
+margin_left = 39.0
+margin_right = 93.0
+margin_bottom = 22.0
+text = "Search"
+
+[node name="BtnEdit" type="ToolButton" parent="Menu"]
+margin_left = 97.0
+margin_right = 133.0
+margin_bottom = 22.0
+text = "Edit"
+
+[node name="BtnPower" type="ToolButton" parent="Menu"]
+margin_left = 137.0
+margin_right = 188.0
+margin_bottom = 22.0
+text = "Power"
+
+[node name="H" type="HBoxContainer" parent="."]
+margin_top = 26.0
+margin_right = 1600.0
+margin_bottom = 900.0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="H"]
+margin_right = 200.0
+margin_bottom = 874.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="H/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ItemList" type="ItemList" parent="H/Panel/VBoxContainer"]
+margin_right = 200.0
+margin_bottom = 63.0
+items = [ "dialog1.ssh", null, false, "school.ssh", null, false, "test.ssh", null, false ]
+auto_height = true
+
+[node name="V" type="VBoxContainer" parent="H"]
+margin_left = 204.0
+margin_right = 1096.0
+margin_bottom = 874.0
+size_flags_horizontal = 3
+
+[node name="TabContainer" type="TabContainer" parent="H/V"]
+margin_right = 892.0
+margin_bottom = 670.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tabs_visible = false
+
+[node name="TextEdit" type="TextEdit" parent="H/V/TabContainer"]
+unique_name_in_owner = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 8.0
+margin_right = -4.0
+margin_bottom = -4.0
+size_flags_horizontal = 3
+custom_colors/number_color = Color( 0.227451, 0.533333, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "# DIALOG
+
+--test1
+	- Claire, smiling 	: Everything is so dark in here.
+	- Andy, normal 		: Let me reach for the lightbulb.
+	wait 3.0
+	call lights_on
+	- Claire			: Uh...
+	battle request
+		vs: jeff
+		surprise: true"
+highlight_current_line = true
+syntax_highlighting = true
+show_line_numbers = true
+draw_tabs = true
+fold_gutter = true
+highlight_all_occurrences = true
+smooth_scrolling = true
+hiding_enabled = true
+minimap_draw = true
+caret_blink = true
+
+[node name="Preview" type="ColorRect" parent="H/V"]
+margin_top = 674.0
+margin_right = 892.0
+margin_bottom = 874.0
+rect_min_size = Vector2( 0, 200 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="DialogBox" type="RichTextLabel" parent="H/V/Preview"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_right = -16.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/italics_font = ExtResource( 3 )
+custom_fonts/bold_font = ExtResource( 4 )
+custom_fonts/normal_font = ExtResource( 5 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+bbcode_enabled = true
+text = "* Let's play together, will we?"
+script = ExtResource( 2 )
+
+[node name="beep" type="AudioStreamPlayer" parent="H/V/Preview/DialogBox"]
+stream = ExtResource( 6 )
+
+[node name="BattlePreview" type="ViewportContainer" parent="H"]
+margin_left = 1100.0
+margin_right = 1600.0
+margin_bottom = 874.0
+rect_min_size = Vector2( 500, 0 )
+rect_clip_content = true
+
+[node name="Viewport" type="Viewport" parent="H/BattlePreview"]
+size = Vector2( 500, 874 )
+handle_input_locally = false
+render_target_update_mode = 3
+script = SubResource( 4 )
+
+[node name="BattleBG" parent="H/BattlePreview/Viewport" instance=ExtResource( 9 )]
+margin_left = 1100.0
+margin_top = 26.0
+margin_right = 1100.0
+margin_bottom = 26.0
+
+[node name="Soul" parent="H/BattlePreview/Viewport" instance=ExtResource( 8 )]
+position = Vector2( 120, 250 )
+
+[node name="Movement2D" parent="H/BattlePreview/Viewport/Soul" index="0"]
+Input/Scale = Vector2( 1, 1 )
+
+[node name="Shape" parent="H/BattlePreview/Viewport/Soul" index="3"]
+scale = Vector2( 1, 1 )
+
+[editable path="H/BattlePreview/Viewport/Soul"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://packs/__tests/assets/BattleShowcase4.png" type="Texture" id=1]
+[ext_resource path="res://packs/invo_CORE/assets/shaders/Water.gdshader" type="Shader" id=2]
+
+[sub_resource type="Gradient" id=5]
+offsets = PoolRealArray( 0, 0.863354, 0.950311, 1 )
+colors = PoolColorArray( 0, 0.0352941, 0.121569, 0.203922, 0.128906, 0.238007, 0.34375, 0.431373, 0.317566, 0.43936, 0.671875, 0, 0.419608, 0.623529, 0.717647, 0.364706 )
+
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
+width = 10
+
+[sub_resource type="Gradient" id=7]
+colors = PoolColorArray( 0.0628052, 0.0976124, 0.164062, 1, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=8]
+gradient = SubResource( 7 )
+width = 10
+
+[sub_resource type="OpenSimplexNoise" id=2]
+
+[sub_resource type="NoiseTexture" id=3]
+seamless = true
+noise = SubResource( 2 )
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 2 )
+shader_param/noise = SubResource( 3 )
+shader_param/gradient = SubResource( 6 )
+shader_param/modulate = SubResource( 8 )
+
+[node name="Node2D" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Water" type="ColorRect" parent="."]
+material = SubResource( 4 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}

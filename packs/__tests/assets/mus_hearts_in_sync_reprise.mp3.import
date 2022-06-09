@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mus_hearts_in_sync_reprise.mp3-8b22ca3bdfb6aa272718a42ee46624a1.mp3str"
+
+[deps]
+
+source_file="res://packs/__tests/assets/mus_hearts_in_sync_reprise.mp3"
+dest_files=[ "res://.import/mus_hearts_in_sync_reprise.mp3-8b22ca3bdfb6aa272718a42ee46624a1.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

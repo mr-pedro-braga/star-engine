@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://packs/__tests/new_cylindermesh.tres" type="CylinderMesh" id=1]
+
+[node name="3d" type="MeshInstance"]
+mesh = ExtResource( 1 )

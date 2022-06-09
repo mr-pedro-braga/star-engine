@@ -1,0 +1,360 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://addons/builtin/SmartRichTextLabel/SmartRichTextLabel.gd" type="Script" id=1]
+[ext_resource path="res://addons/builtin/max_size_container/max_size_container.gd" type="Script" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://core/audio/sounds/ui_default_typewriter.wav" type="AudioStream" id=4]
+[ext_resource path="res://core/fonts/pixel_bold.font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://core/fonts/pixel_normal.font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://core/fonts/pixel_italic.font.tres" type="DynamicFont" id=7]
+[ext_resource path="res://packs/__tests/assets/Ollie Cabin.png" type="Texture" id=8]
+[ext_resource path="res://core/images/user_interface/vignette.png" type="Texture" id=9]
+[ext_resource path="res://core/images/battle_system/DBS/hud-black-bars.png" type="Texture" id=10]
+[ext_resource path="res://core/scripts/utilities/Screenshot.gd" type="Script" id=11]
+[ext_resource path="res://core/GameInstance.gd" type="Script" id=12]
+[ext_resource path="res://core/scripts/gameplay/cores/DataCore.gd" type="Script" id=13]
+[ext_resource path="res://core/scripts/gameplay/cores/DialogCutsceneCore.gd" type="Script" id=14]
+[ext_resource path="res://core/scripts/gameplay/cores/AudioCore.gd" type="Script" id=15]
+[ext_resource path="res://packs/__tests/mus_lapsed_doll_chiptune.mp3" type="AudioStream" id=16]
+[ext_resource path="res://packs/__tests/scenes/_stest_battle_patterns.tscn" type="PackedScene" id=17]
+
+[sub_resource type="Shader" id=5]
+code = "shader_type canvas_item;
+
+void fragment () {
+	vec4 t = texture(TEXTURE, UV);
+	COLOR = texture(SCREEN_TEXTURE, SCREEN_UV) * t;
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+shader = SubResource( 5 )
+
+[sub_resource type="Shader" id=7]
+code = "shader_type canvas_item;
+
+float d (vec2 uv) {
+	return abs((0.5 - uv.y - 0.1) * 4.0);
+}
+
+void fragment () {
+	COLOR = textureLod(SCREEN_TEXTURE, SCREEN_UV, d(UV));
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = SubResource( 7 )
+
+[sub_resource type="GDScript" id=1]
+script/source = "tool
+extends Control
+
+func _process(_delta):
+	$DialogBox.margin_right = $PortraitControl.margin_left - 16
+"
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends TextEdit
+
+export(NodePath) var output_path
+onready var output : RichTextLabel = get_node(output_path)
+
+func _init():
+	Shell.input = self
+
+func _ready():
+	Shell.output = output
+	add_syntax_highlighting()
+
+func _input(ev):
+	if ev is InputEventKey:
+		if ev.pressed:
+			if has_focus():
+				# If pressing return but not shift
+				if ev.scancode == KEY_ENTER and not Input.is_key_pressed(KEY_SHIFT):
+					Shell.execute_block(text)
+					yield(get_tree(), \"idle_frame\")
+					text = \"\"
+				# Leave the shell if you press ESCAPE
+				if ev.scancode == KEY_ESCAPE or ev.scancode == KEY_F10:
+					release_focus()
+					$\"%TextUI\".visible = false
+					release_focus()
+			else:
+				if ev.scancode == KEY_F10:
+					visible = true
+					$\"%TextUI\".visible = true
+					grab_focus()
+
+func _on_focus_exited():
+	visible = false
+
+#####################################################
+
+func add_syntax_highlighting(target=self):
+	var colour_keyword = Color(0.811765, 0.160784, 0.282353)
+	var colour_string  = Color(0.871094, 0.66826, 0.129303)
+	var keywords = [
+		\"await\", \"item\", \"give\", \"take\", \"list\",
+		\"sfx\", \"bgm\", \"load\", \"resume\", \"restart\", \"pause\", \"stop\",
+		\"with\", \"mvto\", \"-\", \"*\", \"quit\", \"menu\", \"choice\",
+		\"sh\", \"call\", \"gdexec\", \"print\", \"speak\", \"clear\", \"cls\",
+		
+		\"save\", \"load\", \"quit\", \"*\", \"-\",
+		
+		\"say\", \"cutscene\", \"mvadd\", \"mvto\", \"face\", \"action\", \"wait\",
+		\"help\", \"from\", \"to\", \"if\", \"elif\", \"else\", \"unless\",
+		\"while\", \"repeat\", \"once\", \"every\", \"seconds\", \"frames\",
+		
+		\"battle\", \"request\",
+	]
+	
+	for keyword in keywords:
+		target.add_keyword_color(keyword, colour_keyword)
+	
+	# Item keys
+	target.add_color_region(\"--\", \"\", colour_keyword, true)
+	
+	# Strings
+	target.add_color_region(\"\\\"\", \"\\\"\", colour_string, false)
+	target.add_color_region(\"'\", \"'\", colour_string, false)
+"
+
+[node name="GameInstance" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 12 )
+audio_core = NodePath("AudioCore")
+dialog_cutscene_core = NodePath("DialogCutsceneCore")
+data_core = NodePath("DataCore")
+test_dialog = "res://packs/__tests/dialogs_en/test_dialog.ssh"
+
+[node name="AudioCore" type="Node" parent="."]
+script = ExtResource( 15 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioCore"]
+stream = ExtResource( 16 )
+
+[node name="DialogCutsceneCore" type="Node" parent="."]
+script = ExtResource( 14 )
+dialog_box_path = NodePath("../User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox")
+
+[node name="DataCore" type="Node" parent="."]
+script = ExtResource( 13 )
+
+[node name="World" type="CanvasLayer" parent="."]
+layer = 0
+follow_viewport_enable = true
+
+[node name="testbg" type="TextureRect" parent="World"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -28.0
+margin_bottom = -28.0
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control" parent="World" instance=ExtResource( 17 )]
+
+[node name="Fulscreen Effects" type="CanvasLayer" parent="."]
+
+[node name="Vignette" type="TextureRect" parent="Fulscreen Effects"]
+self_modulate = Color( 1, 1, 1, 0.47451 )
+material = SubResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Fulscreen Effects/Vignette"]
+copy_mode = 2
+rect = Rect2( 0, 0, 1600, 900 )
+
+[node name="TiltShift" type="TextureRect" parent="Fulscreen Effects"]
+visible = false
+material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="User Interface" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="TextUI" type="Control" parent="User Interface"]
+unique_name_in_owner = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="BarTop" type="ColorRect" parent="User Interface/TextUI"]
+anchor_right = 1.0
+margin_bottom = 96.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShellTint" type="ColorRect" parent="User Interface/TextUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -128.0
+color = Color( 0, 0, 0, 0.713726 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/TextUI/ShellTint"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShellOutput" type="RichTextLabel" parent="User Interface/TextUI/ShellTint/MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 1584.0
+margin_bottom = 756.0
+custom_fonts/italics_font = ExtResource( 7 )
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+scroll_following = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BarBottom" type="ColorRect" parent="User Interface/TextUI"]
+unique_name_in_owner = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -180.0
+grow_vertical = 0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MaxSizeContainer" type="MarginContainer" parent="User Interface/TextUI/BarBottom"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 0
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+max_size = Vector2( 1280, -1 )
+
+[node name="MarginContainer" type="Control" parent="User Interface/TextUI/BarBottom/MaxSizeContainer"]
+margin_left = 160.0
+margin_right = 1440.0
+margin_bottom = 176.0
+script = SubResource( 1 )
+
+[node name="DialogBox" type="RichTextLabel" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_right = -16.0
+size_flags_horizontal = 3
+custom_fonts/italics_font = ExtResource( 7 )
+custom_fonts/bold_font = ExtResource( 5 )
+custom_fonts/normal_font = ExtResource( 6 )
+bbcode_enabled = true
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShellInput" type="TextEdit" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/member_variable_color = Color( 1, 1, 1, 1 )
+custom_colors/function_color = Color( 1, 1, 1, 1 )
+custom_colors/symbol_color = Color( 0.505882, 0.505882, 0.505882, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/number_color = Color( 0.203922, 0.596078, 0.898039, 1 )
+custom_colors/current_line_color = Color( 0.494118, 0.494118, 0.494118, 0.137255 )
+custom_fonts/font = ExtResource( 6 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/normal = SubResource( 3 )
+highlight_current_line = true
+syntax_highlighting = true
+draw_tabs = true
+highlight_all_occurrences = true
+wrap_enabled = true
+caret_block_mode = true
+caret_blink = true
+script = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+output_path = NodePath("../../../../../ShellTint/MarginContainer/ShellOutput")
+
+[node name="beep" type="AudioStreamPlayer" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox"]
+stream = ExtResource( 4 )
+
+[node name="PortraitControl" type="Control" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
+visible = false
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 128, 128 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PortraitTexture" type="TextureRect" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/PortraitControl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 128, 128 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Hud-black-bars" type="TextureRect" parent="User Interface"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Screenshot" type="Node" parent="."]
+script = ExtResource( 11 )
+
+[connection signal="focus_exited" from="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox/ShellInput" to="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox/ShellInput" method="_on_focus_exited"]

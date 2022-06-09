@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://core/scripts/gameplay/cores/AudioCore.gd"
 }, {
+"base": "CanvasItem",
+"class": "Component",
+"language": "GDScript",
+"path": "res://core/scripts/Component.gd"
+}, {
 "base": "__GameplayCoreBase",
 "class": "DataCore",
 "language": "GDScript",
@@ -32,12 +37,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Menu",
 "language": "GDScript",
-"path": "res://core/scripts/components/Menu.gd"
+"path": "res://core/scripts/gameplay/components/Menu.gd"
 }, {
-"base": "Node2D",
+"base": "Component",
 "class": "Movement2D",
 "language": "GDScript",
-"path": "res://core/scripts/components/Movement.gd"
+"path": "res://core/scripts/gameplay/components/Movement.gd"
 }, {
 "base": "Reference",
 "class": "SSON",
@@ -81,6 +86,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AudioCore": "res://core/scripts/icons/icon_music.svg",
+"Component": "res://core/scripts/icons/icon_component_movement.svg",
 "DataCore": "res://core/scripts/icons/icon_event_pathway.svg",
 "DialogCutsceneCore": "res://core/scripts/icons/icon_event_dialogue.svg",
 "GameInstance": "res://core/scripts/icons/icon_Game.svg",
@@ -126,7 +132,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/QOL/improved_resource_picker/plugin.cfg", "res://addons/builtin/SmartRichTextLabel/plugin.cfg", "res://addons/builtin/max_size_container/plugin.cfg", "res://addons/builtin/resource_sson/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/QOL/improved_resource_picker/plugin.cfg", "res://addons/builtin/SmartRichTextLabel/plugin.cfg", "res://addons/builtin/max_size_container/plugin.cfg", "res://addons/builtin/resource_sson/plugin.cfg", "res://addons/editor_only/sscript_editor/plugin.cfg" )
 
 [input]
 

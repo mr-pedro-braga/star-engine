@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mus_lapsed_doll_chiptune.mp3-bcd474ffff666032956d5d0c2b9a0a33.mp3str"
+
+[deps]
+
+source_file="res://packs/__tests/mus_lapsed_doll_chiptune.mp3"
+dest_files=[ "res://.import/mus_lapsed_doll_chiptune.mp3-bcd474ffff666032956d5d0c2b9a0a33.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

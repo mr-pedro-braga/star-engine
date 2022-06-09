@@ -1,0 +1,14 @@
+[remap]
+
+importer="star.sson"
+type="Resource"
+path="res://.import/test_dialog.ssh-dd99cbe1f53250508966d650d3bf28bb.res"
+
+[deps]
+
+source_file="res://packs/__tests/dialogs_en/test_dialog.ssh"
+dest_files=[ "res://.import/test_dialog.ssh-dd99cbe1f53250508966d650d3bf28bb.res" ]
+
+[params]
+
+tts_compatible=false
