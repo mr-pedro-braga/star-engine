@@ -1,10 +1,10 @@
 [gd_resource type="Resource" load_steps=3 format=3 uid="uid://ci6ivhst1d88s"]
 
+[ext_resource type="Resource" uid="uid://2cberk1r0vqe" path="res://packs/invo_CORE/characters/ch_claire/sheet_overworld_B.png" id="1_miqd2"]
 [ext_resource type="Script" path="res://core/scripts/resources/SpriteSheetPool.gd" id="1_q02gr"]
-[ext_resource type="Resource" uid="uid://dhbewer3ifeuc" path="res://packs/invo_CORE/characters/ch_claire/sheet_fight_A.png" id="2_l73wi"]
 
 [resource]
 script = ExtResource( "1_q02gr" )
 pool = {
-"overworld": ExtResource( "2_l73wi" )
+"overworld": ExtResource( "1_miqd2" )
 }

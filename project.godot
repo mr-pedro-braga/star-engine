@@ -152,7 +152,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Star Engine 4.x Experimental"
+config/name="Star Engine"
 config/description="An engine capable of running all kinds of games... but mainly RPGs... and mainly Inner Voices."
 run/main_scene="res://core/Main Scene.tscn"
 config/use_custom_user_dir=true
@@ -213,6 +213,14 @@ Screenshot={
 "deadzone": 0.5,
 "events": []
 }
+
+[layer_names]
+
+2d_physics/layer_1="Overworld-Solid"
+2d_physics/layer_2="Overworld-Events"
+2d_physics/layer_4="Battle-Solid"
+2d_physics/layer_5="Battle-Events"
+2d_physics/layer_6="Battle-Bullets"
 
 [physics]
 

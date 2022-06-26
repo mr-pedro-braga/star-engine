@@ -1,5 +1,7 @@
 res://packs/__tests/scenes/_stest_animation.tscn
 res://packs/invo_CORE/characters/ch_claire/claire_A.tres
-res://core/scripts/resources/SpriteSheetSprite2D.gd
-res://core/Main Scene.tscn
 res://packs/invo_CORE/characters/ch_claire/claire_B.tres
+res://core/Main Scene.tscn
+res://packs/__tests/scenes/_stest_battle_patterns.tscn
+res://packs/invo_CORE/battle/DBS/Soul.tscn
+res://core/components/Character.tscn

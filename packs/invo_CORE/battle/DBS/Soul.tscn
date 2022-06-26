@@ -138,4 +138,5 @@ remote_path = NodePath("../../Shape")
 [node name="Shape" type="CollisionShape2D" parent="."]
 visible = false
 self_modulate = Color(0.980392, 1, 0, 1)
+scale = Vector2(1, 1)
 shape = SubResource( "CircleShape2D_n0ktr" )

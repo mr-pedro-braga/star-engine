@@ -1,13 +1,17 @@
+CollisionShape2D
+Camera2D
+Movement2D (Movement.gd)
+CharacterBody2D
+AnimationTree
+AnimationPlayer
 SpriteSheetSprite2D (SpriteSheetSprite2D.gd)
 Sprite2D
-Movement2D (Movement.gd)
 RichTextLabel
 Control
 SubViewport
 MeshInstance3D
 Camera3D
 Polygon2D
-Camera2D
 TextureRect
 SubViewportContainer
 VBoxContainer
