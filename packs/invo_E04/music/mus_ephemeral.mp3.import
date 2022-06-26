@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dsyqfdp1vpdxk"
+path="res://.godot/imported/mus_ephemeral.mp3-d558a4db71c3564afa93206f6049c733.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E04/music/mus_ephemeral.mp3"
+dest_files=["res://.godot/imported/mus_ephemeral.mp3-d558a4db71c3564afa93206f6049c733.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

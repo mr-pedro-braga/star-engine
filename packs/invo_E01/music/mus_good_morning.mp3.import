@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dt0l3uroil3je"
+path="res://.godot/imported/mus_good_morning.mp3-29ecbf47b057dc4fffaaa9a0d78234fd.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E01/music/mus_good_morning.mp3"
+dest_files=["res://.godot/imported/mus_good_morning.mp3-29ecbf47b057dc4fffaaa9a0d78234fd.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

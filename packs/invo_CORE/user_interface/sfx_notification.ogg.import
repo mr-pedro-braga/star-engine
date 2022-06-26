@@ -1,0 +1,16 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOGGVorbis"
+uid="uid://fwkg0kiinm28"
+path="res://.godot/imported/sfx_notification.ogg-4b9a2c438048412b0b29d6721382ed46.oggvorbisstr"
+
+[deps]
+
+source_file="res://packs/invo_CORE/user_interface/sfx_notification.ogg"
+dest_files=["res://.godot/imported/sfx_notification.ogg-4b9a2c438048412b0b29d6721382ed46.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccix7wlql0rnm"]
+
+[ext_resource type="FontData" uid="uid://xcrrfybexhsp" path="res://packs/invo_CORE/fonts/Steelflight.ttf" id="1_vbmet"]
+[ext_resource type="Script" path="res://core/scripts/gameplay/components/Menu.gd" id="2_a72v8"]
+
+[sub_resource type="Font" id="Font_jtwt3"]
+data/0 = ExtResource( "1_vbmet" )
+
+[sub_resource type="GDScript" id="GDScript_wbwaf"]
+script/source = "extends RichTextLabel
+
+@export_node_path(Node) var menu_component_path : NodePath
+@onready var menu : Menu = get_node(menu_component_path)
+
+func _ready():
+	menu = get_child(0)
+	text = (menu.get_selected())
+
+func _input(ev):
+	if not menu.is_current or not menu.is_open:
+		return
+	if menu.is_menu_array:
+		return
+	
+	if Input.is_action_just_pressed(\"ui_right\"):
+		menu.select_next()
+		text = str(menu.get_selected())
+	if Input.is_action_just_pressed(\"ui_left\"):
+		menu.select_previous()
+		text = str(menu.get_selected())
+	if Input.is_action_just_pressed(\"OK\"):
+		menu.choose()
+	if Input.is_action_just_pressed(\"CANCEL\"):
+		menu.back()
+"
+
+[node name="MenuHandler" type="RichTextLabel"]
+offset_left = 345.0
+offset_top = 171.0
+offset_right = 892.0
+offset_bottom = 422.0
+theme_override_fonts/normal_font = SubResource( "Font_jtwt3" )
+theme_override_font_sizes/normal_font_size = 32
+text = "This is a placeholder menu"
+script = SubResource( "GDScript_wbwaf" )
+
+[node name="Menu" type="Node" parent="."]
+script = ExtResource( "2_a72v8" )
+is_open = true
+is_current = true
+options = ["First", NodePath("../m1/SecondMenu"), "Third", NodePath("../m1/SecondMenu")]
+wrap_selection = false
+parent = NodePath("")
+
+[node name="Option1" type="Node" parent="Menu"]
+script = ExtResource( "2_a72v8" )
+options = ["Hey"]
+wrap_selection = false
+parent = NodePath("")
+
+[node name="Option2" type="Node" parent="Menu"]
+script = ExtResource( "2_a72v8" )
+options = ["Hey"]
+wrap_selection = false
+parent = NodePath("")
+
+[node name="SubOption" type="Node" parent="Menu/Option2"]
+script = ExtResource( "2_a72v8" )
+options = ["First"]
+wrap_selection = false
+parent = NodePath("")
+
+[node name="m1" type="RichTextLabel" parent="."]
+offset_left = 13.0
+offset_top = 72.0
+offset_right = 560.0
+offset_bottom = 323.0
+theme_override_fonts/normal_font = SubResource( "Font_jtwt3" )
+theme_override_font_sizes/normal_font_size = 32
+text = "This is a placeholder menu"
+script = SubResource( "GDScript_wbwaf" )
+
+[node name="SecondMenu" type="Node" parent="m1"]
+script = ExtResource( "2_a72v8" )
+is_menu_array = true
+options = [NodePath("../m2/ThirdMenu"), NodePath("../m2/ThirdMenu")]
+wrap_selection = false
+parent = NodePath("")
+
+[node name="m2" type="RichTextLabel" parent="m1"]
+offset_left = 21.0
+offset_top = 69.0
+offset_right = 568.0
+offset_bottom = 320.0
+theme_override_fonts/normal_font = SubResource( "Font_jtwt3" )
+theme_override_font_sizes/normal_font_size = 32
+text = "This is a placeholder menu"
+script = SubResource( "GDScript_wbwaf" )
+
+[node name="ThirdMenu" type="Node" parent="m1/m2"]
+script = ExtResource( "2_a72v8" )
+options = ["Hey", "There", "Bro"]
+allows_cancel = true
+parent = NodePath("")

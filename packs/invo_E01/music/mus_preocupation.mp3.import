@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpwkth88uk8om"
+path="res://.godot/imported/mus_preocupation.mp3-56309ed7a0fa65dcd9afd0845c34323f.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E01/music/mus_preocupation.mp3"
+dest_files=["res://.godot/imported/mus_preocupation.mp3-56309ed7a0fa65dcd9afd0845c34323f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

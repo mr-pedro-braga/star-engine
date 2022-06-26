@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cinya6mjy16be"
+path="res://.godot/imported/mus_starfall_city.mp3-bb726e7ca3dc76d2db7175ec51711e70.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E01/music/mus_starfall_city.mp3"
+dest_files=["res://.godot/imported/mus_starfall_city.mp3-bb726e7ca3dc76d2db7175ec51711e70.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

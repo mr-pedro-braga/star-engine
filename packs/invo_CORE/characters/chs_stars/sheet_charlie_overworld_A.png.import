@@ -1,0 +1,15 @@
+[remap]
+
+importer="star.spritesheet"
+type="Resource"
+uid="uid://j0mjclbbm7ke"
+path="res://.godot/imported/sheet_charlie_overworld_A.png-4c0c714e73a6c314e55759d763b2d47b.res"
+
+[deps]
+
+source_file="res://packs/invo_CORE/characters/chs_stars/sheet_charlie_overworld_A.png"
+dest_files=["res://.godot/imported/sheet_charlie_overworld_A.png-4c0c714e73a6c314e55759d763b2d47b.res"]
+
+[params]
+
+frame_size=Vector2(37, 37)

@@ -1,0 +1,141 @@
+[gd_scene load_steps=16 format=3 uid="uid://cybgvvilvtsmf"]
+
+[ext_resource type="Texture2D" uid="uid://c01q457347m8f" path="res://packs/invo_CORE/battle/sheet_souls.png" id="2_yxlj1"]
+[ext_resource type="Script" path="res://core/scripts/gameplay/components/Movement.gd" id="3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sstrv"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xuaq"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sibyg"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_182xm"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcj2h"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfgmk"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2267u"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn47v"]
+atlas = ExtResource( "2_yxlj1" )
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya4va"]
+animations = [{
+"frames": [SubResource( "AtlasTexture_sstrv" )],
+"loop": true,
+"name": &"lily",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_5xuaq" )],
+"loop": true,
+"name": &"bruno",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_sibyg" )],
+"loop": true,
+"name": &"andy",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_182xm" )],
+"loop": true,
+"name": &"claire",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_hcj2h" )],
+"loop": true,
+"name": &"rodrick",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_cfgmk" )],
+"loop": true,
+"name": &"sam",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_2267u" )],
+"loop": true,
+"name": &"sam_small",
+"speed": 5.0
+}, {
+"frames": [SubResource( "AtlasTexture_tn47v" )],
+"loop": true,
+"name": &"trevor",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_jiu82"]
+_data = [Vector2(0, 1), 0.0, 0.516005, 0, 0, Vector2(1, 0), 0.108391, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jcjvg"]
+curve = SubResource( "Curve_jiu82" )
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_fj2vi"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 24.0
+scale_curve = SubResource( "CurveTexture_jcjvg" )
+attractor_interaction_enabled = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0ktr"]
+radius = 24.0
+
+[node name="Soul" type="CharacterBody2D"]
+
+[node name="Movement2D" type="Node2D" parent="."]
+script = ExtResource( "3" )
+motion_mode = 0
+motion_gravity_active = true
+animation_visual_sprite = NodePath("../Texture2D")
+animation_squash_and_stretch_active = true
+animation_squash_and_stretch_target_scale = Vector2(6, 6)
+
+[node name="Shadow" type="ColorRect" parent="."]
+offset_left = -16.0
+offset_top = 6.0
+offset_right = 16.0
+offset_bottom = 18.0
+color = Color(0, 0, 0, 1)
+
+[node name="Texture2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+frames = SubResource( "SpriteFrames_ya4va" )
+animation = &"claire"
+
+[node name="Trail" type="GPUParticles2D" parent="Texture2D"]
+self_modulate = Color(0.160784, 0.101961, 0.392157, 1)
+show_behind_parent = true
+texture_filter = 1
+scale = Vector2(0.166667, 0.166667)
+amount = 24
+lifetime = 0.5
+local_coords = false
+process_material = SubResource( "ParticlesMaterial_fj2vi" )
+
+[node name="ShapeTransformer" type="RemoteTransform2D" parent="Texture2D"]
+scale = Vector2(0.166667, 0.166667)
+remote_path = NodePath("../../Shape")
+
+[node name="Shape" type="CollisionShape2D" parent="."]
+visible = false
+self_modulate = Color(0.980392, 1, 0, 1)
+shape = SubResource( "CircleShape2D_n0ktr" )

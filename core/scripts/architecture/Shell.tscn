@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cax62tb6fw2x6"]
+
+[ext_resource type="Script" path="res://core/scripts/architecture/Shell.gd" id="1"]
+
+[node name="Shell" type="Node"]
+script = ExtResource( "1" )

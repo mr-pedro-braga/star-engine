@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Texture2D" path="res://packs/invo_CORE/battle/battle_screen_bgs/bbg_snowflake.png" id="1"]
+
+[sub_resource type="Shader" id="3"]
+code = "shader_type canvas_item;
+
+uniform float timescale = 1.0;
+
+uniform vec4 color1 : hint_color;
+uniform vec4 color2 : hint_color;
+
+float bifract (float x) {
+	return (int(x) % 2 == 0) ? fract(x) : 1.0 - fract(x);
+}
+
+void fragment() {
+	vec2 uv = UV * 0.2;
+	vec4 col = texture(TEXTURE, uv + TIME);
+	col = mix(color1, color2, bifract((col.r + TIME)*1.5) );
+	COLOR = col;
+}"
+
+[sub_resource type="ShaderMaterial" id="4"]
+shader = SubResource( "3" )
+shader_param/timescale = 1.0
+shader_param/color1 = Color(0.0117647, 0.662745, 0.988235, 1)
+shader_param/color2 = Color(0.0117647, 0.905882, 0.988235, 1)
+
+[node name="Snowflake" type="TextureRect"]
+material = SubResource( "4" )
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 5
+size_flags_vertical = 5
+texture = ExtResource( "1" )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

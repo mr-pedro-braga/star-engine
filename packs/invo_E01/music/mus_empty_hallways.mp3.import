@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://025yq0pm25us"
+path="res://.godot/imported/mus_empty_hallways.mp3-e168c490293cac04e8813f43ac5da20f.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E01/music/mus_empty_hallways.mp3"
+dest_files=["res://.godot/imported/mus_empty_hallways.mp3-e168c490293cac04e8813f43ac5da20f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,18 @@
+[remap]
+
+importer="star.spritesheet"
+type="CompressedTexture2D"
+uid="uid://baikw0w7doauy"
+path="res://.godot/imported/sheet_overworld_A.png-b9d38fa5826667b351b84071c17985f0.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://packs/invo_CORE/characters/ch_mystery_kid/sheet_overworld_A.png"
+dest_files=["res://.godot/imported/sheet_overworld_A.png-b9d38fa5826667b351b84071c17985f0.ctex"]
+
+[params]
+
+frame_size=Vector2(37, 37)

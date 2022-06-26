@@ -1,0 +1,16 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOGGVorbis"
+uid="uid://bhdfj6wirhqdl"
+path="res://.godot/imported/mus_soul_with_a_capital_s.ogg-393ca175e8b3674dece44d90019e9b26.oggvorbisstr"
+
+[deps]
+
+source_file="res://packs/__tests/assets/mus_soul_with_a_capital_s.ogg"
+dest_files=["res://.godot/imported/mus_soul_with_a_capital_s.ogg-393ca175e8b3674dece44d90019e9b26.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0

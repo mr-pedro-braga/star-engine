@@ -1,0 +1,15 @@
+[remap]
+
+importer="star.spritesheet"
+type="Resource"
+uid="uid://dhbewer3ifeuc"
+path="res://.godot/imported/sheet_fight_A.png-5a8a5403c69af60291968285e9aace5c.res"
+
+[deps]
+
+source_file="res://packs/invo_CORE/characters/ch_claire/sheet_fight_A.png"
+dest_files=["res://.godot/imported/sheet_fight_A.png-5a8a5403c69af60291968285e9aace5c.res"]
+
+[params]
+
+frame_size=Vector2(37, 37)

@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfehbdp0fewj0"
+path="res://.godot/imported/mus_revolving_rapid_revenants.mp3-74c40d5bde1686518ac1cab60b3cc90d.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E03/mus_revolving_rapid_revenants.mp3"
+dest_files=["res://.godot/imported/mus_revolving_rapid_revenants.mp3-74c40d5bde1686518ac1cab60b3cc90d.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

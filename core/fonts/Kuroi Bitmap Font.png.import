@@ -1,0 +1,19 @@
+[remap]
+
+importer="font_data_image"
+type="FontData"
+uid="uid://b0yafpseq8yug"
+path="res://.godot/imported/Kuroi Bitmap Font.png-a5354e1b95f9394fad7d2448e3f2162e.fontdata"
+
+[deps]
+
+source_file="res://core/fonts/Kuroi Bitmap Font.png"
+dest_files=["res://.godot/imported/Kuroi Bitmap Font.png-a5354e1b95f9394fad7d2448e3f2162e.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("abcdefilmnoprstuv")
+columns=8
+rows=7
+font_size=8
+compress=true

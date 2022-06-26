@@ -1,0 +1,18 @@
+[remap]
+
+importer="star.spritesheet"
+type="CompressedTexture2D"
+uid="uid://datixokhebid4"
+path="res://.godot/imported/sheet_ninten_overworld_A.png-24c647911e9cb987d4fc5519b71f3638.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://packs/invo_CORE/characters/ch_ninten/sheet_ninten_overworld_A.png"
+dest_files=["res://.godot/imported/sheet_ninten_overworld_A.png-24c647911e9cb987d4fc5519b71f3638.ctex"]
+
+[params]
+
+frame_size=Vector2(37, 37)

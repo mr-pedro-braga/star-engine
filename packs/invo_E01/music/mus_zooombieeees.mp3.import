@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dcqneyje7e3l5"
+path="res://.godot/imported/mus_zooombieeees.mp3-e1a5b281643c8c39afe7236a28c7ebd6.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E01/music/mus_zooombieeees.mp3"
+dest_files=["res://.godot/imported/mus_zooombieeees.mp3-e1a5b281643c8c39afe7236a28c7ebd6.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

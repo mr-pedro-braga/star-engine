@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Delta.res" id="1"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Pool_Waves.res" id="2"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Snowflake.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Citrus.res" id="4"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Mint.res" id="5"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Drama.res" id="7"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Fancy_Food.res" id="8"]
+[ext_resource type="PackedScene" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Soul.res" id="9"]
+
+[node name="BattleBG" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Mint" parent="." instance=ExtResource( "5" )]
+visible = false
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="Citrus" parent="." instance=ExtResource( "4" )]
+visible = false
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="FancyFood" parent="." instance=ExtResource( "8" )]
+visible = false
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="PoolWaves" parent="." instance=ExtResource( "2" )]
+visible = false
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="Snowflake" parent="." instance=ExtResource( "3" )]
+visible = false
+
+[node name="Delta" parent="." instance=ExtResource( "1" )]
+visible = false
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="Alpha" parent="." instance_placeholder="res://core/images/battle_system/DBS/battle_screen_bgs/BBG_Alpha.res"]
+visible = false
+size_flags_horizontal = 5
+size_flags_vertical = 5
+
+[node name="Drama" parent="." instance=ExtResource( "7" )]
+visible = false
+animation = &"spinny"
+frame = 1
+
+[node name="Soul" parent="." instance=ExtResource( "9" )]
+size_flags_horizontal = 5
+size_flags_vertical = 5

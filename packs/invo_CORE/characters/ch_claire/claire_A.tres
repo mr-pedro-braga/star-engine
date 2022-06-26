@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cj3tr8wmig02a"]
+
+[ext_resource type="Resource" uid="uid://2cberk1r0vqe" path="res://packs/invo_CORE/characters/ch_claire/sheet_overworld_B.png" id="1_pnmap"]
+[ext_resource type="Script" path="res://core/scripts/resources/SpriteSheetPool.gd" id="1_q02gr"]
+
+[resource]
+script = ExtResource( "1_q02gr" )
+pool = {
+"overworld": ExtResource( "1_pnmap" )
+}
