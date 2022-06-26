@@ -54,6 +54,8 @@ value: 10
 
 # Commands get evaluated sequentially, while properties are simply values of the current block;
 
+# In Dialogues, your writing will be played from sections, sequentially.
+
 # You can create a simple narration by using *
 
 * There appears to be a snake in the trash can.
@@ -61,7 +63,7 @@ value: 10
 # In any Inner Voices dialogue, formatting rules will apply.
 
 # Dynamic Value Insertion / Interpolation
-* You currently have $INVENTORY_MONEY_claire dollars!
+* You currently have $DATA_STAT_MONEY_claire dollars!
 
 # Mid-writing pause
 * I think¢¢ we can thing more.
@@ -95,10 +97,10 @@ value: 10
 
 # You can manipulate the inventory.
 # The syntax tries to look a lot like natural language.
-item give 1 peperoni_pizza to claire
-item take 1 guacamole from claire
+item give claire peperoni_pizza 1
+item take claire guacamole 1
 item clear claire
-item has peperoni_pizza on claire # If claire has a certain item, returns true
+item has claire peperoni_pizza # If claire has a certain item, returns true
 
 # You can interact with the audio API
 sfx Boom.ogg
