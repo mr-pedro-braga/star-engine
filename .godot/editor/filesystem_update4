@@ -8,3 +8,9 @@ res://core/scripts/architecture/Shell.tscn
 res://core/scripts/gameplay/cores/data_components/GameSaveData.gd
 res://core/scripts/architecture/Shell.gd
 res://core/scripts/gameplay/cores/DataCore.gd
+res://packs/__tests/scenes/_stest_audio_listener.tscn
+res://packs/__tests/scenes/_stest_videos.tscn
+res://packs/__tests/scenes/_stest_battle_patterns.tscn
+res://core/scripts/gameplay/cores/battle_components/DBSPattern.gd
+res://packs/invo_CORE/battle/DBS/Soul.tscn
+res://core/scripts/gameplay/components/Movement.gd

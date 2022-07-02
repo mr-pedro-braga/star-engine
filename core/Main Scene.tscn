@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cw8hlthodrddb"]
+[gd_scene load_steps=40 format=3 uid="uid://cw8hlthodrddb"]
 
 [ext_resource type="Script" path="res://addons/builtin/star_smart_rich_text_label/SmartRichTextLabel.gd" id="1"]
 [ext_resource type="Script" path="res://addons/builtin/max_size_container/max_size_container.gd" id="2"]
@@ -24,6 +24,18 @@ render_mode blend_mul;"
 
 [sub_resource type="ShaderMaterial" id="6"]
 shader = SubResource("5")
+
+[sub_resource type="Gradient" id="Gradient_hem30"]
+offsets = PackedFloat32Array(0.231707, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.925781, 0.925781, 0.925781, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ng58q"]
+gradient = SubResource("Gradient_hem30")
+width = 240
+height = 135
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="Shader" id="7"]
 code = "shader_type canvas_item;
@@ -230,11 +242,10 @@ smoothing_speed = 16.0
 [node name="Fulscreen Effects" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="TextureRect" parent="Fulscreen Effects"]
-visible = false
 material = SubResource("6")
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource("8_viwib")
+texture = SubResource("GradientTexture2D_ng58q")
 
 [node name="TiltShift" type="TextureRect" parent="Fulscreen Effects"]
 visible = false

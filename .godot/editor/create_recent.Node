@@ -1,15 +1,20 @@
-CanvasLayer
+AudioStreamPlayer
+VideoStreamPlayer
 ColorRect
+Line2D
+Sprite2D
+Camera2D
+AudioStreamPlayer2D
+AudioListener2D
+CanvasLayer
 TextureRect
 TileMap
 CollisionShape2D
-Camera2D
 Movement2D (Movement.gd)
 CharacterBody2D
 AnimationTree
 AnimationPlayer
 SpriteSheetSprite2D (SpriteSheetSprite2D.gd)
-Sprite2D
 RichTextLabel
 Control
 SubViewport
@@ -20,7 +25,5 @@ SubViewportContainer
 VBoxContainer
 Menu (Menu.gd)
 GPUParticles2D
-VideoStreamPlayer
 ShaderGlobalsOverride
 Window
-AudioStreamPlayer

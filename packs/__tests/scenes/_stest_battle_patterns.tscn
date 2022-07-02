@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://cjoanax20xp6o"]
 
 [ext_resource type="PackedScene" uid="uid://ce6ihx3ibnffq" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Citrus.res" id="1_026k0"]
 [ext_resource type="PackedScene" uid="uid://d1qv0g7absd5h" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Pool_Waves.res" id="1_jxau6"]
@@ -9,7 +9,7 @@
 [sub_resource type="GDScript" id="GDScript_wehf0"]
 script/source = "extends DBSPattern
 
-var bullet = preload(\"res://packs/__tests/assets2/WaterDrop.gd\")
+var bullet = preload(\"res://packs/__tests/assets2/ProjectileWaterDroplet.gd\")
 
 func _tick():
 	spawn(
@@ -22,7 +22,7 @@ func _tick():
 "
 
 [sub_resource type="Font" id="Font_e2cst"]
-data/0 = ExtResource( "7_luycr" )
+data/0 = ExtResource("7_luycr")
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -36,10 +36,10 @@ grow_vertical = 2
 metadata/_edit_layout_mode = 1
 metadata/_edit_use_custom_anchors = true
 
-[node name="Citrus" parent="BattleContainer" instance=ExtResource( "1_026k0" )]
+[node name="Citrus" parent="BattleContainer" instance=ExtResource("1_026k0")]
 visible = false
 
-[node name="PoolWaves" parent="BattleContainer" instance=ExtResource( "1_jxau6" )]
+[node name="PoolWaves" parent="BattleContainer" instance=ExtResource("1_jxau6")]
 visible = false
 grow_horizontal = 2
 grow_vertical = 2
@@ -73,15 +73,15 @@ offset_right = 250.0
 offset_bottom = 250.0
 rotation = 0.785398
 pivot_offset = Vector2(250, 250)
-texture = ExtResource( "3_evu0k" )
+texture = ExtResource("3_evu0k")
 
-[node name="Soul" parent="BattleContainer/Center" instance=ExtResource( "4" )]
+[node name="Soul" parent="BattleContainer/Center" instance=ExtResource("4")]
 position = Vector2(-1, -8)
 motion_mode = 1
 
 [node name="GodotShower" type="Node2D" parent="BattleContainer"]
 position = Vector2(804, 390)
-script = SubResource( "GDScript_wehf0" )
+script = SubResource("GDScript_wehf0")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 visible = false
@@ -89,6 +89,6 @@ offset_left = 524.0
 offset_top = 352.0
 offset_right = 989.0
 offset_bottom = 663.0
-theme_override_fonts/normal_font = SubResource( "Font_e2cst" )
+theme_override_fonts/normal_font = SubResource("Font_e2cst")
 theme_override_font_sizes/normal_font_size = 33
 text = "aaabbccacsofdspfodsooodsfpdsofdsfoijioewjr4i3okfdncsn cm,sdcsdf"

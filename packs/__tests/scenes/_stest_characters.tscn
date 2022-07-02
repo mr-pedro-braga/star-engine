@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dmen6vlmk82ix"]
+[gd_scene load_steps=5 format=3 uid="uid://dmen6vlmk82ix"]
 
 [ext_resource type="PackedScene" uid="uid://djydaupqnhs2n" path="res://core/components/Character.tscn" id="1_4wm6x"]
 [ext_resource type="Texture2D" uid="uid://ctawo87l11v2h" path="res://packs/invo_E02/rooms/lilyworld/tiles_lilyworld_BG.png" id="1_hjc31"]
 [ext_resource type="TileSet" uid="uid://b1g6gbn3ybdfl" path="res://packs/invo_E02/rooms/lilyworld/set_lilyworld_outside.tres" id="1_rqwvt"]
+[ext_resource type="AudioStream" uid="uid://cf6506g8u3jge" path="res://packs/invo_E02/music/mus_anarchist_soul.mp3" id="4_dv2kc"]
 
 [node name="Scene" type="Node2D"]
 
@@ -12,7 +13,7 @@ layer = -1
 [node name="SKY" type="ColorRect" parent="BG"]
 anchor_right = 1.0
 anchor_bottom = 0.5
-color = Color(0.980392, 1, 0.623529, 1)
+color = Color(1, 0.94902, 0.65098, 1)
 metadata/_edit_use_custom_anchors = true
 
 [node name="FLOOR" type="ColorRect" parent="BG"]
@@ -68,3 +69,9 @@ position = Vector2(-16, -141)
 [node name="Camera" type="Camera2D" parent="Character"]
 position = Vector2(0, -64)
 current = true
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Character"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dv2kc")
+autoplay = true

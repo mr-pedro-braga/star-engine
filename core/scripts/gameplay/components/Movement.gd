@@ -23,7 +23,7 @@ enum MovementMode {
 @export var motion_jump_strength := 0.5
 @export var motion_sidescroller := false
 
-@export_node_path(CanvasItem) var animation_visual_sprite : NodePath
+@export var animation_visual_sprite : CanvasItem
 @export var animation_active := false
 @export var animation_squash_and_stretch_active := false
 @export var animation_squash_and_stretch_target_scale := Vector2.ONE
@@ -32,8 +32,6 @@ var position_z := 0.0
 var vz := 0.0
 var velocity := Vector2.ZERO
 var input_vector := Vector2.ZERO
-
-@onready var texture = get_node_or_null(animation_visual_sprite)
 
 ################################## CODE ###################################
 
@@ -60,17 +58,17 @@ func _physics_process(delta):
 	
 	# Juicy Effects
 	if animation_squash_and_stretch_active:
-		if not texture:
+		if not animation_visual_sprite:
 			printerr("Movement2D has no visual sprite associated and can't animate.")
 			return
 		var target_scale = animation_squash_and_stretch_target_scale
 		if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
-			texture.scale.x = target_scale.x * 2.0
-			texture.scale.y = target_scale.y * 0.5
+			animation_visual_sprite.scale.x = target_scale.x * 2.0
+			animation_visual_sprite.scale.y = target_scale.y * 0.5
 		if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
-			texture.scale.x = target_scale.x * 0.5
-			texture.scale.y = target_scale.y * 2.0
-		texture.scale = texture.scale.move_toward(
+			animation_visual_sprite.scale.x = target_scale.x * 0.5
+			animation_visual_sprite.scale.y = target_scale.y * 2.0
+		animation_visual_sprite.scale = animation_visual_sprite.scale.move_toward(
 			target_scale,
 			delta * 10.0 * target_scale.x
 		)
@@ -92,7 +90,7 @@ func move_free(delta):
 		)
 		get_parent().position += velocity * delta
 		position_z += vz * delta
-		texture.position.y = - position_z
+		animation_visual_sprite.position.y = - position_z
 		var target_scale = animation_squash_and_stretch_target_scale
 		
 		if position_z > 0.0:
@@ -101,13 +99,13 @@ func move_free(delta):
 			position_z = 0.0
 			vz = 0.0
 			if animation_squash_and_stretch_active:
-				texture.scale.x = target_scale.x * 2.0
-				texture.scale.y = target_scale.y * 0.5
+				animation_visual_sprite.scale.x = target_scale.x * 2.0
+				animation_visual_sprite.scale.y = target_scale.y * 0.5
 		if position_z == 0 and Input.is_action_pressed(input_action_special) and motion_jump_active:
 			vz = motion_gravity_magnitude * motion_jump_strength
 			if animation_squash_and_stretch_active:
-				texture.scale.x = target_scale.x * 0.5
-				texture.scale.y = target_scale.y * 2.0
+				animation_visual_sprite.scale.x = target_scale.x * 0.5
+				animation_visual_sprite.scale.y = target_scale.y * 2.0
 
 ######################### EDITOR CONFIGURATION #########################
 

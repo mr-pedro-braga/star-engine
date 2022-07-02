@@ -17,7 +17,7 @@ var timeout := 6
 signal finished
 
 @export var tick_index := 0
-@export_range(0.1, 0.5, 0.1) var tick_rate  := 0.1
+@export_range(0.1, 0.5, 0.1) var tick_rate  := 0.2
 @export_range(0.0, 2.0, 0.1) var time_scale := 1
 var projectile_count := 0
 

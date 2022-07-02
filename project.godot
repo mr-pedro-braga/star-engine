@@ -72,7 +72,7 @@ _global_script_classes=[{
 "base": "DBSProjectile",
 "class": &"ProjectileWaterDroplet",
 "language": &"GDScript",
-"path": "res://packs/__tests/assets2/WaterDrop.gd"
+"path": "res://packs/__tests/assets2/ProjectileWaterDroplet.gd"
 }, {
 "base": "Node",
 "class": &"Screenshot",
@@ -178,10 +178,12 @@ shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
-window/size/window_width_override=800
-window/size/window_height_override=450
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+
+[editor]
+
+movie_writer/movie_file="/home/pedrobraga/Dev/Games/Inner Voices/video/movie_test.avi"
 
 [editor_plugins]
 

@@ -4,75 +4,75 @@
 [ext_resource type="Script" path="res://core/scripts/gameplay/components/Movement.gd" id="3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sstrv"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5xuaq"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sibyg"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_182xm"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcj2h"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cfgmk"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2267u"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tn47v"]
-atlas = ExtResource( "2_yxlj1" )
+atlas = ExtResource("2_yxlj1")
 region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ya4va"]
 animations = [{
-"frames": [SubResource( "AtlasTexture_sstrv" )],
+"frames": [SubResource("AtlasTexture_sstrv")],
 "loop": true,
 "name": &"lily",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_5xuaq" )],
+"frames": [SubResource("AtlasTexture_5xuaq")],
 "loop": true,
 "name": &"bruno",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_sibyg" )],
+"frames": [SubResource("AtlasTexture_sibyg")],
 "loop": true,
 "name": &"andy",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_182xm" )],
+"frames": [SubResource("AtlasTexture_182xm")],
 "loop": true,
 "name": &"claire",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_hcj2h" )],
+"frames": [SubResource("AtlasTexture_hcj2h")],
 "loop": true,
 "name": &"rodrick",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_cfgmk" )],
+"frames": [SubResource("AtlasTexture_cfgmk")],
 "loop": true,
 "name": &"sam",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_2267u" )],
+"frames": [SubResource("AtlasTexture_2267u")],
 "loop": true,
 "name": &"sam_small",
 "speed": 5.0
 }, {
-"frames": [SubResource( "AtlasTexture_tn47v" )],
+"frames": [SubResource("AtlasTexture_tn47v")],
 "loop": true,
 "name": &"trevor",
 "speed": 5.0
@@ -83,7 +83,7 @@ _data = [Vector2(0, 1), 0.0, 0.516005, 0, 0, Vector2(1, 0), 0.108391, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_jcjvg"]
-curve = SubResource( "Curve_jiu82" )
+curve = SubResource("Curve_jiu82")
 
 [sub_resource type="ParticlesMaterial" id="ParticlesMaterial_fj2vi"]
 emission_shape = 2
@@ -93,7 +93,7 @@ gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 24.0
-scale_curve = SubResource( "CurveTexture_jcjvg" )
+scale_curve = SubResource("CurveTexture_jcjvg")
 attractor_interaction_enabled = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0ktr"]
@@ -101,8 +101,8 @@ radius = 24.0
 
 [node name="Soul" type="CharacterBody2D"]
 
-[node name="Movement2D" type="Node2D" parent="."]
-script = ExtResource( "3" )
+[node name="Movement2D" type="Node2D" parent="." node_paths=PackedStringArray("animation_visual_sprite")]
+script = ExtResource("3")
 motion_mode = 0
 motion_gravity_active = true
 animation_visual_sprite = NodePath("../Texture2D")
@@ -118,7 +118,7 @@ color = Color(0, 0, 0, 1)
 
 [node name="Texture2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
-frames = SubResource( "SpriteFrames_ya4va" )
+frames = SubResource("SpriteFrames_ya4va")
 animation = &"claire"
 
 [node name="Trail" type="GPUParticles2D" parent="Texture2D"]
@@ -129,7 +129,7 @@ scale = Vector2(0.166667, 0.166667)
 amount = 24
 lifetime = 0.5
 local_coords = false
-process_material = SubResource( "ParticlesMaterial_fj2vi" )
+process_material = SubResource("ParticlesMaterial_fj2vi")
 
 [node name="ShapeTransformer" type="RemoteTransform2D" parent="Texture2D"]
 scale = Vector2(0.166667, 0.166667)
@@ -139,4 +139,4 @@ remote_path = NodePath("../../Shape")
 visible = false
 self_modulate = Color(0.980392, 1, 0, 1)
 scale = Vector2(1, 1)
-shape = SubResource( "CircleShape2D_n0ktr" )
+shape = SubResource("CircleShape2D_n0ktr")

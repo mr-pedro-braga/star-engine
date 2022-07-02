@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://m6s7tguuk43e"]
+
+[ext_resource type="Texture2D" uid="uid://c0aybxgpsbbw0" path="res://icon.png" id="1_fd0ek"]
+[ext_resource type="PackedScene" uid="uid://cybgvvilvtsmf" path="res://packs/invo_CORE/battle/DBS/Soul.tscn" id="1_kpgwx"]
+[ext_resource type="AudioStream" uid="uid://id23jrdydxks" path="res://packs/invo_E02/music/mus_abstract.wav" id="2_c20ei"]
+[ext_resource type="AudioStream" uid="uid://3tixnf5fy8qr" path="res://packs/__tests/mus_shop.wav" id="3_ks1wi"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(470, 462)
+texture = ExtResource("1_fd0ek")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Sprite2D"]
+stream = ExtResource("2_c20ei")
+autoplay = true
+max_distance = 512.0
+attenuation = 0.5
+panning_strength = 2.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1772, 240)
+texture = ExtResource("1_fd0ek")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Sprite2D2"]
+stream = ExtResource("3_ks1wi")
+autoplay = true
+max_distance = 512.0
+attenuation = 0.5
+panning_strength = 1.5
+
+[node name="Soul" parent="." instance=ExtResource("1_kpgwx")]
+position = Vector2(764, 464)
+motion_mode = 1
+
+[node name="Movement2D" parent="Soul" index="0"]
+motion_gravity_active = false
+
+[node name="Shape" parent="Soul" index="3"]
+scale = Vector2(1, 1)
+
+[node name="AudioListener2D" type="AudioListener2D" parent="Soul"]
+current = true
+
+[node name="Camera2D" type="Camera2D" parent="Soul"]
+current = true
+
+[editable path="Soul"]
