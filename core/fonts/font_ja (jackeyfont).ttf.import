@@ -12,13 +12,17 @@ dest_files=["res://.godot/imported/font_ja (jackeyfont).ttf-ed5805d505c159f15b46
 
 [params]
 
+face_index=0
 antialiased=true
+generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 force_autohinter=false
 hinting=1
 subpixel_positioning=1
+embolden=0.0
+transform=Transform2D(1, 0, 0, 1, 0, 0)
 oversampling=0.0
 compress=true
 opentype_feature_overrides={}

@@ -25,7 +25,7 @@ func _input(event):
 func _capture():
 	# Start thread for capturing images
 	var task = Thread.new()
-	task.start(_capture_thread, null)
+	task.start(_capture_thread)
 	_capture_tasks.append(task)
 
 func _capture_thread(_arg):

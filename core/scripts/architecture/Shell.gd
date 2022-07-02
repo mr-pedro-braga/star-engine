@@ -48,7 +48,7 @@ func execute(command):
 			var params := StarScriptParser.split_params(command.params)
 			var path = params.pop_front()
 			var output := []
-			var error := OS.execute(path, params)
+			var error := OS.execute(path, params, output)
 			var output_message := ""
 			
 			for i in range(output.size()):
@@ -99,13 +99,13 @@ func execute(command):
 
 func printx(message, _options={}):
 	output.text += message + "\n"
-	print(message)
+	print_rich(message)
 
 func print_err(error, message, options={}):
-	var text = "[color=#ff0000][b](!) "+error+":[/b] "+message
+	var text = "[color=red][b](!) "+error+":[/b] "+message
 	if options.has("suggestion"):
 		text += '\n[center]' + options.suggestion + '[/center]'
-	text += "[/color]"
+	text += "[color=white]"
 	
 	output.text += text + "\n"
-	printerr("(!) " + error + ": " + message)
+	print_rich(text)

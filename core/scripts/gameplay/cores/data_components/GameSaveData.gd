@@ -15,3 +15,6 @@ var party : Array[Resource] = []
 
 # SWITCHES / GAME PROGRESSION
 var switches := {}
+
+func _to_string():
+	return str(game_name) + "\n" + "Version: " + str(game_version) + "\n\n"

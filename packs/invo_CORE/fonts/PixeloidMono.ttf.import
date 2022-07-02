@@ -12,6 +12,7 @@ dest_files=["res://.godot/imported/PixeloidMono.ttf-f21f2ae5b02dbc073efdf9bc54f2
 
 [params]
 
+face_index=0
 antialiased=true
 generate_mipmaps=false
 multichannel_signed_distance_field=false

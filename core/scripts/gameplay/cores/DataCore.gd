@@ -4,10 +4,11 @@ class_name DataCore, "res://core/scripts/icons/icon_event_pathway.svg"
 signal on_saved(file)
 signal on_loaded(file)
 
-var data : GameSaveData
+var data : GameSaveData = GameSaveData.new()
 
 func save_game(file: String) -> int:
 	ResourceSaver.save("user://saves/"+file+".sav", data)
+	print(data)
 	return OK
 
 func load_game(file: String) -> int:

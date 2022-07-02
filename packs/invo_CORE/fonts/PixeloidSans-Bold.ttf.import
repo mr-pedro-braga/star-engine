@@ -12,6 +12,7 @@ dest_files=["res://.godot/imported/PixeloidSans-Bold.ttf-4c2c818b4d19d4c7b7639d6
 
 [params]
 
+face_index=0
 antialiased=true
 generate_mipmaps=false
 multichannel_signed_distance_field=false

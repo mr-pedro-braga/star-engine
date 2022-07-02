@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://disfubtye5m78" path="res://packs/invo_CORE/characters/ch_claire/sheet_overworld_A.png" id="1_ss1oi"]
 
 [resource]
-script = ExtResource( "1_q02gr" )
+script = ExtResource("1_q02gr")
 pool = {
-"overworld": ExtResource( "1_ss1oi" )
+"overworld": ExtResource("1_ss1oi")
 }
