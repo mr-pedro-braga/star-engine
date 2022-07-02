@@ -1,7 +1,3 @@
-res://packs/__tests/scenes/_stest_animation.tscn
-res://packs/invo_CORE/characters/ch_claire/claire_A.tres
-res://packs/invo_CORE/characters/ch_claire/claire_B.tres
-res://core/Main Scene.tscn
+res://packs/__tests/scenes/_stest_characters.tscn
 res://packs/__tests/scenes/_stest_battle_patterns.tscn
-res://packs/invo_CORE/battle/DBS/Soul.tscn
-res://core/components/Character.tscn
+res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Citrus.res

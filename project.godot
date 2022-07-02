@@ -157,8 +157,8 @@ config/description="An engine capable of running all kinds of games... but mainl
 run/main_scene="res://core/Main Scene.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="inner_voices"
-config/icon="res://icon.png"
 config/features=PackedStringArray("4.0")
+config/icon="res://icon.png"
 
 [autoload]
 
@@ -167,6 +167,11 @@ Game="*res://core/scripts/gameplay/Game.gd"
 
 [debug]
 
+gdscript/warnings/unassigned_variable=0
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unreachable_code=0
+gdscript/warnings/unused_signal=0
 shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 [display]
@@ -180,7 +185,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/QOL/improved_resource_picker/plugin.cfg", "res://addons/builtin/star_smart_rich_text_label/plugin.cfg", "res://addons/builtin/resource_starscript/plugin.cfg", "res://addons/builtin/star_resource_spritesheet/plugin.cfg")
+enabled=PackedStringArray("res://addons/QOL/improved_resource_picker/plugin.cfg", "res://addons/builtin/resource_starscript/plugin.cfg", "res://addons/builtin/star_resource_spritesheet/plugin.cfg")
 
 [input]
 

@@ -80,7 +80,19 @@ func execute(command):
 		# Say something as a character
 		"-":
 			Game.DC.dialog_box.write("- " + command.params)
+			print(" :: ", command.params)
 			input.release_focus()
+		# Item management
+		"item":
+			pass
+		"bgm":
+			pass
+		"sfx":
+			pass
+		"vfx":
+			pass
+		"exit":
+			get_tree().quit()
 		_:
 			print_err("Invalid Command Error", "The command '"+command.key+"' is not recognized by this shell.", {suggestion="Check the orthography."})
 	emit_signal("command_finished")

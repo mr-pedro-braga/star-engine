@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://addons/builtin/max_size_container/max_size_container.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c0aybxgpsbbw0" path="res://icon.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://nr8myeqb7fev" path="res://core/audio/sounds/ui_default_typewriter.wav" id="4"]
+[ext_resource type="PackedScene" uid="uid://m6foktb7wt2o" path="res://packs/__tests/scenes/_stest_characters.tscn" id="7_b8q23"]
 [ext_resource type="Texture2D" uid="uid://1f5fjpgo8ijf" path="res://packs/__tests/assets/BattleShowcase8.png" id="7_dhcky"]
 [ext_resource type="Texture2D" uid="uid://dg8vwodtycmn7" path="res://packs/invo_CORE/user_interface/sprite_vignette.png" id="8_viwib"]
 [ext_resource type="FontData" uid="uid://cmiejt6lttnn" path="res://core/fonts/PixeloidSans-Bold.ttf" id="9_264sc"]
@@ -16,7 +17,6 @@
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/DialogCutsceneCore.gd" id="14"]
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/AudioCore.gd" id="15"]
 [ext_resource type="AudioStream" uid="uid://d3plqlmj8ibbe" path="res://packs/__tests/mus_lapsed_doll_chiptune.mp3" id="16"]
-[ext_resource type="PackedScene" uid="uid://bvo54hfex0nkm" path="res://packs/__tests/scenes/_stest_battle_patterns.tscn" id="17"]
 
 [sub_resource type="Shader" id="5"]
 code = "shader_type canvas_item;
@@ -224,19 +224,20 @@ transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 3
 size = Vector2i(1600, 900)
+render_target_clear_mode = 1
 render_target_update_mode = 4
 
-[node name="Control" parent="World/VC/WorldViewport" instance=ExtResource( "17" )]
+[node name="Node2D" parent="World/VC/WorldViewport" instance=ExtResource( "7_b8q23" )]
 
 [node name="WorldCamera" type="Camera2D" parent="World/VC/WorldViewport"]
 position = Vector2(800, 450)
-current = true
 smoothing_enabled = true
 smoothing_speed = 16.0
 
 [node name="Fulscreen Effects" type="CanvasLayer" parent="."]
 
 [node name="Vignette" type="TextureRect" parent="Fulscreen Effects"]
+visible = false
 modulate = Color(1, 1, 1, 0.0470588)
 material = SubResource( "6" )
 anchor_right = 1.0
@@ -244,6 +245,7 @@ anchor_bottom = 1.0
 texture = ExtResource( "8_viwib" )
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Fulscreen Effects/Vignette"]
+visible = false
 copy_mode = 2
 rect = Rect2(0, 0, 1600, 900)
 

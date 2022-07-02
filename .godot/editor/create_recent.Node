@@ -1,3 +1,7 @@
+CanvasLayer
+ColorRect
+TextureRect
+TileMap
 CollisionShape2D
 Camera2D
 Movement2D (Movement.gd)
@@ -12,7 +16,6 @@ SubViewport
 MeshInstance3D
 Camera3D
 Polygon2D
-TextureRect
 SubViewportContainer
 VBoxContainer
 Menu (Menu.gd)

@@ -1,0 +1,64 @@
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://b1g6gbn3ybdfl"]
+
+[ext_resource type="Texture2D" uid="uid://3ksvnhge4km3" path="res://packs/invo_E02/rooms/lilyworld/tiles_lilyworld_outside.png" id="1_ptuj3"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_uioi1"]
+tile_data = PackedInt32Array(65536, 0, 1, 131072, 65536, 2, 196608, 0, 3, 1, 65536, 0, 65537, 65536, 1, 131073, 65536, 2, 196609, 65536, 3, 2, 196608, 0, 65538, 65536, 1, 131074, 65536, 2, 196610, 65536, 3, 3, 196608, 0, 65539, 65536, 1, 131075, 65536, 2, 196611, 65536, 3, 4, 196608, 0, 65540, 65536, 1, 131076, 65536, 2, 196612, 65536, 3, 5, 196608, 0, 65541, 131072, 1, 131077, 65536, 2, 196613, 65536, 3, 6, 196608, 0, 65542, 196608, 1, 131078, 196608, 2, 196614, 196608, 3, 7, 262144, 0, 65543, 262144, 1, 131079, 262144, 2)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0vl0a"]
+texture = ExtResource( "1_ptuj3" )
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+5:0/size_in_atlas = Vector2i(3, 3)
+5:0/0 = 0
+5:0/0/texture_offset = Vector2i(0, 16)
+
+[resource]
+sources/0 = SubResource( "TileSetAtlasSource_0vl0a" )
+pattern_0 = SubResource( "TileMapPattern_uioi1" )
