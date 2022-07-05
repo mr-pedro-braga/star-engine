@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhur808vdsbf5"]
+
+[ext_resource type="PackedScene" uid="uid://7l2i5fkcovbl" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Delta.res" id="1_aqqp2"]
+[ext_resource type="TileSet" uid="uid://jp011rw365ke" path="res://packs/invo_E02/rooms/lilyworld/set_lilyworld_danger_diner.tres" id="2_e6uko"]
+[ext_resource type="PackedScene" uid="uid://djydaupqnhs2n" path="res://core/components/Character.tscn" id="3_g2np8"]
+[ext_resource type="Texture2D" uid="uid://bs8c0wyo78qn7" path="res://packs/invo_CORE/special_effects/vfx_rain_mild.png" id="4_ehl7t"]
+[ext_resource type="Texture2D" uid="uid://b5eg8xvyghhdw" path="res://packs/invo_CORE/special_effects/vfx_rain_splash.png" id="5_eh61l"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_lurqq"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_81h1e"]
+emission_shape = 3
+emission_box_extents = Vector3(640, 160, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 6.0
+scale_max = 6.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_aaxbo"]
+emission_shape = 3
+emission_box_extents = Vector3(800, 0, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 2, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 256.0
+initial_velocity_max = 1024.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 6.0
+scale_max = 6.0
+color = Color(1, 1, 1, 0.454902)
+
+[node name="_stest_glow" type="Node2D"]
+texture_filter = 1
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="BattleBG" parent="BG" instance=ExtResource("1_aqqp2")]
+visible = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.698039, 0.698039, 0.85098, 1)
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(6, 6)
+tile_set = ExtResource("2_e6uko")
+format = 2
+layer_0/tile_data = PackedInt32Array(196610, 65537, 2, 196611, 65537, 2, 196612, 65537, 2, 262146, 65537, 2, 262147, 65537, 2, 262148, 65537, 2, 262145, 65537, 2, 196609, 65537, 2, 196613, 65537, 2, 262149, 65537, 2, 131073, 65537, 1, 131074, 196609, 1, 131075, 131073, 1, 131076, 196609, 1, 131077, 131073, 1, 196608, 1, 2, 327679, 262145, 2, 262144, 65537, 2, 393215, 1, 3, 327680, 65537, 3, 327681, 65537, 3, 327682, 65537, 3, 327683, 65537, 3, 327684, 65537, 3, 327685, 65537, 3, 262143, 262145, 1, 131072, 1, 1, 196607, 262145, 0, 65536, 1, 0, 65537, 65537, 0, 65538, 196609, 0, 65539, 131073, 0, 65540, 196609, 0, 65541, 131073, 0, 131078, 196609, 1, 65542, 196609, 0, 65543, 327681, 0, 131079, 327681, 1, 196615, 131073, 2, 262150, 131073, 2, 262151, 131073, 3, 196614, 65537, 2)
+
+[node name="Splashes" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_lurqq")
+position = Vector2(698, 769)
+amount = 16
+lifetime = 0.2
+process_material = SubResource("ParticlesMaterial_81h1e")
+texture = ExtResource("5_eh61l")
+
+[node name="Character" parent="." instance=ExtResource("3_g2np8")]
+position = Vector2(656, 730)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(0, -96)
+current = true
+
+[node name="Rain" type="GPUParticles2D" parent="."]
+position = Vector2(800, 0)
+amount = 256
+lifetime = 2.0
+preprocess = 3.0
+fixed_fps = 8
+process_material = SubResource("ParticlesMaterial_aaxbo")
+texture = ExtResource("4_ehl7t")

@@ -1,0 +1,21 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://b2tjcm58sexu8"]
+
+[ext_resource type="Texture2D" uid="uid://raar43in7vb1" path="res://packs/invo_E02/rooms/lilyworld/tiles_dungeon_diner_emission.png" id="1_2iyh1"]
+
+[sub_resource type="Shader" id="Shader_n1tdo"]
+code = "shader_type canvas_item;
+
+uniform sampler2D emission_map : filter_nearest;
+uniform float strength = 1.0;
+
+void fragment() {
+	vec4 em = texture(emission_map, UV);
+	vec4 col = texture(TEXTURE, UV) + vec4(em.rgb * em.a * strength, 0.0);
+	COLOR = vec4(col);
+}
+"
+
+[resource]
+shader = SubResource("Shader_n1tdo")
+shader_param/emission_map = ExtResource("1_2iyh1")
+shader_param/strength = 2.0

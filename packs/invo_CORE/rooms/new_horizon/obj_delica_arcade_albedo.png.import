@@ -3,25 +3,27 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3125x6wu2u5j"
-path="res://.godot/imported/obj_delica_arcade_albedo.png-72147055ca814639e97c6be6de4e9c3d.ctex"
+path.s3tc="res://.godot/imported/obj_delica_arcade_albedo.png-72147055ca814639e97c6be6de4e9c3d.s3tc.ctex"
+path.etc2="res://.godot/imported/obj_delica_arcade_albedo.png-72147055ca814639e97c6be6de4e9c3d.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc", "etc2"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://packs/invo_CORE/rooms/new_horizon/obj_delica_arcade_albedo.png"
-dest_files=["res://.godot/imported/obj_delica_arcade_albedo.png-72147055ca814639e97c6be6de4e9c3d.ctex"]
+dest_files=["res://.godot/imported/obj_delica_arcade_albedo.png-72147055ca814639e97c6be6de4e9c3d.s3tc.ctex", "res://.godot/imported/obj_delica_arcade_albedo.png-72147055ca814639e97c6be6de4e9c3d.etc2.ctex"]
 
 [params]
 
-compress/mode=0
-compress/lossy_quality=0.7
+compress/mode=2
+compress/lossy_quality=1.0
 compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +33,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

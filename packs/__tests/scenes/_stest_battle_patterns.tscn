@@ -40,7 +40,6 @@ metadata/_edit_use_custom_anchors = true
 visible = false
 
 [node name="PoolWaves" parent="BattleContainer" instance=ExtResource("1_jxau6")]
-visible = false
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -77,7 +76,15 @@ texture = ExtResource("3_evu0k")
 
 [node name="Soul" parent="BattleContainer/Center" instance=ExtResource("4")]
 position = Vector2(-1, -8)
-motion_mode = 1
+
+[node name="Movement2D" parent="BattleContainer/Center/Soul" index="0"]
+input_scale = Vector2(1, 0.5)
+motion_gravity_active = false
+motion_jump_active = true
+animation_active = true
+
+[node name="Shape" parent="BattleContainer/Center/Soul" index="3"]
+scale = Vector2(1, 1)
 
 [node name="GodotShower" type="Node2D" parent="BattleContainer"]
 position = Vector2(804, 390)
@@ -92,3 +99,5 @@ offset_bottom = 663.0
 theme_override_fonts/normal_font = SubResource("Font_e2cst")
 theme_override_font_sizes/normal_font_size = 33
 text = "aaabbccacsofdspfodsooodsfpdsofdsfoijioewjr4i3okfdncsn cm,sdcsdf"
+
+[editable path="BattleContainer/Center/Soul"]
