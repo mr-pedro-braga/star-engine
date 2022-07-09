@@ -7,12 +7,12 @@ signal on_loaded(file)
 var data : GameSaveData = GameSaveData.new()
 
 func save_game(file: String) -> int:
-	ResourceSaver.save("user://saves/"+file+".sav", data)
+	ResourceSaver.save("res://"+file+".tres", data)
 	print(data)
 	return OK
 
 func load_game(file: String) -> int:
-	var path ="user://saves/"+file+".sav"
+	var path ="res://"+file+".tres"
 	var f = File.new()
 	if not f.file_exists(path):
 		Shell.print_err(

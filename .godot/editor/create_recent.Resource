@@ -1,4 +1,4 @@
+Character (Character.gd)
 Environment
 TileSet
 SpriteSheetPool (SpriteSheetPool.gd)
-Character (Character.gd)

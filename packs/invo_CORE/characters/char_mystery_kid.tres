@@ -1,0 +1,21 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://b4b77mjtf63et"]
+
+[ext_resource type="Script" path="res://core/scripts/gameplay/cores/character_components/Character.gd" id="1_x5d65"]
+[ext_resource type="Script" path="res://core/scripts/gameplay/cores/character_components/CharacterStats.gd" id="2_ittwr"]
+
+[sub_resource type="Resource" id="Resource_7eop3"]
+script = ExtResource("2_ittwr")
+soul_color_fg = Color(0.0862745, 0.756863, 0.866667, 1)
+soul_color_bg = Color(0.0980392, 0.309804, 0.54902, 1)
+HP = 200
+SP = 200
+MHP = 200
+MSP = 200
+AT = 5
+DF = 5
+AG = 3
+
+[resource]
+script = ExtResource("1_x5d65")
+name = "Mystery Kid"
+stats = SubResource("Resource_7eop3")

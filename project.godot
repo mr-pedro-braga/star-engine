@@ -14,6 +14,21 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://core/scripts/gameplay/cores/AudioCore.gd"
 }, {
+"base": "__GameplayCoreBase",
+"class": &"BattleCore",
+"language": &"GDScript",
+"path": "res://core/scripts/gameplay/cores/BattleCore.gd"
+}, {
+"base": "Resource",
+"class": &"BattleInstance",
+"language": &"GDScript",
+"path": "res://core/scripts/gameplay/cores/battle_components/BattleInstance.gd"
+}, {
+"base": "Component",
+"class": &"BattlerScript",
+"language": &"GDScript",
+"path": "res://core/scripts/gameplay/cores/battle_components/BattlerScript.gd"
+}, {
 "base": "Resource",
 "class": &"Character",
 "language": &"GDScript",
@@ -58,6 +73,16 @@ _global_script_classes=[{
 "class": &"GameSaveData",
 "language": &"GDScript",
 "path": "res://core/scripts/gameplay/cores/data_components/GameSaveData.gd"
+}, {
+"base": "RefCounted",
+"class": &"Inventory",
+"language": &"GDScript",
+"path": "res://core/scripts/gameplay/cores/data_components/Inventory.gd"
+}, {
+"base": "RefCounted",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://core/scripts/gameplay/cores/data_components/Item.gd"
 }, {
 "base": "Component",
 "class": &"Menu",
@@ -126,6 +151,9 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "AudioCore": "res://core/scripts/icons/icon_music.svg",
+"BattleCore": "",
+"BattleInstance": "",
+"BattlerScript": "",
 "Character": "",
 "CharacterStats": "",
 "Component": "res://core/scripts/icons/icon_component_movement.png",
@@ -135,6 +163,8 @@ _global_script_class_icons={
 "DialogCutsceneCore": "res://core/scripts/icons/icon_event_dialogue.svg",
 "GameInstance": "res://core/scripts/icons/icon_Game.svg",
 "GameSaveData": "",
+"Inventory": "",
+"Item": "",
 "Menu": "",
 "Movement2D": "res://core/scripts/icons/icon_component_movement.png",
 "ProjectileWaterDroplet": "",
@@ -178,6 +208,8 @@ shapes/collision/shape_color=Color(1, 1, 1, 0.419608)
 
 window/size/viewport_width=1600
 window/size/viewport_height=900
+window/size/window_width_override=960
+window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

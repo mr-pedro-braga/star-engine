@@ -1,9 +1,20 @@
+res://core/default_environment.tres
 res://packs/__tests/scenes/_stest_glow.tscn
 res://packs/invo_CORE/characters/ch_claire/claire_A.tres
 res://packs/invo_E02/rooms/lilyworld/set_lilyworld_outside.tres
-res://packs/invo_CORE/special_effects/shd_emission.gdshader
+res://packs/invo_E02/rooms/lilyworld/mat_diner_emission.tres
 res://packs/invo_E02/rooms/lilyworld/set_lilyworld_danger_diner.tres
 res://core/Main Scene.tscn
-res://packs/invo_E02/rooms/lilyworld/mat_diner_emission.tres
-res://core/default_environment.tres
-res://packs/__tests/scenes/_stest_battle_patterns.tscn
+res://core/scripts/gameplay/cores/data_components/Item.gd
+res://core/scripts/gameplay/cores/data_components/Inventory.gd
+res://core/components/Character.tscn
+res://packs/__tests/scenes/_stest_characters.tscn
+res://core/scripts/gameplay/cores/BattleCore.gd
+res://core/scripts/gameplay/cores/battle_components/Battle.gd
+res://core/scripts/gameplay/cores/battle_components/BattleInstance.gd
+res://core/scripts/gameplay/cores/battle_components/BattlerScript.gd
+res://packs/invo_CORE/characters/char_claire.tres
+res://packs/invo_CORE/characters/char_mystery_kid.tres
+res://core/scripts/gameplay/cores/data_components/GameSaveData.gd
+res://core/scripts/gameplay/Game.gd
+res://core/scripts/gameplay/cores/DataCore.gd

@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/character_components/CharacterStats.gd" id="2_odr8a"]
 
 [sub_resource type="Resource" id="Resource_kxijb"]
-script = ExtResource( "2_odr8a" )
+script = ExtResource("2_odr8a")
 soul_color_fg = Color(0.666667, 0.2, 1, 1)
 soul_color_bg = Color(0.298039, 0.12549, 0.564706, 1)
 HP = 10
@@ -16,6 +16,6 @@ DF = 1
 AG = 1
 
 [resource]
-script = ExtResource( "1_ka1wq" )
+script = ExtResource("1_ka1wq")
 name = "Claire"
-stats = SubResource( "Resource_kxijb" )
+stats = SubResource("Resource_kxijb")

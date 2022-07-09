@@ -1,4 +1,10 @@
-this:
-	- What are you talking about dude? You're so great?
-	- I don't know everything, okay?
+--dialog1
+	* What are you talking about dude? You're so great?
+	* I don't know everything, okay?
+	wait 2.0
+	- claire : I'm not sure I understand you...
+	- bruno : I don't understand myself either
+
+--otherdialog
+	* The wind blows nicely outside
 	wait 2.0
