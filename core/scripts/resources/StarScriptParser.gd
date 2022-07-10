@@ -13,6 +13,7 @@ class_name StarScriptParser
 
 # Some cool RegExs for parsing things
 const regex_sobj_text = "(?mJ)^(?<colon>--)?(?<key>(?:\\w+|-|\\*)) *(?<colon>:)? *(?<params>.*)?(?<block>(?:\\n\\t.*)*)?"
+const regex_dialog_text = "(?<speaker>[\\w_]+)(?:\\s*,\\s*(?<options>[\\w ,]*))*\\s*:\\s*(?<content>.*)"
 
 # Loads 
 static func load_sson(path):
@@ -48,8 +49,10 @@ static func load_sson(path):
 
 static func parse(raw, top_level=true):
 	var regex_sobj   := RegEx.new()
+	var regex_dialog := RegEx.new()
 	regex_sobj.compile(regex_sobj_text)
-	
+	regex_dialog.compile(regex_dialog_text)
+
 	# Match the entire raw file for SObject entries
 	var results = {
 		"content": [],
@@ -77,9 +80,25 @@ static func parse(raw, top_level=true):
 		else:
 			r = {}
 			r["key"] = result.get_string("key")
+			
 			if names.has("params"):
 				if result.get_string("params"):
 					r["params"] = result.get_string("params")
+					
+					# Check for the special case of dialogs
+					if r.key == "-":
+						var mm := regex_dialog.search(r.params)
+						if mm == null:
+							print("(!) DIALOG INVALID: ", r.params)
+							continue
+						r.speaker = mm.get_string("speaker")
+						r.content = mm.get_string("content")
+						if mm.names.has("options"):
+							r.params  = mm.get_string("options").split(",")
+							for i in range(r.params.size()): r.params[i] = r.params[i].strip_edges()
+						else:
+							r.params = []
+						
 			if names.has("block"):
 				var block = parse(remove_indentation(result.get_string("block")), false)
 				if block.content:

@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://bim4fg2ovsrfd"]
+
+[ext_resource type="Texture2D" uid="uid://w1dh1qlv8chx" path="res://packs/__tests/assets2/water-layer-1.png" id="1_g5ao3"]
+[ext_resource type="Shader" path="res://packs/__tests/scenes/realwater.gdshader" id="2_cilx8"]
+[ext_resource type="Texture2D" uid="uid://chgc4t3lo7spd" path="res://packs/__tests/assets2/water-layer-2.png" id="3_d6g16"]
+[ext_resource type="Texture2D" uid="uid://brooiean7o573" path="res://packs/__tests/assets2/water-layer-3.png" id="4_7f63l"]
+[ext_resource type="Texture2D" uid="uid://b5eg8xvyghhdw" path="res://packs/invo_CORE/special_effects/vfx_rain_splash.png" id="5_6jodk"]
+[ext_resource type="PackedScene" uid="uid://djydaupqnhs2n" path="res://core/components/Character.tscn" id="6_mn36v"]
+[ext_resource type="Texture2D" uid="uid://bs8c0wyo78qn7" path="res://packs/invo_CORE/special_effects/vfx_rain_mild.png" id="7_wmsqq"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ex1br"]
+noise_type = 3
+frequency = 0.017
+
+[sub_resource type="NoiseTexture" id="NoiseTexture_ptpdb"]
+seamless = true
+noise = SubResource("FastNoiseLite_ex1br")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cwaa0"]
+shader = ExtResource("2_cilx8")
+shader_param/back = ExtResource("1_g5ao3")
+shader_param/foam_color = Color(0.8, 0.898039, 1, 1)
+shader_param/noise = SubResource("NoiseTexture_ptpdb")
+shader_param/water_color = Color(0.431373, 0.823529, 0.905882, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rmoaa"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_vort8"]
+emission_shape = 3
+emission_box_extents = Vector3(64, 64, 1)
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 6.0
+scale_max = 6.0
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_77fy7"]
+emission_shape = 3
+emission_box_extents = Vector3(64, 0, 1)
+particle_flag_disable_z = true
+direction = Vector3(-1, 2, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 512.0
+initial_velocity_max = 2048.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 6.0
+scale_max = 6.0
+color = Color(1, 1, 1, 0.454902)
+
+[node name="Main" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Layer1" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 240.0
+offset_bottom = 135.0
+scale = Vector2(6, 6)
+texture = ExtResource("1_g5ao3")
+
+[node name="Water" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_cwaa0")
+offset_right = 240.0
+offset_bottom = 135.0
+scale = Vector2(6, 6)
+texture = ExtResource("3_d6g16")
+
+[node name="Layer2" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 240.0
+offset_bottom = 135.0
+scale = Vector2(6, 6)
+texture = ExtResource("4_7f63l")
+
+[node name="Splashes" type="GPUParticles2D" parent="."]
+self_modulate = Color(0.415686, 0.819608, 1, 1)
+material = SubResource("CanvasItemMaterial_rmoaa")
+position = Vector2(921, 475)
+amount = 4
+lifetime = 0.2
+process_material = SubResource("ParticlesMaterial_vort8")
+texture = ExtResource("5_6jodk")
+
+[node name="Character" parent="." instance=ExtResource("6_mn36v")]
+position = Vector2(656, 730)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(0, -96)
+current = true
+
+[node name="Rain" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(1084, 102)
+amount = 10
+lifetime = 0.2
+preprocess = 3.0
+fixed_fps = 8
+visibility_rect = Rect2(-800, 0, 1600, 900)
+process_material = SubResource("ParticlesMaterial_77fy7")
+texture = ExtResource("7_wmsqq")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color(0.8, 0.8, 0.8, 1)

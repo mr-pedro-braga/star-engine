@@ -1,4 +1,9 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://cdiyx56tlilaq"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://cdiyx56tlilaq"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_4sghm"]
+resource_name = "Reverb"
+room_size = 0.3
+wet = 0.2
 
 [resource]
 bus/1/name = &"Music"
@@ -19,3 +24,11 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"SoundFX"
+bus/4/name = &"Accessibility"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"Master"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_4sghm")
+bus/4/effect/0/enabled = true

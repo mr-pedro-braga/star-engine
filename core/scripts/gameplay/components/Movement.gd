@@ -6,10 +6,11 @@ enum MovementMode {
 	FREE, DISCRETE
 }
 
-@export var input_action_up := "ui_up"
-@export var input_action_left := "ui_left"
-@export var input_action_down := "ui_down"
-@export var input_action_right := "ui_right"
+@export var input_action_up := "move_up"
+@export var input_action_left := "move_left"
+@export var input_action_down := "move_down"
+@export var input_action_right := "move_right"
+@export var input_action_jump := "move_jump"
 @export var input_action_special := "OK"
 @export var input_scale := Vector2.ONE
 
@@ -62,10 +63,10 @@ func _physics_process(delta):
 			printerr("Movement2D has no visual sprite associated and can't animate.")
 			return
 		var target_scale = animation_squash_and_stretch_target_scale
-		if Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+		if Input.is_action_just_pressed(input_action_left) or Input.is_action_just_pressed(input_action_right):
 			animation_visual_sprite.scale.x = target_scale.x * 2.0
 			animation_visual_sprite.scale.y = target_scale.y * 0.5
-		if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down"):
+		if Input.is_action_just_pressed(input_action_up) or Input.is_action_just_pressed(input_action_down):
 			animation_visual_sprite.scale.x = target_scale.x * 0.5
 			animation_visual_sprite.scale.y = target_scale.y * 2.0
 		animation_visual_sprite.scale = animation_visual_sprite.scale.move_toward(
@@ -101,7 +102,7 @@ func move_free(delta):
 			if animation_squash_and_stretch_active:
 				animation_visual_sprite.scale.x = target_scale.x * 2.0
 				animation_visual_sprite.scale.y = target_scale.y * 0.5
-		if position_z == 0 and Input.is_action_pressed(input_action_special) and motion_jump_active:
+		if position_z == 0 and Input.is_action_pressed(input_action_jump) and motion_jump_active:
 			vz = motion_gravity_magnitude * motion_jump_strength
 			if animation_squash_and_stretch_active:
 				animation_visual_sprite.scale.x = target_scale.x * 0.5

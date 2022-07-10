@@ -54,7 +54,7 @@ func _import(source_file, save_path, options, r_platform_variants, r_gen_files):
 	sobject.data = sdictionary.data
 	sobject.source_code = sraw
 	
-	print(JSON.new().stringify(sobject.data, "\t"))
+	#print(JSON.new().stringify(sobject.data, "\t"))
 	
 	var r = ResourceSaver.save("%s.%s" % [save_path, _get_save_extension()], sobject)
 	return r

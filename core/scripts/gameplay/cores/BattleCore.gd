@@ -1,5 +1,5 @@
 extends __GameplayCoreBase
-class_name BattleCore
+class_name BattleCore, "res://core/scripts/icons/icon_event_pathway.svg"
 
 var battle_instance : BattleInstance
 

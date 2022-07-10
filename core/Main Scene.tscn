@@ -1,11 +1,12 @@
-[gd_scene load_steps=37 format=3 uid="uid://cw8hlthodrddb"]
+[gd_scene load_steps=42 format=3 uid="uid://cw8hlthodrddb"]
 
 [ext_resource type="Script" path="res://addons/builtin/star_smart_rich_text_label/SmartRichTextLabel.gd" id="1"]
 [ext_resource type="Script" path="res://addons/builtin/max_size_container/max_size_container.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://c0aybxgpsbbw0" path="res://icon.png" id="3"]
 [ext_resource type="AudioStream" uid="uid://nr8myeqb7fev" path="res://core/audio/sounds/ui_default_typewriter.wav" id="4"]
-[ext_resource type="PackedScene" uid="uid://dmen6vlmk82ix" path="res://packs/__tests/scenes/_stest_characters.tscn" id="7_b8q23"]
+[ext_resource type="Script" path="res://core/scripts/gameplay/cores/BattleCore.gd" id="6_sp78l"]
 [ext_resource type="Texture2D" uid="uid://1f5fjpgo8ijf" path="res://packs/__tests/assets/BattleShowcase8.png" id="7_dhcky"]
+[ext_resource type="PackedScene" uid="uid://16yjfo8cy54i" path="res://packs/__tests/scenes/_stest_characters.tscn" id="8_ehity"]
 [ext_resource type="FontData" uid="uid://cmiejt6lttnn" path="res://core/fonts/PixeloidSans-Bold.ttf" id="9_264sc"]
 [ext_resource type="FontData" uid="uid://cmvn71ng3inix" path="res://core/fonts/PixeloidSans.ttf" id="10_3y4d8"]
 [ext_resource type="Script" path="res://core/scripts/utilities/Screenshot.gd" id="11"]
@@ -171,13 +172,104 @@ content_margin_left = 32.0
 content_margin_top = 16.0
 content_margin_bottom = 32.0
 
-[node name="GameInstance" type="Control"]
+[sub_resource type="Animation" id="Animation_2ntak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarTop:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BarBottom:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_77i7h"]
+resource_name = "dialog_pop_in"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarTop:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 3,
+"values": [Vector2(0, 0), Vector2(0, 96)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BarBottom:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 3,
+"values": [Vector2(0, 0), Vector2(0, 192)]
+}
+
+[sub_resource type="Animation" id="Animation_wk3di"]
+resource_name = "dialog_pop_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BarTop:custom_minimum_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 3,
+"values": [Vector2(0, 96), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BarBottom:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 3,
+"values": [Vector2(0, 192), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jyvgd"]
+_data = {
+"RESET": SubResource("Animation_2ntak"),
+"dialog_pop_in": SubResource("Animation_77i7h"),
+"dialog_pop_out": SubResource("Animation_wk3di")
+}
+
+[node name="GameInstance" type="Control" node_paths=PackedStringArray("audio_core", "dialog_cutscene_core", "data_core", "battle_core")]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("12")
 audio_core = NodePath("AudioCore")
 dialog_cutscene_core = NodePath("DialogCutsceneCore")
 data_core = NodePath("DataCore")
+battle_core = NodePath("BattleCore")
 test_dialog = "res://packs/__tests/dialogs_en/test_dialog.ssh"
 
 [node name="AudioCore" type="Node" parent="."]
@@ -192,6 +284,9 @@ dialog_box_path = NodePath("../User Interface/TextUI/BarBottom/MaxSizeContainer/
 
 [node name="DataCore" type="Node" parent="."]
 script = ExtResource("13")
+
+[node name="BattleCore" type="Node" parent="."]
+script = ExtResource("6_sp78l")
 
 [node name="World" type="CanvasLayer" parent="."]
 follow_viewport_enable = true
@@ -213,6 +308,7 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 3
+audio_listener_enable_2d = true
 size = Vector2i(1600, 900)
 render_target_clear_mode = 1
 render_target_update_mode = 4
@@ -220,7 +316,7 @@ render_target_update_mode = 4
 [node name="Overworld" type="CanvasLayer" parent="World/VC/WorldViewport"]
 follow_viewport_enable = true
 
-[node name="Scene" parent="World/VC/WorldViewport/Overworld" instance=ExtResource("7_b8q23")]
+[node name="Scene" parent="World/VC/WorldViewport/Overworld" instance=ExtResource("8_ehity")]
 
 [node name="WorldCamera" type="Camera2D" parent="World/VC/WorldViewport"]
 position = Vector2(800, 450)
@@ -239,7 +335,6 @@ texture = SubResource("GradientTexture2D_ng58q")
 layer = 2
 
 [node name="TextUI" type="VBoxContainer" parent="User Interface"]
-unique_name_in_owner = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -252,6 +347,7 @@ offset_bottom = 96.0
 color = Color(0, 0, 0, 1)
 
 [node name="ShellTint" type="ColorRect" parent="User Interface/TextUI"]
+modulate = Color(1, 1, 1, 0)
 offset_top = 96.0
 offset_right = 1600.0
 offset_bottom = 708.0
@@ -356,6 +452,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource("3")
 stretch_mode = 5
+
+[node name="DialogAnim" type="AnimationPlayer" parent="User Interface/TextUI"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_jyvgd")
+}
 
 [node name="Screenshot" type="Node" parent="."]
 script = ExtResource("11")

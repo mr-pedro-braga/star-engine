@@ -15,6 +15,7 @@ extends Node
 var Audio : AudioCore
 var DC : DialogCutsceneCore
 var Data : DataCore
+var Battle : BattleCore
 
 ##################### STATES #####################
 

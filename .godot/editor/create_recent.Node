@@ -1,32 +1,32 @@
-Sprite2D
+CollisionShape2D
+StarScriptEvent (StarScriptEvent.gd)
+AnimationPlayer
+AnimationTree
 CanvasLayer
+ColorRect
+CanvasModulate
+BattleCore (BattleCore.gd)
+__EventBase (Event.gd)
+Area2D
+Node2D
+Pulse (Pulse.gd)
+Control
+Sprite2D
+AudioStreamPlayer2D
+TextureRect
+Camera2D
+SubViewport
 GPUParticles2D
 CPUParticles2D
 LightOccluder2D
 DirectionalLight2D
 PointLight2D
 WorldEnvironment
-Camera2D
 TileMap
-CanvasModulate
 AudioStreamPlayer
 VideoStreamPlayer
-ColorRect
 Line2D
-AudioStreamPlayer2D
 AudioListener2D
-TextureRect
-CollisionShape2D
 Movement2D (Movement.gd)
 CharacterBody2D
-AnimationTree
-AnimationPlayer
 SpriteSheetSprite2D (SpriteSheetSprite2D.gd)
-RichTextLabel
-Control
-SubViewport
-MeshInstance3D
-Camera3D
-Polygon2D
-SubViewportContainer
-VBoxContainer

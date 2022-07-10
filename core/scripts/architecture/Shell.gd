@@ -22,6 +22,10 @@ func execute_block(commands):
 
 func execute(command):
 	match command.key:
+		"wait":
+			if command.params.is_valid_float():
+				print('Waiting for ', command.params, ' seconds.')
+				await get_tree().create_timer((command.params).to_float())
 		# The print command prints the parameters to the output.
 		"print":
 			if command.params == null:
@@ -79,9 +83,13 @@ func execute(command):
 			await Game.DC.dialog_box.completed
 		# Say something as a character
 		"-":
-			Game.DC.dialog_box.write("- " + command.params)
+			if not command.has("content"):
+				printx("Invalid Dialog!")
+				return
+			Game.DC.dialog_box.write("- " + command.content)
 			print(" :: ", command.params)
 			input.release_focus()
+			await Game.DC.dialog_box.completed
 		# Item management
 		"item":
 			pass
