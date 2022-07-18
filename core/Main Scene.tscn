@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cw8hlthodrddb"]
+[gd_scene load_steps=47 format=3 uid="uid://cw8hlthodrddb"]
 
 [ext_resource type="Script" path="res://addons/builtin/star_smart_rich_text_label/SmartRichTextLabel.gd" id="1"]
 [ext_resource type="Script" path="res://addons/builtin/max_size_container/max_size_container.gd" id="2"]
@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://nr8myeqb7fev" path="res://core/audio/sounds/ui_default_typewriter.wav" id="4"]
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/BattleCore.gd" id="6_sp78l"]
 [ext_resource type="Texture2D" uid="uid://1f5fjpgo8ijf" path="res://packs/__tests/assets/BattleShowcase8.png" id="7_dhcky"]
-[ext_resource type="PackedScene" uid="uid://16yjfo8cy54i" path="res://packs/__tests/scenes/_stest_characters.tscn" id="8_ehity"]
+[ext_resource type="PackedScene" uid="uid://dgu4fqwc6i2vi" path="res://packs/__tests/scenes/_stest_characters.tscn" id="8_jlmf0"]
 [ext_resource type="FontData" uid="uid://cmiejt6lttnn" path="res://core/fonts/PixeloidSans-Bold.ttf" id="9_264sc"]
 [ext_resource type="FontData" uid="uid://cmvn71ng3inix" path="res://core/fonts/PixeloidSans.ttf" id="10_3y4d8"]
 [ext_resource type="Script" path="res://core/scripts/utilities/Screenshot.gd" id="11"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/DialogCutsceneCore.gd" id="14"]
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/AudioCore.gd" id="15"]
 [ext_resource type="AudioStream" uid="uid://d3plqlmj8ibbe" path="res://packs/__tests/mus_lapsed_doll_chiptune.mp3" id="16"]
+[ext_resource type="Texture2D" uid="uid://cd57xyw347gna" path="res://packs/invo_CORE/user_interface/sprite_dialogue_continue_indicator.png" id="16_taw3w"]
 
 [sub_resource type="Shader" id="5"]
 code = "shader_type canvas_item;
@@ -36,6 +37,22 @@ height = 135
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0, 0)
+
+[sub_resource type="GDScript" id="GDScript_ucnsm"]
+script/source = "extends VBoxContainer
+
+func _on_cutscene_started():
+	$DialogAnim.play(\"dialog_pop_in\")
+
+func _on_cutscene_finished():
+	$DialogAnim.play(\"dialog_pop_out\")
+
+func _on_dialog_finished():
+	pass # Replace with function body.
+
+func _on_dialog_requested():
+	pass # Replace with function body.
+"
 
 [sub_resource type="Font" id="Font_e7st7"]
 data/0 = ExtResource("11_0k6es")
@@ -172,6 +189,31 @@ content_margin_left = 32.0
 content_margin_top = 16.0
 content_margin_bottom = 32.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_c58pq"]
+atlas = ExtResource("16_taw3w")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="Animation" id="Animation_r1dp0"]
+resource_name = "bounce"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, -6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfq1r"]
+_data = {
+"bounce": SubResource("Animation_r1dp0")
+}
+
 [sub_resource type="Animation" id="Animation_2ntak"]
 length = 0.001
 tracks/0/type = "value"
@@ -184,7 +226,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 96)]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -196,7 +238,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 192)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_77i7h"]
@@ -210,7 +252,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(2, 1),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 3,
 "values": [Vector2(0, 0), Vector2(0, 96)]
 }
@@ -222,7 +264,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(2, 1),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 3,
 "values": [Vector2(0, 0), Vector2(0, 192)]
 }
@@ -316,7 +358,7 @@ render_target_update_mode = 4
 [node name="Overworld" type="CanvasLayer" parent="World/VC/WorldViewport"]
 follow_viewport_enable = true
 
-[node name="Scene" parent="World/VC/WorldViewport/Overworld" instance=ExtResource("8_ehity")]
+[node name="Scene" parent="World/VC/WorldViewport/Overworld" instance=ExtResource("8_jlmf0")]
 
 [node name="WorldCamera" type="Camera2D" parent="World/VC/WorldViewport"]
 position = Vector2(800, 450)
@@ -335,18 +377,17 @@ texture = SubResource("GradientTexture2D_ng58q")
 layer = 2
 
 [node name="TextUI" type="VBoxContainer" parent="User Interface"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_constants/separation = 0
+script = SubResource("GDScript_ucnsm")
 
 [node name="BarTop" type="ColorRect" parent="User Interface/TextUI"]
-custom_minimum_size = Vector2(0, 96)
 offset_right = 1600.0
 offset_bottom = 96.0
 color = Color(0, 0, 0, 1)
 
-[node name="ShellTint" type="ColorRect" parent="User Interface/TextUI"]
+[node name="UIMiddle" type="ColorRect" parent="User Interface/TextUI"]
 modulate = Color(1, 1, 1, 0)
 offset_top = 96.0
 offset_right = 1600.0
@@ -354,11 +395,11 @@ offset_bottom = 708.0
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0.713726)
 
-[node name="MarginContainer" type="MarginContainer" parent="User Interface/TextUI/ShellTint"]
+[node name="MarginContainer" type="MarginContainer" parent="User Interface/TextUI/UIMiddle"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ShellOutput" type="RichTextLabel" parent="User Interface/TextUI/ShellTint/MarginContainer"]
+[node name="ShellOutput" type="RichTextLabel" parent="User Interface/TextUI/UIMiddle/MarginContainer"]
 offset_right = 1600.0
 offset_bottom = 612.0
 theme_override_fonts/normal_font = SubResource("Font_e7st7")
@@ -378,7 +419,6 @@ scroll_following = true
 
 [node name="BarBottom" type="ColorRect" parent="User Interface/TextUI"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 192)
 offset_top = 708.0
 offset_right = 1600.0
 offset_bottom = 900.0
@@ -407,7 +447,7 @@ theme_override_colors/current_line_color = Color(0.529412, 0.529412, 0.529412, 0
 theme_override_constants/line_spacing = 0
 theme_override_constants/caret_width = 8
 theme_override_fonts/font = SubResource("Font_iymxb")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 42
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ss8nq")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f4514")
 wrap_mode = 1
@@ -417,7 +457,7 @@ draw_tabs = true
 caret_type = 1
 caret_blink = true
 script = SubResource("4")
-output_path = NodePath("../../../../ShellTint/MarginContainer/ShellOutput")
+output_path = NodePath("../../../../UIMiddle/MarginContainer/ShellOutput")
 
 [node name="DialogBox" type="RichTextLabel" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
 anchor_right = 1.0
@@ -429,10 +469,10 @@ theme_override_fonts/normal_font = SubResource("Font_mg2oa")
 theme_override_fonts/bold_font = SubResource("Font_lxbpr")
 theme_override_fonts/italics_font = SubResource("Font_12r54")
 theme_override_fonts/mono_font = SubResource("Font_vbmns")
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 32
-theme_override_font_sizes/italics_font_size = 32
-theme_override_font_sizes/mono_font_size = 32
+theme_override_font_sizes/normal_font_size = 42
+theme_override_font_sizes/bold_font_size = 42
+theme_override_font_sizes/italics_font_size = 42
+theme_override_font_sizes/mono_font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qchco")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3u0kp")
 bbcode_enabled = true
@@ -440,6 +480,28 @@ script = ExtResource("1")
 
 [node name="beep" type="AudioStreamPlayer" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox"]
 stream = ExtResource("4")
+
+[node name="input_request" type="Control" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox"]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+
+[node name="sprite" type="TextureRect" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox/input_request"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -6.0
+offset_bottom = -6.0
+texture = SubResource("AtlasTexture_c58pq")
+
+[node name="anim" type="AnimationPlayer" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox/input_request"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_jfq1r")
+}
 
 [node name="PortraitControl" type="Control" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
 visible = false
@@ -462,4 +524,8 @@ libraries = {
 [node name="Screenshot" type="Node" parent="."]
 script = ExtResource("11")
 
+[connection signal="cutscene_finished" from="DialogCutsceneCore" to="User Interface/TextUI" method="_on_cutscene_finished"]
+[connection signal="cutscene_started" from="DialogCutsceneCore" to="User Interface/TextUI" method="_on_cutscene_started"]
+[connection signal="dialog_finished" from="DialogCutsceneCore" to="User Interface/TextUI" method="_on_dialog_finished"]
+[connection signal="dialog_requested" from="DialogCutsceneCore" to="User Interface/TextUI" method="_on_dialog_requested"]
 [connection signal="focus_exited" from="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/ShellInput" to="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/ShellInput" method="_on_focus_exited"]

@@ -64,6 +64,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://core/scripts/gameplay/cores/DialogCutsceneCore.gd"
 }, {
+"base": "Area2D",
+"class": &"EventProber",
+"language": &"GDScript",
+"path": "res://core/components/__EventProber.gd"
+}, {
 "base": "Control",
 "class": &"GameInstance",
 "language": &"GDScript",
@@ -113,6 +118,11 @@ _global_script_classes=[{
 "class": &"Screenshot",
 "language": &"GDScript",
 "path": "res://core/scripts/utilities/Screenshot.gd"
+}, {
+"base": "__EventBase",
+"class": &"SignalEvent",
+"language": &"GDScript",
+"path": "res://core/components/events/SignalEvent.gd"
 }, {
 "base": "RichTextLabel",
 "class": &"SmartRichTextLabel",
@@ -181,6 +191,7 @@ _global_script_class_icons={
 "DBSProjectile": "",
 "DataCore": "res://core/scripts/icons/icon_event_pathway.svg",
 "DialogCutsceneCore": "res://core/scripts/icons/icon_event_dialogue.svg",
+"EventProber": "",
 "GameInstance": "res://core/scripts/icons/icon_Game.svg",
 "GameSaveData": "",
 "Inventory": "",
@@ -191,14 +202,15 @@ _global_script_class_icons={
 "Pulse": "",
 "PulseEmitter": "",
 "Screenshot": "res://core/scripts/icons/icon_console.svg",
+"SignalEvent": "",
 "SmartRichTextLabel": "",
 "SpriteSheet": "",
 "SpriteSheetPool": "",
 "SpriteSheetSprite2D": "",
 "StarScript": "",
-"StarScriptEvent": "",
+"StarScriptEvent": "res://addons/builtin/star_events/icon_dialogevent.png",
 "StarScriptParser": "",
-"__EventBase": "res://core/scripts/icons/icon_component_movement.png",
+"__EventBase": "res://addons/builtin/star_events/icon_event.png",
 "__GameplayCoreBase": "",
 "__GameplayStateBase": "",
 "__Shell": "res://core/scripts/icons/icon_console.svg"
@@ -311,6 +323,7 @@ move_jump={
 
 2d_physics/layer_1="Overworld-Solid"
 2d_physics/layer_2="Overworld-Events"
+2d_physics/layer_3="Overworld-Events-2"
 2d_physics/layer_4="Battle-Solid"
 2d_physics/layer_5="Battle-Events"
 2d_physics/layer_6="Battle-Bullets"

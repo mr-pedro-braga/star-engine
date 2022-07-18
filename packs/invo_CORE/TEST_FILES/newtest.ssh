@@ -1,9 +1,13 @@
 --dialog1
-	* What are you talking about dude? You're so great?
-	* I don't know everything, okay?
-	- claire, smiling, quiet: I'm not sure I understand uou...
+	* What are you talking about¢¢ dude?¢¢¢ You're so great?
+	* I don't know everything,¢¢ okay?
+	- claire, smiling, quiet: I'm¢¢¢ not sure I understand uou...
 	- bruno : I don't understand myself either
 
 --otherdialog
 	* The wind blows nicely outside
 	wait 2.0
+
+--dialogdoor
+	* It's a pathway that leads...¢¢¢ Somewhere.
+	* There's only one way to find out.

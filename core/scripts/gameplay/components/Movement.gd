@@ -33,6 +33,9 @@ var position_z := 0.0
 var vz := 0.0
 var velocity := Vector2.ZERO
 var input_vector := Vector2.ZERO
+var facing_vector := Vector2.DOWN
+
+signal direction_changed(direction)
 
 ################################## CODE ###################################
 
@@ -51,6 +54,12 @@ func _physics_process(delta):
 		input_action_down,
 		0.2
 	)
+	
+	if input_vector:
+		var a = facing_vector
+		facing_vector = input_vector.normalized()
+		if facing_vector != a:
+			direction_changed.emit(facing_vector)
 	
 	# Move!
 	match motion_mode:

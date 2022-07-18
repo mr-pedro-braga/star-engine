@@ -92,7 +92,6 @@ texture = ExtResource("4_7f63l")
 self_modulate = Color(0.415686, 0.819608, 1, 1)
 material = SubResource("CanvasItemMaterial_rmoaa")
 position = Vector2(921, 475)
-amount = 4
 lifetime = 0.2
 process_material = SubResource("ParticlesMaterial_vort8")
 texture = ExtResource("5_6jodk")
@@ -105,9 +104,9 @@ position = Vector2(0, -96)
 current = true
 
 [node name="Rain" type="GPUParticles2D" parent="."]
-visible = false
-position = Vector2(1084, 102)
-amount = 10
+modulate = Color(0.607843, 0.862745, 1, 1)
+position = Vector2(1096, 23)
+amount = 20
 lifetime = 0.2
 preprocess = 3.0
 fixed_fps = 8

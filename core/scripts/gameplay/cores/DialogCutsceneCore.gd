@@ -21,3 +21,11 @@ func dialog( pool : StarScript, key : String ) -> void:
 
 func _dialog_from_SSON( ssobj ):
 	Shell.execute_block( ssobj.content )
+
+func enter_cutscene():
+	is_in_cutscene = true
+	cutscene_started.emit()
+
+func exit_cutscene():
+	is_in_cutscene = false
+	cutscene_finished.emit()

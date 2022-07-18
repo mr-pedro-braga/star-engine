@@ -1,19 +1,22 @@
 CollisionShape2D
-StarScriptEvent (StarScriptEvent.gd)
+CallbackEvent (CallbackEvent.gd)
 AnimationPlayer
+TextureRect
+AnimatedSprite2D
+Sprite2D
+Control
+EventProber (__EventProber.gd)
+Area2D
+StarScriptEvent (StarScriptEvent.gd)
 AnimationTree
 CanvasLayer
 ColorRect
 CanvasModulate
 BattleCore (BattleCore.gd)
 __EventBase (Event.gd)
-Area2D
 Node2D
 Pulse (Pulse.gd)
-Control
-Sprite2D
 AudioStreamPlayer2D
-TextureRect
 Camera2D
 SubViewport
 GPUParticles2D
@@ -27,6 +30,3 @@ AudioStreamPlayer
 VideoStreamPlayer
 Line2D
 AudioListener2D
-Movement2D (Movement.gd)
-CharacterBody2D
-SpriteSheetSprite2D (SpriteSheetSprite2D.gd)

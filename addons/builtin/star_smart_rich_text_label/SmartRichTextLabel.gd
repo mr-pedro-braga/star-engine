@@ -90,7 +90,9 @@ func write(_text):
 				paused.emit()
 				is_emitting_physical_sound = false
 				is_typing = false
+				show_input_request(true)
 				await self.ok_pressed
+				show_input_request(false)
 				is_emitting_physical_sound = true
 				resumed.emit()
 				is_typing = true
@@ -106,6 +108,7 @@ func write(_text):
 				resumed.emit()
 				completed.emit()
 				is_emitting_physical_sound = false
+				show_input_request(false)
 				return
 			_:
 				beep()
@@ -117,13 +120,22 @@ func write(_text):
 	paused.emit()
 	is_typing = false
 	is_emitting_physical_sound = false
+	show_input_request(true)
 	await ok_pressed
+	show_input_request(false)
 	resumed.emit()
 	completed.emit()
 
 func beep():
 	if has_node("beep"):
 		get_node(^"beep").play()
+
+func show_input_request(value):
+	if has_node("input_request"):
+		var ir = get_node("input_request")
+		ir.visible = value
+		if value and ir.has_node("anim"):
+			ir.get_node("anim").play("bounce")
 
 func clear ():
 	text = ""

@@ -1,3 +1,4 @@
+res://packs/invo_CORE/user_interface
 res://core/components
 res://core/scripts/gameplay/components
 res://packs/__tests/scenes
@@ -19,5 +20,4 @@ res://addons/builtin/max_size_container
 res://packs/__tests/assets2
 /home/pedrobraga/Dev/Games/Inner Voices/builds_alpha
 res://
-res://packs/__tests/assets
 /home/pedrobraga/Android/Sdk

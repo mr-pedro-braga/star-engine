@@ -1,18 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://16yjfo8cy54i"]
+[gd_scene load_steps=12 format=3 uid="uid://dgu4fqwc6i2vi"]
 
 [ext_resource type="PackedScene" uid="uid://djydaupqnhs2n" path="res://core/components/Character.tscn" id="1_4wm6x"]
 [ext_resource type="Texture2D" uid="uid://ctawo87l11v2h" path="res://packs/invo_E02/rooms/lilyworld/tiles_lilyworld_BG.png" id="1_hjc31"]
 [ext_resource type="TileSet" uid="uid://fc4pqnh4lah6" path="res://packs/invo_E02/rooms/lilyworld/set_lilyworld_outside.tres" id="1_rqwvt"]
 [ext_resource type="PackedScene" uid="uid://cf2cqsv3xu7y7" path="res://core/components/SightlessPingAnchor.tscn" id="3_yhx4u"]
 [ext_resource type="Script" path="res://core/components/PulseEmitter.gd" id="4_eta8u"]
-[ext_resource type="Script" path="res://core/components/__EventBase.gd" id="5_cmokb"]
 [ext_resource type="Script" path="res://core/components/events/StarScriptEvent.gd" id="5_p56bn"]
 [ext_resource type="Resource" uid="uid://vkmnfoapvbp7" path="res://packs/invo_CORE/TEST_FILES/newtest.ssh" id="6_5h48g"]
+[ext_resource type="Script" path="res://core/components/events/SignalEvent.gd" id="7_p04b8"]
+
+[sub_resource type="GDScript" id="GDScript_otugn"]
+script/source = "extends Node2D
+
+
+func _on_signal_event_triggered():
+	print(\"k\")
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wd1yo"]
 size = Vector2(25, 19.6135)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o5tjp"]
+
 [node name="Scene" type="Node2D"]
+script = SubResource("GDScript_otugn")
 
 [node name="BG" type="CanvasLayer" parent="."]
 layer = -1
@@ -53,25 +64,25 @@ layer_1/enabled = true
 layer_1/modulate = Color(1, 1, 1, 1)
 layer_1/y_sort_enabled = false
 layer_1/y_sort_origin = 0
-layer_1/z_index = 0
+layer_1/z_index = 1
 layer_1/tile_data = PackedInt32Array(-65537, 327680, 0)
 layer_2/name = "Object"
 layer_2/enabled = true
 layer_2/modulate = Color(1, 1, 1, 1)
 layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 0
-layer_2/z_index = 0
+layer_2/z_index = 3
 layer_2/tile_data = PackedInt32Array()
 layer_3/name = "Top"
 layer_3/enabled = true
 layer_3/modulate = Color(1, 1, 1, 1)
 layer_3/y_sort_enabled = false
 layer_3/y_sort_origin = 0
-layer_3/z_index = 1
+layer_3/z_index = 4
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Mode C" type="Node2D" parent="TileMap"]
-visible = false
+position = Vector2(32, -32)
 z_index = 3
 
 [node name="PING" parent="TileMap/Mode C" instance=ExtResource("3_yhx4u")]
@@ -101,7 +112,10 @@ script = ExtResource("4_eta8u")
 
 [node name="StarScriptEvent" type="Area2D" parent="TileMap/Events"]
 position = Vector2(-89.1667, 35.8333)
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("5_p56bn")
+trigger_condition = 1
 event_pool = ExtResource("6_5h48g")
 event_key = "dialog1"
 
@@ -111,17 +125,31 @@ position = Vector2(1.86887, -0.368866)
 skew = 0.785398
 shape = SubResource("RectangleShape2D_wd1yo")
 
-[node name="__EventBase" type="Area2D" parent="TileMap/Events"]
-position = Vector2(-131.667, 36)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("5_cmokb")
+[node name="door" type="Area2D" parent="TileMap/Events"]
+position = Vector2(-9.49999, -32.5)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("5_p56bn")
+trigger_condition = 1
+event_pool = ExtResource("6_5h48g")
+event_key = "dialogdoor"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Events/__EventBase"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Events/door"]
 modulate = Color(1, 0.0156863, 0.176471, 1)
 position = Vector2(1.86887, -0.368866)
 skew = 0.785398
 shape = SubResource("RectangleShape2D_wd1yo")
+
+[node name="SignalEvent" type="Area2D" parent="TileMap/Events"]
+modulate = Color(1, 0.0745098, 0.262745, 1)
+position = Vector2(-120.667, 29.6667)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("7_p04b8")
+trigger_condition = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Events/SignalEvent"]
+shape = SubResource("CircleShape2D_o5tjp")
 
 [node name="Character" parent="." instance=ExtResource("1_4wm6x")]
 position = Vector2(-16, -141)
@@ -129,3 +157,5 @@ position = Vector2(-16, -141)
 [node name="Camera" type="Camera2D" parent="Character"]
 position = Vector2(0, -64)
 current = true
+
+[connection signal="triggered" from="TileMap/Events/SignalEvent" to="." method="_on_signal_event_triggered"]
