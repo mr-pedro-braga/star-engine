@@ -1,0 +1,225 @@
+[gd_scene load_steps=23 format=3 uid="uid://dsf1ejvxp3b5x"]
+
+[ext_resource type="Texture2D" uid="uid://c01q457347m8f" path="res://packs/invo_CORE/battle/sheet_souls.png" id="1_8aglp"]
+[ext_resource type="PackedScene" uid="uid://d1qv0g7absd5h" path="res://packs/invo_CORE/battle/battle_screen_bgs/BBG_Pool_Waves.res" id="1_yvvxr"]
+[ext_resource type="FontData" uid="uid://xcrrfybexhsp" path="res://packs/invo_CORE/fonts/Steelflight.ttf" id="3_71sjd"]
+
+[sub_resource type="GDScript" id="GDScript_rdrxm"]
+script/source = "extends Control
+
+func _input(_ev):
+	if _ev is InputEventKey:
+		if _ev.is_pressed():
+			match _ev.keycode:
+				KEY_1:
+					$AnimationPlayer.play(\"test1/anchor1\")
+				KEY_2:
+					$AnimationPlayer.play(\"test1/anchor2\")
+				KEY_3:
+					$AnimationPlayer.play(\"test1/anchor3\")
+"
+
+[sub_resource type="Animation" id="Animation_evcmq"]
+resource_name = "anchor1"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Soul:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 3,
+"values": [Vector2(385, 238)]
+}
+
+[sub_resource type="Animation" id="Animation_40ej6"]
+resource_name = "anchor2"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Soul:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 3,
+"values": [Vector2(1008, 370)]
+}
+
+[sub_resource type="Animation" id="Animation_8r3e4"]
+resource_name = "anchor3"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Soul:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 3,
+"values": [Vector2(636, 575)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i3c6q"]
+_data = {
+"anchor1": SubResource("Animation_evcmq"),
+"anchor2": SubResource("Animation_40ej6"),
+"anchor3": SubResource("Animation_8r3e4")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sstrv"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xuaq"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sibyg"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_182xm"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hcj2h"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfgmk"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2267u"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tn47v"]
+atlas = ExtResource("1_8aglp")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya4va"]
+animations = [{
+"frames": [SubResource("AtlasTexture_sstrv")],
+"loop": true,
+"name": &"lily",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_5xuaq")],
+"loop": true,
+"name": &"bruno",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_sibyg")],
+"loop": true,
+"name": &"andy",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_182xm")],
+"loop": true,
+"name": &"claire",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_hcj2h")],
+"loop": true,
+"name": &"rodrick",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_cfgmk")],
+"loop": true,
+"name": &"sam",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_2267u")],
+"loop": true,
+"name": &"sam_small",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_tn47v")],
+"loop": true,
+"name": &"trevor",
+"speed": 5.0
+}]
+
+[sub_resource type="Curve" id="Curve_jiu82"]
+_data = [Vector2(0, 1), 0.0, 0.516005, 0, 0, Vector2(1, 0), 0.108391, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jcjvg"]
+curve = SubResource("Curve_jiu82")
+
+[sub_resource type="ParticlesMaterial" id="ParticlesMaterial_fj2vi"]
+emission_shape = 2
+emission_sphere_radius = 1.0
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_max = 24.0
+scale_curve = SubResource("CurveTexture_jcjvg")
+attractor_interaction_enabled = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n0ktr"]
+radius = 24.0
+
+[sub_resource type="Font" id="Font_rgrsd"]
+data/0 = ExtResource("3_71sjd")
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource("GDScript_rdrxm")
+
+[node name="PoolWaves" parent="." instance=ExtResource("1_yvvxr")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"test1": SubResource("AnimationLibrary_i3c6q")
+}
+
+[node name="Soul" type="CharacterBody2D" parent="."]
+position = Vector2(1142, 386)
+
+[node name="Texture2D" type="AnimatedSprite2D" parent="Soul"]
+scale = Vector2(6, 6)
+frames = SubResource("SpriteFrames_ya4va")
+animation = &"claire"
+
+[node name="Trail" type="GPUParticles2D" parent="Soul/Texture2D"]
+self_modulate = Color(0.160784, 0.101961, 0.392157, 1)
+show_behind_parent = true
+texture_filter = 1
+scale = Vector2(0.166667, 0.166667)
+amount = 24
+lifetime = 0.5
+local_coords = false
+process_material = SubResource("ParticlesMaterial_fj2vi")
+
+[node name="ShapeTransformer" type="RemoteTransform2D" parent="Soul/Texture2D"]
+scale = Vector2(0.166667, 0.166667)
+remote_path = NodePath("../../Shape")
+
+[node name="Shape" type="CollisionShape2D" parent="Soul"]
+visible = false
+self_modulate = Color(0.980392, 1, 0, 1)
+scale = Vector2(1, 1)
+shape = SubResource("CircleShape2D_n0ktr")
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 0.819608)
+anchor_right = 1.0
+offset_bottom = 171.0
+theme_override_fonts/font = SubResource("Font_rgrsd")
+theme_override_font_sizes/font_size = 48
+text = "Press [1-3] to move the SOUL across animations.
+
+You can see them trying to interpolate the position."
+autowrap_mode = 3

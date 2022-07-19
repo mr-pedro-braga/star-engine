@@ -1,10 +1,8 @@
+res://default_bus_layout.tres
 res://core/default_environment.tres
-res://core/Main Scene.tscn
-res://packs/invo_CORE/characters/ch_claire/claire_A.tres
-res://packs/__tests/scenes/_stest_scenes.tscn
-res://core/components/Character.tscn
-res://core/scripts/utilities/Screenshot.gd
 res://packs/invo_E03/assets/rooms/cold_forest/set_cold_forest.tres
-res://core/scripts/resources/StarScript.gd
-res://mysave2.tres
+res://packs/invo_CORE/characters/ch_claire/claire_A.tres
+res://packs/__tests/scenes/_stest_animations.tscn
+res://packs/__tests/scenes/_stest_scenes.tscn
+res://core/Main Scene.tscn
 res://addons/builtin/star_smart_rich_text_label/SmartRichTextLabel.gd

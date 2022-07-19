@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://core/scripts/resources/SpriteSheetPool.gd" id="1_q02gr"]
 
 [resource]
-script = ExtResource( "1_q02gr" )
+script = ExtResource("1_q02gr")
 pool = {
-"overworld": ExtResource( "1_miqd2" )
+"overworld": ExtResource("1_miqd2")
 }

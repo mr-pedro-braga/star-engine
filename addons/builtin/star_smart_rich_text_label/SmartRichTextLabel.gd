@@ -36,14 +36,18 @@ var is_typing := false
 var is_emitting_physical_sound := false
 
 @export var text_delay:float = 0.05
-@export var text_wait_action = "ui_accept"
-@export var text_cancel_action = "ui_cancel"
+@export var text_ok_action = "OK"
+@export var text_cancel_action = "CANCEL"
+
+@export var text_action_prompt_node : CanvasItem
+
+@export var tts_enabled : bool = false
 
 func _ready():
 	cancel_pressed.connect(cancel_write)
 
 func _process(delta):
-	if Input.is_action_just_pressed(text_wait_action):
+	if Input.is_action_just_pressed(text_ok_action):
 		emit_signal("ok_pressed")
 	if Input.is_action_just_pressed(text_cancel_action):
 		emit_signal("cancel_pressed")
@@ -60,6 +64,9 @@ func write(_text):
 	text = text.replace("¢", "")
 	text = text.replace("¬", "")
 	text = text.replace("_", "")
+	
+	var parsed_text = get_parsed_text()
+	DisplayServer.tts_speak(parsed_text, "")
 	
 	resumed.emit()
 	
@@ -131,11 +138,12 @@ func beep():
 		get_node(^"beep").play()
 
 func show_input_request(value):
-	if has_node("input_request"):
-		var ir = get_node("input_request")
-		ir.visible = value
-		if value and ir.has_node("anim"):
-			ir.get_node("anim").play("bounce")
+	if not text_action_prompt_node:
+		return
+	var ir = text_action_prompt_node
+	ir.visible = value
+	if value and ir.has_node("anim"):
+		ir.get_node("anim").play("bounce")
 
 func clear ():
 	text = ""

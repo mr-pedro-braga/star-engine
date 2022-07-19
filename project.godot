@@ -139,6 +139,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://core/scripts/resources/SpriteSheetPool.gd"
 }, {
+"base": "TextureRect",
+"class": &"SpriteSheetRect",
+"language": &"GDScript",
+"path": "res://core/scripts/resources/SpriteSheetRect.gd"
+}, {
 "base": "Sprite2D",
 "class": &"SpriteSheetSprite2D",
 "language": &"GDScript",
@@ -206,6 +211,7 @@ _global_script_class_icons={
 "SmartRichTextLabel": "",
 "SpriteSheet": "",
 "SpriteSheetPool": "",
+"SpriteSheetRect": "",
 "SpriteSheetSprite2D": "",
 "StarScript": "",
 "StarScriptEvent": "res://addons/builtin/star_events/icon_dialogevent.png",

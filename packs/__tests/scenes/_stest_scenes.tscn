@@ -9,7 +9,7 @@
 [ext_resource type="Resource" uid="uid://b2p30d7x6scir" path="res://packs/__tests/assets2/dialogs.ssh" id="5_j21fj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adph6"]
-size = Vector2(14.3241, 7.16204)
+size = Vector2(21.4861, 7.16207)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j4gsa"]
 size = Vector2(284, 119.103)
@@ -52,7 +52,8 @@ event_pool = ExtResource("5_j21fj")
 event_key = "wet_floor_sign"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/TilesColdForestLake/StarScriptEvent"]
-position = Vector2(-0.0507812, -0.771484)
+modulate = Color(1, 0.117647, 0.0352941, 1)
+position = Vector2(-0.0508423, 2.80959)
 shape = SubResource("RectangleShape2D_adph6")
 
 [node name="Character" parent="." instance=ExtResource("2_r6y4b")]
@@ -65,6 +66,7 @@ smoothing_enabled = true
 smoothing_speed = 8.0
 
 [node name="StarScriptEvent" type="Area2D" parent="."]
+modulate = Color(1, 0.0431373, 0, 1)
 position = Vector2(3659.08, 2244.9)
 collision_layer = 6
 collision_mask = 6
@@ -78,6 +80,7 @@ position = Vector2(3.91626, 49.5513)
 shape = SubResource("RectangleShape2D_j4gsa")
 
 [node name="StarScriptEvent2" type="Area2D" parent="."]
+modulate = Color(1, 0.0745098, 0.262745, 1)
 position = Vector2(1948, 1905)
 collision_layer = 6
 collision_mask = 6
