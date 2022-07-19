@@ -81,7 +81,17 @@ layer_3/y_sort_origin = 0
 layer_3/z_index = 4
 layer_3/tile_data = PackedInt32Array()
 
+[node name="Character" parent="TileMap" instance=ExtResource("1_4wm6x")]
+position = Vector2(7.33333, -8.5)
+scale = Vector2(0.166667, 0.166667)
+z_index = 2
+
+[node name="Camera" type="Camera2D" parent="TileMap/Character"]
+position = Vector2(0, -64)
+current = true
+
 [node name="Mode C" type="Node2D" parent="TileMap"]
+visible = false
 position = Vector2(32, -32)
 z_index = 3
 
@@ -150,12 +160,5 @@ trigger_condition = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TileMap/Events/SignalEvent"]
 shape = SubResource("CircleShape2D_o5tjp")
-
-[node name="Character" parent="." instance=ExtResource("1_4wm6x")]
-position = Vector2(-16, -141)
-
-[node name="Camera" type="Camera2D" parent="Character"]
-position = Vector2(0, -64)
-current = true
 
 [connection signal="triggered" from="TileMap/Events/SignalEvent" to="." method="_on_signal_event_triggered"]

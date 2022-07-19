@@ -1,7 +1,8 @@
 CollisionShape2D
-CallbackEvent (CallbackEvent.gd)
-AnimationPlayer
+TileMap
+Camera2D
 TextureRect
+AnimationPlayer
 AnimatedSprite2D
 Sprite2D
 Control
@@ -17,7 +18,6 @@ __EventBase (Event.gd)
 Node2D
 Pulse (Pulse.gd)
 AudioStreamPlayer2D
-Camera2D
 SubViewport
 GPUParticles2D
 CPUParticles2D
@@ -25,7 +25,6 @@ LightOccluder2D
 DirectionalLight2D
 PointLight2D
 WorldEnvironment
-TileMap
 AudioStreamPlayer
 VideoStreamPlayer
 Line2D

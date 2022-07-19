@@ -55,7 +55,7 @@ func write(_text):
 	text = _text
 	visible_characters = 0
 	
-	var old_text = text
+	var old_text = get_parsed_text()
 	
 	text = text.replace("¢", "")
 	text = text.replace("¬", "")

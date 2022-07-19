@@ -1,0 +1,17 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dq3q5bko77c77"]
+
+[ext_resource type="Texture2D" uid="uid://1n0mrpjm4way" path="res://packs/invo_E03/assets/rooms/cold_forest/tiles_cold_forest_A.png" id="1_ef6yn"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6t0rx"]
+texture = ExtResource("1_ef6yn")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+1:0/0/y_sort_origin = 3
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/y_sort_origin = 7
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_6t0rx")

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bmoa3gbp0o6sy"]
+
+[ext_resource type="Script" path="res://core/scripts/gameplay/cores/data_components/GameSaveData.gd" id="1_dd7tg"]
+
+[resource]
+script = ExtResource("1_dd7tg")
+game_name = "Inner Voices"
+game_version = "BETA Feature Test 02"
+resume_hotspot_scene_path = "__tests/scenes/_stest_battle_patterns.tscn"
+resume_hotspot_anchor = "reload_point"
+current_vessel = "unknown"
+party = []
+switches = {}
+inventories = {}

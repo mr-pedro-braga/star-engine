@@ -1,3 +1,5 @@
+/home/pedrobraga/Dev/Games/Inner Voices/star-engine
+res://packs/invo_E03/assets/rooms/cold_forest/
 res://packs/invo_CORE/user_interface
 res://core/components
 res://core/scripts/gameplay/components
@@ -8,7 +10,6 @@ res://core/
 res://packs/invo_CORE/special_effects
 res://packs/invo_E02/rooms/lilyworld/
 /home/pedrobraga/Dev/Games/Inner Voices/video
-/home/pedrobraga/Dev/Games/Inner Voices/star-engine/packs/__tests/videos
 res://packs/invo_CORE/battle/battle_screen_bgs
 res://packs/invo_CORE/battle
 res://packs/invo_E02/rooms/lilyworld
@@ -19,5 +20,3 @@ res://core/fonts
 res://addons/builtin/max_size_container
 res://packs/__tests/assets2
 /home/pedrobraga/Dev/Games/Inner Voices/builds_alpha
-res://
-/home/pedrobraga/Android/Sdk

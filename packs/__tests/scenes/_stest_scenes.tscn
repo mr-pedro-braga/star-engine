@@ -1,0 +1,91 @@
+[gd_scene load_steps=10 format=3 uid="uid://crp625xcq6dxc"]
+
+[ext_resource type="Texture2D" uid="uid://fsok3oiybjx5" path="res://packs/__tests/assets2/Starfall City.png" id="1_rhpik"]
+[ext_resource type="TileSet" uid="uid://dq3q5bko77c77" path="res://packs/invo_E03/assets/rooms/cold_forest/set_cold_forest.tres" id="2_8m3aq"]
+[ext_resource type="PackedScene" uid="uid://djydaupqnhs2n" path="res://core/components/Character.tscn" id="2_r6y4b"]
+[ext_resource type="Texture2D" uid="uid://dqybq8jn3px27" path="res://packs/invo_E03/assets/rooms/cold_forest/tiles_cold_forest_lake.png" id="3_5yai5"]
+[ext_resource type="Script" path="res://core/components/events/StarScriptEvent.gd" id="3_uv8mb"]
+[ext_resource type="Resource" uid="uid://vkmnfoapvbp7" path="res://packs/invo_CORE/TEST_FILES/newtest.ssh" id="4_n81x4"]
+[ext_resource type="Resource" uid="uid://b2p30d7x6scir" path="res://packs/__tests/assets2/dialogs.ssh" id="5_j21fj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adph6"]
+size = Vector2(14.3241, 7.16204)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4gsa"]
+size = Vector2(284, 119.103)
+
+[node name="_stest_scenes" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 800.0
+offset_bottom = 480.0
+scale = Vector2(6, 6)
+texture = ExtResource("1_rhpik")
+
+[node name="Floor" type="TileMap" parent="."]
+scale = Vector2(6, 6)
+tile_set = ExtResource("2_8m3aq")
+format = 2
+layer_0/name = "Floor"
+layer_0/z_index = -1
+layer_0/tile_data = PackedInt32Array(65561, 1, 1, 131097, 1, 1, 196633, 1, 1, 262169, 1, 1, 327705, 1, 0, 393241, 1, 1, 458777, 1, 1, 524313, 1, 1, 589849, 1, 1, 655385, 1, 1, 720921, 1, 1, 786457, 1, 1, 851993, 1, 1, 917529, 1, 1, 917530, 1, 1, 851994, 1, 1, 786458, 1, 1, 720922, 1, 1, 655386, 1, 1, 262170, 1, 1, 196634, 1, 1, 131098, 1, 1, 65562, 1, 1, 327707, 1, 0, 393243, 1, 1, 458779, 1, 1, 524315, 1, 1, 589851, 1, 1, 655388, 1, 1, 720924, 1, 1, 786460, 1, 1, 851996, 1, 1, 851995, 1, 1, 786459, 1, 1, 720923, 1, 1, 589850, 1, 1, 524314, 1, 1, 458778, 1, 1, 327706, 1, 0, 393242, 1, 1, 655387, 1, 1, 917532, 1, 1, 917531, 1, 1, 851997, 1, 1, 851998, 1, 1, 786462, 1, 1, 720925, 1, 1, 655389, 1, 1, 589853, 1, 1, 524317, 1, 1, 458780, 1, 1, 393244, 1, 1, 327708, 1, 0, 262172, 1, 1, 196636, 1, 1, 65563, 1, 1, 131099, 1, 1, 196635, 1, 1, 262171, 1, 1, 524316, 1, 1, 589852, 1, 1, 196637, 1, 1, 262173, 1, 1, 327709, 1, 0, 393245, 1, 1, 458781, 1, 1, 786461, 1, 1, 917533, 1, 1, 524318, 1, 1, 589854, 1, 1, 655390, 1, 1, 720926, 1, 1, 786463, 1, 1, 851999, 1, 1, 65568, 1, 1, 131104, 1, 1, 196640, 1, 1, 262176, 1, 1, 327712, 1, 0, 393248, 1, 1, 458784, 1, 1, 524320, 1, 1, 589856, 1, 1, 655392, 1, 1, 720928, 1, 1, 786464, 1, 1, 852000, 1, 1, 917536, 1, 1, 65569, 1, 1, 131105, 1, 1, 196641, 1, 1, 262177, 1, 1, 327713, 1, 0, 393249, 1, 1, 458785, 1, 1, 524321, 1, 1, 589857, 1, 1, 655393, 1, 1, 720929, 1, 1, 786465, 1, 1, 852001, 1, 1, 917537, 1, 1, 327714, 1, 0, 393250, 1, 1, 458786, 1, 1, 524322, 1, 1, 589858, 1, 1, 655394, 1, 1, 720930, 1, 1, 786466, 1, 1, 852002, 1, 1, 917538, 1, 1, 196643, 1, 1, 262179, 1, 1, 327715, 1, 0, 393251, 1, 1, 458787, 1, 1, 655395, 1, 1, 720931, 1, 1, 786467, 1, 1, 852003, 1, 1, 917539, 1, 1, 524324, 1, 1, 589860, 1, 1, 655396, 1, 1, 720932, 1, 1, 852004, 1, 1, 786469, 1, 1, 852005, 1, 1, 65565, 1, 1, 131101, 1, 1, 65566, 1, 1, 131102, 1, 1, 196638, 1, 1, 262174, 1, 1, 327710, 1, 0, 393246, 1, 1, 458782, 1, 1, 917534, 1, 1, 327711, 1, 0, 393247, 1, 1, 458783, 1, 1, 524319, 1, 1, 589855, 1, 1, 655391, 1, 1, 720927, 1, 1, 917535, 1, 1, 65564, 1, 1, 131100, 1, 1, 65567, 1, 1, 131103, 1, 1, 196639, 1, 1, 262175, 1, 1, 65570, 1, 1, 131106, 1, 1, 196642, 1, 1, 262178, 1, 1, 524323, 1, 1, 589859, 1, 1, 131108, 1, 1, 196644, 1, 1, 262180, 1, 1, 327716, 1, 0, 393252, 1, 1, 786468, 1, 1, 458789, 1, 1, 524325, 1, 1, 589861, 1, 1, 655397, 1, 1, 720934, 1, 1, 786470, 1, 1, 65571, 1, 1, 131107, 1, 1, 65572, 1, 1, 458788, 1, 1, 917540, 1, 1, 327717, 1, 0, 393253, 1, 1, 720933, 1, 1, 917541, 1, 1, 196646, 1, 1, 262182, 1, 1, 327718, 1, 0, 393254, 1, 1, 458790, 1, 1, 655398, 1, 1, 852006, 1, 1, 917542, 1, 1, 524327, 1, 1, 589863, 1, 1, 655399, 1, 1, 720935, 1, 1, 852007, 1, 1, 786472, 1, 1, 852008, 1, 1, 65573, 1, 1, 131109, 1, 1, 196645, 1, 1, 262181, 1, 1, 524326, 1, 1, 589862, 1, 1, 196647, 1, 1, 262183, 1, 1, 327719, 1, 0, 393255, 1, 1, 458791, 1, 1, 786471, 1, 1, 917543, 1, 1, 524328, 1, 1, 589864, 1, 1, 655400, 1, 1, 720936, 1, 1, 786473, 1, 1, 852009, 1, 1, 65574, 1, 1, 131110, 1, 1, 65575, 1, 1, 131111, 1, 1, 65576, 1, 1, 131112, 1, 1, 196648, 1, 1, 262184, 1, 1, 327720, 1, 0, 393256, 1, 1, 458792, 1, 1, 65577, 1, 1, 131113, 1, 1, 196649, 1, 1, 262185, 1, 1, 327721, 1, 0, 393257, 1, 1, 458793, 1, 1, 524329, 1, 1, 589865, 1, 1, 655401, 1, 1, 720937, 1, 1, 65578, 1, 1, 131114, 1, 1, 196650, 1, 1, 262186, 1, 1, 327722, 1, 0, 393258, 1, 1, 458794, 1, 1, 524330, 1, 1, 589866, 1, 1, 655402, 1, 1, 720938, 1, 1, 65579, 1, 1, 131115, 1, 1, 196651, 1, 1, 262187, 1, 1, 327723, 1, 0, 393259, 1, 1, 458795, 1, 1, 524331, 1, 1, 589867, 1, 1, 655403, 1, 1, 720939, 1, 1, 65580, 1, 1, 131116, 1, 1, 196652, 1, 1, 262188, 1, 1, 327724, 1, 0, 393260, 1, 1, 458796, 1, 1, 524332, 1, 1, 589868, 1, 1, 655404, 1, 1, 720940, 1, 1, 65581, 1, 1, 131117, 1, 1, 196653, 1, 1, 262189, 1, 1, 327725, 1, 0, 393261, 1, 1, 458797, 1, 1, 524333, 1, 1, 589869, 1, 1, 655405, 1, 1, 720941, 1, 1, 917544, 1, 1, 917545, 1, 1, 786474, 1, 1, 852010, 1, 1, 917546, 1, 1, 786475, 1, 1, 852011, 1, 1, 917547, 1, 1, 786476, 1, 1, 852012, 1, 1, 917548, 1, 1, 786477, 1, 1, 852013, 1, 1, 917549, 1, 1)
+layer_1/name = "Objects"
+layer_1/enabled = true
+layer_1/modulate = Color(1, 1, 1, 1)
+layer_1/y_sort_enabled = true
+layer_1/y_sort_origin = 0
+layer_1/z_index = 0
+layer_1/tile_data = PackedInt32Array(655397, 65537, 1, 458784, 65537, 1, 524318, 65537, 0, 589856, 65537, 0, 524321, 65537, 0, 524324, 65537, 0, 655390, 65537, 0, 524316, 65537, 0, 589850, 65537, 0, 458779, 65537, 0, 720928, 65537, 0, 786459, 65537, 0, 720932, 65537, 0, 852006, 65537, 0)
+
+[node name="TilesColdForestLake" type="Sprite2D" parent="Floor"]
+position = Vector2(1024, 232)
+scale = Vector2(1.117, 1.117)
+texture = ExtResource("3_5yai5")
+
+[node name="StarScriptEvent" type="Area2D" parent="Floor/TilesColdForestLake"]
+position = Vector2(14.3749, 11.5145)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("3_uv8mb")
+trigger_condition = 1
+event_pool = ExtResource("5_j21fj")
+event_key = "wet_floor_sign"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/TilesColdForestLake/StarScriptEvent"]
+position = Vector2(-0.0507812, -0.771484)
+shape = SubResource("RectangleShape2D_adph6")
+
+[node name="Character" parent="." instance=ExtResource("2_r6y4b")]
+position = Vector2(2279.46, 2180.84)
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(0, -64)
+current = true
+smoothing_enabled = true
+smoothing_speed = 8.0
+
+[node name="StarScriptEvent" type="Area2D" parent="."]
+position = Vector2(3659.08, 2244.9)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("3_uv8mb")
+trigger_condition = 1
+event_pool = ExtResource("4_n81x4")
+event_key = "man"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StarScriptEvent"]
+position = Vector2(3.91626, 49.5513)
+shape = SubResource("RectangleShape2D_j4gsa")
+
+[node name="StarScriptEvent2" type="Area2D" parent="."]
+position = Vector2(1948, 1905)
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("3_uv8mb")
+trigger_condition = 1
+event_pool = ExtResource("4_n81x4")
+event_key = "dialogdoor"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StarScriptEvent2"]
+position = Vector2(3.91626, 49.5513)
+shape = SubResource("RectangleShape2D_j4gsa")

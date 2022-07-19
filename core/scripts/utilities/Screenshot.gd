@@ -11,7 +11,7 @@ var _root_directory = "user://"
 var _screenshot_directory = "screenshots"
 var _capture_tasks = []
 
-@export var screenshot_action: String = "Screenshot"
+@export var screenshot_action: String = "misc_screenshot"
 
 func _ready():
 	# Create directory
@@ -20,7 +20,8 @@ func _ready():
 
 func _input(event):
 	if Input.is_action_just_pressed(screenshot_action):
-			_capture()
+		_capture()
+		print("Screenshot!")
 
 func _capture():
 	# Start thread for capturing images
@@ -28,7 +29,7 @@ func _capture():
 	task.start(_capture_thread)
 	_capture_tasks.append(task)
 
-func _capture_thread(_arg):
+func _capture_thread():
 	# Capture the screenshot
 	var size = get_tree().root.size
 	var image = get_viewport().get_texture().get_data()

@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://nr8myeqb7fev" path="res://core/audio/sounds/ui_default_typewriter.wav" id="4"]
 [ext_resource type="Script" path="res://core/scripts/gameplay/cores/BattleCore.gd" id="6_sp78l"]
 [ext_resource type="Texture2D" uid="uid://1f5fjpgo8ijf" path="res://packs/__tests/assets/BattleShowcase8.png" id="7_dhcky"]
-[ext_resource type="PackedScene" uid="uid://dgu4fqwc6i2vi" path="res://packs/__tests/scenes/_stest_characters.tscn" id="8_jlmf0"]
+[ext_resource type="PackedScene" uid="uid://crp625xcq6dxc" path="res://packs/__tests/scenes/_stest_scenes.tscn" id="8_heq4g"]
 [ext_resource type="FontData" uid="uid://cmiejt6lttnn" path="res://core/fonts/PixeloidSans-Bold.ttf" id="9_264sc"]
 [ext_resource type="FontData" uid="uid://cmvn71ng3inix" path="res://core/fonts/PixeloidSans.ttf" id="10_3y4d8"]
 [ext_resource type="Script" path="res://core/scripts/utilities/Screenshot.gd" id="11"]
@@ -80,96 +80,6 @@ func _process(_delta):
 	$DialogBox.offset_right = $PortraitControl.offset_left - 16
 "
 
-[sub_resource type="Font" id="Font_iymxb"]
-data/0 = ExtResource("11_0k6es")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ss8nq"]
-content_margin_left = 32.0
-content_margin_top = 32.0
-content_margin_bottom = 32.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4514"]
-content_margin_left = 32.0
-content_margin_top = 32.0
-content_margin_bottom = 32.0
-
-[sub_resource type="GDScript" id="4"]
-script/source = "extends TextEdit
-
-@export var output_path : NodePath
-@onready var output : RichTextLabel = get_node(output_path)
-
-func _init():
-	Shell.input = self
-
-func _ready():
-	Shell.output = output
-	create_syntax_highlighting()
-
-func _input(ev):
-	if ev is InputEventKey:
-		if ev.pressed:
-			if has_focus():
-				# If pressing return but not shift
-				if ev.keycode == KEY_ENTER and not Input.is_key_pressed(KEY_SHIFT):
-					Shell.execute_block(text)
-					await get_tree().process_frame
-					text = \"\"
-				# Leave the shell if you press ESCAPE
-				if ev.keycode == KEY_ESCAPE or ev.keycode == KEY_F10:
-					release_focus()
-					output.get_parent().get_parent().get_parent().visible = false
-					output.get_parent().get_parent().get_parent().release_focus()
-			else:
-				if ev.keycode == KEY_F10:
-					visible = true
-					output.get_parent().get_parent().get_parent().visible = true
-					Game.DC.dialog_box.clear()
-					grab_focus()
-
-func _on_focus_exited():
-	pass
-
-#####################################################
-
-func create_syntax_highlighting(target=self):
-	var colour_keyword = Color(0.811765, 0.160784, 0.282353)
-	var colour_string  = Color(0.871094, 0.66826, 0.129303)
-	var keywords = [
-		\"await\", \"item\", \"give\", \"take\", \"list\",
-		\"sfx\", \"bgm\", \"load\", \"resume\", \"restart\", \"pause\", \"stop\",
-		\"with\", \"mvto\", \"-\", \"*\", \"quit\", \"menu\", \"choice\",
-		\"sh\", \"call\", \"gdexec\", \"print\", \"speak\", \"clear\", \"cls\",
-		
-		\"save\", \"load\", \"quit\", \"*\", \"-\",
-		
-		\"say\", \"cutscene\", \"mvadd\", \"mvto\", \"face\", \"action\", \"wait\",
-		\"help\", \"from\", \"to\", \"if\", \"elif\", \"else\", \"unless\",
-		\"while\", \"repeat\", \"once\", \"every\", \"seconds\", \"frames\",
-		
-		\"battle\", \"request\",
-	]
-	
-	var codeh = CodeHighlighter.new()
-	
-	for keyword in keywords:
-		codeh.add_keyword_color(keyword, colour_keyword)
-
-	# Item keys
-	codeh.add_color_region(\"--\", \"\", colour_keyword, true)
-
-	# Strings
-	codeh.add_color_region(\"\\\"\", \"\\\"\", colour_string, false)
-	codeh.add_color_region(\"'\", \"'\", colour_string, false)
-
-	# Numbers, Functions, Symbols
-	codeh.number_color = Color(0.18566161394119, 0.44732856750488, 1)
-	codeh.function_color = Color(0.13934755325317, 0.77332562208176, 1)
-	codeh.symbol_color = Color(0.51813143491745, 0.52326500415802, 0.52734375)
-	
-	target.syntax_highlighter = codeh
-"
-
 [sub_resource type="Font" id="Font_mg2oa"]
 data/0 = ExtResource("11_0k6es")
 
@@ -213,6 +123,99 @@ tracks/0/keys = {
 _data = {
 "bounce": SubResource("Animation_r1dp0")
 }
+
+[sub_resource type="Font" id="Font_iymxb"]
+data/0 = ExtResource("11_0k6es")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ss8nq"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_bottom = 32.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f4514"]
+content_margin_left = 32.0
+content_margin_top = 32.0
+content_margin_bottom = 32.0
+
+[sub_resource type="GDScript" id="4"]
+script/source = "extends TextEdit
+
+@export var output_path : NodePath
+@onready var output : RichTextLabel = get_node(output_path)
+
+func _init():
+	Shell.input = self
+
+func _ready():
+	Shell.output = output
+	create_syntax_highlighting()
+
+func _input(ev):
+	if ev is InputEventKey:
+		if ev.pressed:
+			if has_focus():
+				# If pressing return but not shift
+				if ev.keycode == KEY_ENTER and not Input.is_key_pressed(KEY_SHIFT):
+					Shell.execute_block(text)
+					await get_tree().process_frame
+					text = \"\"
+				# Leave the shell if you press ESCAPE
+				if ev.keycode == KEY_ESCAPE or ev.keycode == KEY_F10:
+					release_focus()
+					output.get_parent().get_parent().modulate.a = 0
+					modulate.a = 0
+					release_focus()
+			else:
+				if ev.keycode == KEY_F10:
+					visible = true
+					output.get_parent().get_parent().modulate.a = 1
+					modulate.a = 1
+					Game.DC.dialog_box.clear()
+					grab_focus()
+
+func _on_focus_exited():
+	output.get_parent().get_parent().modulate.a = 0
+	modulate.a = 0
+
+#####################################################
+
+func create_syntax_highlighting(target=self):
+	var colour_keyword = Color(0.811765, 0.160784, 0.282353)
+	var colour_string  = Color(0.871094, 0.66826, 0.129303)
+	var keywords = [
+		\"await\", \"item\", \"give\", \"take\", \"list\",
+		\"sfx\", \"bgm\", \"load\", \"resume\", \"restart\", \"pause\", \"stop\",
+		\"with\", \"mvto\", \"-\", \"*\", \"quit\", \"menu\", \"choice\",
+		\"sh\", \"call\", \"gdexec\", \"print\", \"speak\", \"clear\", \"cls\",
+		
+		\"save\", \"load\", \"quit\", \"*\", \"-\",
+		
+		\"say\", \"cutscene\", \"mvadd\", \"mvto\", \"face\", \"action\", \"wait\",
+		\"help\", \"from\", \"to\", \"if\", \"elif\", \"else\", \"unless\",
+		\"while\", \"repeat\", \"once\", \"every\", \"seconds\", \"frames\",
+		
+		\"battle\", \"request\",
+	]
+	
+	var codeh = CodeHighlighter.new()
+	
+	for keyword in keywords:
+		codeh.add_keyword_color(keyword, colour_keyword)
+
+	# Item keys
+	codeh.add_color_region(\"--\", \"\", colour_keyword, true)
+
+	# Strings
+	codeh.add_color_region(\"\\\"\", \"\\\"\", colour_string, false)
+	codeh.add_color_region(\"'\", \"'\", colour_string, false)
+
+	# Numbers, Functions, Symbols
+	codeh.number_color = Color(0.18566161394119, 0.44732856750488, 1)
+	codeh.function_color = Color(0.13934755325317, 0.77332562208176, 1)
+	codeh.symbol_color = Color(0.51813143491745, 0.52326500415802, 0.52734375)
+	
+	target.syntax_highlighter = codeh
+"
 
 [sub_resource type="Animation" id="Animation_2ntak"]
 length = 0.001
@@ -358,7 +361,7 @@ render_target_update_mode = 4
 [node name="Overworld" type="CanvasLayer" parent="World/VC/WorldViewport"]
 follow_viewport_enable = true
 
-[node name="Scene" parent="World/VC/WorldViewport/Overworld" instance=ExtResource("8_jlmf0")]
+[node name="_stest_scenes" parent="World/VC/WorldViewport/Overworld" instance=ExtResource("8_heq4g")]
 
 [node name="WorldCamera" type="Camera2D" parent="World/VC/WorldViewport"]
 position = Vector2(800, 450)
@@ -400,6 +403,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ShellOutput" type="RichTextLabel" parent="User Interface/TextUI/UIMiddle/MarginContainer"]
+unique_name_in_owner = true
 offset_right = 1600.0
 offset_bottom = 612.0
 theme_override_fonts/normal_font = SubResource("Font_e7st7")
@@ -439,26 +443,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = SubResource("1")
 
-[node name="ShellInput" type="TextEdit" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/current_line_color = Color(0.529412, 0.529412, 0.529412, 0.129412)
-theme_override_constants/line_spacing = 0
-theme_override_constants/caret_width = 8
-theme_override_fonts/font = SubResource("Font_iymxb")
-theme_override_font_sizes/font_size = 42
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ss8nq")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_f4514")
-wrap_mode = 1
-highlight_all_occurrences = true
-highlight_current_line = true
-draw_tabs = true
-caret_type = 1
-caret_blink = true
-script = SubResource("4")
-output_path = NodePath("../../../../UIMiddle/MarginContainer/ShellOutput")
-
 [node name="DialogBox" type="RichTextLabel" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -476,6 +460,8 @@ theme_override_font_sizes/mono_font_size = 42
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qchco")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_3u0kp")
 bbcode_enabled = true
+threaded = true
+visible_characters_behavior = 1
 script = ExtResource("1")
 
 [node name="beep" type="AudioStreamPlayer" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox"]
@@ -489,6 +475,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -40.0
 offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_layout_mode = 1
 
 [node name="sprite" type="TextureRect" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer/DialogBox/input_request"]
 anchor_right = 1.0
@@ -502,6 +491,29 @@ reset_on_save = false
 libraries = {
 "": SubResource("AnimationLibrary_jfq1r")
 }
+
+[node name="ShellInput" type="TextEdit" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 64.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/current_line_color = Color(0.529412, 0.529412, 0.529412, 0.129412)
+theme_override_constants/line_spacing = 0
+theme_override_constants/caret_width = 8
+theme_override_fonts/font = SubResource("Font_iymxb")
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ss8nq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_f4514")
+wrap_mode = 1
+highlight_all_occurrences = true
+highlight_current_line = true
+draw_tabs = true
+caret_type = 1
+caret_blink = true
+script = SubResource("4")
+output_path = NodePath("../../../../UIMiddle/MarginContainer/ShellOutput")
 
 [node name="PortraitControl" type="Control" parent="User Interface/TextUI/BarBottom/MaxSizeContainer/MarginContainer"]
 visible = false
