@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://x83dtlal4uij"
+path="res://.godot/imported/mus_mother.mp3-becca55d6b67503f7e35502eae98d92f.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E03/music/mus_mother.mp3"
+dest_files=["res://.godot/imported/mus_mother.mp3-becca55d6b67503f7e35502eae98d92f.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

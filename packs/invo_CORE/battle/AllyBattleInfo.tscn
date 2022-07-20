@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://bje2ew51l2qo5"]
+
+[ext_resource type="Texture2D" uid="uid://bchblfcpk4yit" path="res://packs/invo_CORE/battle/sprite_stats_info_BG.png" id="1_el78v"]
+[ext_resource type="FontData" uid="uid://xcrrfybexhsp" path="res://packs/invo_CORE/fonts/Steelflight.ttf" id="2_3dq3f"]
+[ext_resource type="FontData" uid="uid://cbj14mi0aukih" path="res://packs/invo_CORE/fonts/PixeloidMono.ttf" id="3_ef2l3"]
+[ext_resource type="Texture2D" uid="uid://duo76rw7kshy0" path="res://packs/invo_CORE/battle/sprite_stat_gauge.png" id="4_lespg"]
+
+[sub_resource type="Font" id="Font_3rfc2"]
+data/0 = ExtResource("2_3dq3f")
+data/1 = ExtResource("3_ef2l3")
+
+[sub_resource type="Font" id="Font_2q5a7"]
+data/0 = ExtResource("2_3dq3f")
+
+[node name="AllyBattleInfo" type="TextureRect"]
+custom_minimum_size = Vector2(264, 192)
+offset_left = 668.0
+offset_right = 932.0
+offset_bottom = 192.0
+texture = ExtResource("1_el78v")
+ignore_texture_size = true
+
+[node name="NameLabel" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_bottom = -8.0
+grow_vertical = 0
+theme_override_fonts/font = SubResource("Font_3rfc2")
+theme_override_font_sizes/font_size = 32
+text = "BattlerName"
+horizontal_alignment = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="HPLabel" type="Label" parent="."]
+modulate = Color(1, 0.0823529, 0.262745, 1)
+offset_left = 48.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 39.0
+theme_override_fonts/font = SubResource("Font_2q5a7")
+theme_override_font_sizes/font_size = 48
+text = "48"
+horizontal_alignment = 1
+metadata/_edit_use_custom_anchors = true
+metadata/_edit_layout_mode = 1
+
+[node name="EPLabel" type="Label" parent="."]
+modulate = Color(1, 0.905882, 0.027451, 1)
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = 16.0
+offset_right = -48.0
+offset_bottom = 39.0
+grow_horizontal = 0
+theme_override_fonts/font = SubResource("Font_3rfc2")
+theme_override_font_sizes/font_size = 48
+text = "00"
+horizontal_alignment = 1
+metadata/_edit_use_custom_anchors = true
+metadata/_edit_layout_mode = 1
+
+[node name="EPGauge" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 18)
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_right = -42.0
+offset_bottom = -78.0
+grow_vertical = 0
+max_value = 10.0
+value = 3.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_lespg")
+texture_progress = ExtResource("4_lespg")
+tint_under = Color(0.290196, 0.145098, 0.0705882, 1)
+tint_progress = Color(1, 0.905882, 0.027451, 1)
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="HPGauge" type="TextureProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 18)
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 42.0
+offset_right = -42.0
+offset_bottom = -102.0
+grow_vertical = 0
+max_value = 10.0
+value = 8.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_lespg")
+texture_progress = ExtResource("4_lespg")
+tint_under = Color(0.34902, 0.0470588, 0.258824, 1)
+tint_progress = Color(1, 0.0823529, 0.262745, 1)
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true

@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dwqpqwj8h3s7p"
+path="res://.godot/imported/mus_self_deception.mp3-97b769a2313f85b12f9adde6b8a858a6.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E03/music/mus_self_deception.mp3"
+dest_files=["res://.godot/imported/mus_self_deception.mp3-97b769a2313f85b12f9adde6b8a858a6.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

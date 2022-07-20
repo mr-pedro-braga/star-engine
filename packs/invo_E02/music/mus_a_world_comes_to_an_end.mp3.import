@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b64roo8p3cvxy"
+path="res://.godot/imported/mus_a_world_comes_to_an_end.mp3-269645885859b59a3d2ce57d66bb1165.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E02/music/mus_a_world_comes_to_an_end.mp3"
+dest_files=["res://.godot/imported/mus_a_world_comes_to_an_end.mp3-269645885859b59a3d2ce57d66bb1165.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

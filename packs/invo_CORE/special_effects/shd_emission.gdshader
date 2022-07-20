@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform sampler2D emission_map;
+uniform sampler2D emission_map : filter_nearest;
 uniform float strength;
 
 void fragment() {

@@ -31,7 +31,6 @@ enum MovementMode {
 
 var position_z := 0.0
 var vz := 0.0
-var velocity := Vector2.ZERO
 var input_vector := Vector2.ZERO
 var facing_vector := Vector2.DOWN
 
@@ -39,8 +38,14 @@ signal direction_changed(direction)
 
 ################################## CODE ###################################
 
+var parent = get_parent()
+
 func _ready():
 	property_list_changed.emit()
+
+func _notification(what):
+	if what == NOTIFICATION_PARENTED:
+		parent = get_parent()
 
 func _physics_process(delta):
 	if Engine.is_editor_hint():
@@ -86,19 +91,19 @@ func _physics_process(delta):
 func move_free(delta):
 	# If gravity is active, move horizontally and fall
 	if motion_gravity_active:
-		velocity.x = move_toward(velocity.x, input_vector.x * motion_maximum_speed, motion_acceleration * delta)
-		velocity += motion_gravity_direction * motion_gravity_magnitude * delta
-		get_parent().position += velocity * delta
+		parent.velocity.x = move_toward(parent.velocity.x, input_vector.x * motion_maximum_speed, motion_acceleration * delta)
+		parent.velocity += motion_gravity_direction * motion_gravity_magnitude * delta
+		parent.move_and_slide()
 		if get_parent().position.y > 135:
-			velocity.y = - motion_gravity_magnitude * motion_jump_strength
+			parent.velocity.y = - motion_gravity_magnitude * motion_jump_strength
 	else:
-		velocity = velocity.move_toward(
+		parent.velocity = parent.velocity.move_toward(
 			input_vector *\
 			input_scale *\
 			motion_maximum_speed,
 			motion_acceleration * delta
 		)
-		get_parent().position += velocity * delta
+		parent.move_and_slide()
 		position_z += vz * delta
 		animation_visual_sprite.position.y = - position_z
 		var target_scale = animation_squash_and_stretch_target_scale

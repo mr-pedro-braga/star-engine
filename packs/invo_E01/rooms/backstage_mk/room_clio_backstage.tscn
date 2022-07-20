@@ -1,0 +1,554 @@
+[gd_scene load_steps=34 format=3 uid="uid://bviomo7fkp32y"]
+
+[ext_resource type="Script" path="res://core/components/events/StarScriptEvent.gd" id="1_kn0fc"]
+[ext_resource type="Texture2D" uid="uid://bc5o6fx4ux1nt" path="res://packs/invo_E01/rooms/backstage_mk/room_background.png" id="1_ujy7a"]
+[ext_resource type="Shader" path="res://packs/invo_CORE/special_effects/shd_emission.gdshader" id="2_adkoe"]
+[ext_resource type="Resource" uid="uid://b2p30d7x6scir" path="res://packs/__tests/assets2/dialogs.ssh" id="2_glr05"]
+[ext_resource type="Texture2D" uid="uid://bn5eyeh882b1w" path="res://packs/invo_E01/rooms/backstage_mk/room_object_sprites.png" id="2_wtypk"]
+[ext_resource type="Texture2D" uid="uid://bplusvoj00kof" path="res://packs/invo_E01/rooms/backstage_mk/mirror_emission.png" id="3_g4gxq"]
+[ext_resource type="PackedScene" uid="uid://djydaupqnhs2n" path="res://core/components/Character.tscn" id="3_lcwea"]
+[ext_resource type="Texture2D" uid="uid://y81gtlp2s06r" path="res://packs/invo_E01/rooms/backstage_mk/mirror_albedo.png" id="4_cfjjl"]
+[ext_resource type="Texture2D" uid="uid://cu5itixj66dys" path="res://packs/invo_E01/rooms/backstage_mk/mk_table_sprites.png" id="6_fv7vl"]
+[ext_resource type="Texture2D" uid="uid://tnd66ejdwne" path="res://packs/invo_CORE/special_effects/vfx_lots_of_laughter.png" id="8_a7j56"]
+[ext_resource type="AudioStream" uid="uid://nfel8xk5eeah" path="res://packs/invo_CORE/special_effects/sfx_crowd_laughtrack.wav" id="9_qp1ej"]
+[ext_resource type="AudioStream" uid="uid://bmf7nnac34ogv" path="res://packs/invo_E01/music/mus_very_necessary_tension.mp3" id="10_qi84o"]
+
+[sub_resource type="GDScript" id="GDScript_8mvu0"]
+script/source = "extends Node2D
+
+func _input(ev):
+	if ev is InputEventKey:
+		if ev.is_pressed():
+			match ev.keycode:
+				KEY_0:
+					$RoomAnims.play(\"RESET\")
+				KEY_1:
+					$RoomAnims.play(\"lol\")
+"
+
+[sub_resource type="Animation" id="Animation_558qh"]
+resource_name = "lol"
+length = 5.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RoomObjects/otherobjects:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RoomBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RoomObjects/table/mystery_kid:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Vector2i(1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1600, -60), Vector2(-1600, -60)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 2.8, 5.5),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../OST:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [false, true]
+}
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MKAnims")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("laugh", "normal"),
+"times": PackedFloat32Array(0, 5.5)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasModulate:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.984314, 0.984314, 0.984314, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7cu8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RoomObjects/otherobjects:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../RoomBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../RoomObjects/table/mystery_kid:frame_coords")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sfx:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -60)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../OST:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../MKAnims")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CanvasModulate:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.635294, 0.635294, 0.635294, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h63tw"]
+_data = {
+"RESET": SubResource("Animation_7cu8v"),
+"lol": SubResource("Animation_558qh")
+}
+
+[sub_resource type="Animation" id="Animation_ivayt"]
+resource_name = "laugh"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoomObjects/table/mystery_kid:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_c6t8j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoomObjects/table/mystery_kid:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yqtcn"]
+resource_name = "normal"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RoomObjects/table/mystery_kid:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(3, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e42kl"]
+_data = {
+"RESET": SubResource("Animation_c6t8j"),
+"laugh": SubResource("Animation_ivayt"),
+"normal": SubResource("Animation_yqtcn")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yen32"]
+size = Vector2(247, 96)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3k7dy"]
+shader = ExtResource("2_adkoe")
+shader_param/emission_map = ExtResource("3_g4gxq")
+shader_param/strength = 0.6
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_3psg5"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s46xk"]
+radius = 3.83333
+height = 27.6667
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_etam6"]
+radius = 3.83333
+height = 13.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2mhp5"]
+radius = 3.83333
+height = 15.3333
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_prdwt"]
+size = Vector2(14.3333, 17.1667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkm3k"]
+size = Vector2(43, 7.58333)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_kbodo"]
+a = Vector2(-49, 10)
+b = Vector2(-49, 32)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ogyqr"]
+a = Vector2(-50, -25)
+b = Vector2(7, -25)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ue4kx"]
+b = Vector2(-20, 21)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tkkwp"]
+a = Vector2(8, 42)
+b = Vector2(-20, 42)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_tfnsi"]
+b = Vector2(20, 20)
+
+[node name="room_clio_backstage" type="Node2D"]
+y_sort_enabled = true
+script = SubResource("GDScript_8mvu0")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.635294, 0.635294, 0.635294, 1)
+
+[node name="RoomAnims" type="AnimationPlayer" parent="."]
+root_node = NodePath("../LOL")
+libraries = {
+"": SubResource("AnimationLibrary_h63tw")
+}
+
+[node name="MKAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e42kl")
+}
+
+[node name="StarScriptEvent" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_kn0fc")
+trigger_condition = 1
+event_pool = ExtResource("2_glr05")
+event_key = "teehee"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StarScriptEvent"]
+position = Vector2(-1.5, 38)
+shape = SubResource("RectangleShape2D_yen32")
+
+[node name="RoomBackground" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(6, 6)
+z_index = -1
+texture = ExtResource("1_ujy7a")
+
+[node name="MirrorAlbedo" type="Sprite2D" parent="RoomBackground"]
+material = SubResource("ShaderMaterial_3k7dy")
+position = Vector2(0, -2)
+texture = ExtResource("4_cfjjl")
+
+[node name="mat" type="Sprite2D" parent="RoomBackground"]
+position = Vector2(-1, 37)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(16, 32, 40, 16)
+
+[node name="RoomObjects" type="Node2D" parent="."]
+scale = Vector2(6, 6)
+z_index = -1
+y_sort_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="table" type="Sprite2D" parent="RoomObjects"]
+position = Vector2(0, 5)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -4)
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 32)
+
+[node name="mystery_kid" type="Sprite2D" parent="RoomObjects/table"]
+position = Vector2(-1, -12)
+texture = ExtResource("6_fv7vl")
+offset = Vector2(0.5, 0.5)
+hframes = 7
+vframes = 2
+
+[node name="otherobjects" type="Node2D" parent="RoomObjects"]
+visible = false
+y_sort_enabled = true
+
+[node name="suitrack" type="Sprite2D" parent="RoomObjects/otherobjects"]
+position = Vector2(-29, -15)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, 1)
+region_enabled = true
+region_rect = Rect2(48, 0, 32, 32)
+
+[node name="papers" type="Sprite2D" parent="RoomObjects/otherobjects"]
+position = Vector2(32, 1)
+z_index = -1
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(48, 48, 24, 32)
+
+[node name="trash" type="Sprite2D" parent="RoomObjects/otherobjects"]
+position = Vector2(40, 15)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(32, 48, 16, 16)
+
+[node name="spilled_coffee" type="Sprite2D" parent="RoomObjects/otherobjects"]
+position = Vector2(32, 22)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -6)
+region_enabled = true
+region_rect = Rect2(80, 0, 32, 32)
+
+[node name="cassete_stack" type="Sprite2D" parent="RoomObjects/otherobjects"]
+position = Vector2(-31, 25)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(16, 48, 16, 24)
+
+[node name="stereo" type="Sprite2D" parent="RoomObjects/otherobjects"]
+position = Vector2(-41, 28)
+texture = ExtResource("2_wtypk")
+offset = Vector2(0, -12)
+region_enabled = true
+region_rect = Rect2(0, 32, 16, 32)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="RoomObjects"]
+visible = false
+z_index = 1
+physics_material_override = SubResource("PhysicsMaterial_3psg5")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(48, 9)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s46xk")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(-31.1667, 21.8333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_etam6")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(-42, 28)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2mhp5")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(-35, -5)
+scale = Vector2(1, 1)
+skew = 0.785398
+shape = SubResource("RectangleShape2D_prdwt")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(-0.500001, 8.79166)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_jkm3k")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(34.8333, 25)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_s46xk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+shape = SubResource("SegmentShape2D_kbodo")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(97, 0)
+shape = SubResource("SegmentShape2D_kbodo")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(21, 15)
+shape = SubResource("SegmentShape2D_ogyqr")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(-29, -10)
+shape = SubResource("SegmentShape2D_ue4kx")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(-29, -10)
+shape = SubResource("SegmentShape2D_tkkwp")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(40, -10)
+shape = SubResource("SegmentShape2D_tkkwp")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="RoomObjects/StaticBody2D"]
+position = Vector2(28, -10)
+shape = SubResource("SegmentShape2D_tfnsi")
+
+[node name="Character" parent="." instance=ExtResource("3_lcwea")]
+position = Vector2(6, 216)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, 64)
+current = true
+
+[node name="LOL" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(0, -60)
+scale = Vector2(6, 6)
+texture = ExtResource("8_a7j56")
+offset = Vector2(0, -16)
+
+[node name="sfx" type="AudioStreamPlayer" parent="LOL"]
+stream = ExtResource("9_qp1ej")
+bus = &"WorldSFX"
+
+[node name="OST" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_qi84o")
+volume_db = 10.0
+bus = &"Music"

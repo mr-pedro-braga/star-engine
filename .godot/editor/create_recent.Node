@@ -1,25 +1,28 @@
-Label
-Control
-Sprite2D
-AnimationPlayer
-HBoxContainer
-SpriteSheetRect (SpriteSheetRect.gd)
-TextureRect
-SpriteSheetSprite2D (SpriteSheetSprite2D.gd)
 CollisionShape2D
-TileMap
+StarScriptEvent (StarScriptEvent.gd)
+CanvasModulate
+AnimationPlayer
+AudioStreamPlayer
+Node2D
+Sprite2D
+StaticBody2D
 Camera2D
+TextureProgressBar
+Label
 AnimatedSprite2D
+TextureRect
+HBoxContainer
+Control
+SpriteSheetRect (SpriteSheetRect.gd)
+SpriteSheetSprite2D (SpriteSheetSprite2D.gd)
+TileMap
 EventProber (__EventProber.gd)
 Area2D
-StarScriptEvent (StarScriptEvent.gd)
 AnimationTree
 CanvasLayer
 ColorRect
-CanvasModulate
 BattleCore (BattleCore.gd)
 __EventBase (Event.gd)
-Node2D
 Pulse (Pulse.gd)
 AudioStreamPlayer2D
 SubViewport
@@ -27,7 +30,3 @@ GPUParticles2D
 CPUParticles2D
 LightOccluder2D
 DirectionalLight2D
-PointLight2D
-WorldEnvironment
-AudioStreamPlayer
-VideoStreamPlayer

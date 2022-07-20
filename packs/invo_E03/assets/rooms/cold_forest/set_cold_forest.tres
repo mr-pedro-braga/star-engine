@@ -1,17 +1,32 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dq3q5bko77c77"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dq3q5bko77c77"]
 
 [ext_resource type="Texture2D" uid="uid://1n0mrpjm4way" path="res://packs/invo_E03/assets/rooms/cold_forest/tiles_cold_forest_A.png" id="1_ef6yn"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ldjeu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6t0rx"]
 texture = ExtResource("1_ef6yn")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
 1:0/0/y_sort_origin = 3
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.5, 2.5, -6.5, 0.5, 3.5, 0, 11, 3, 3, 6, -5.5, 5.5)
 0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
 1:1/0/y_sort_origin = 7
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6.5, 4, 6, 3, 6.5, 8.5, -8, 8.5)
 
 [resource]
 tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_ldjeu")
 sources/1 = SubResource("TileSetAtlasSource_6t0rx")

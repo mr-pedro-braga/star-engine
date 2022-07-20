@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b6cx21qgi6ahc"
+path="res://.godot/imported/mus_the_twisting_spell.mp3-447665f331d981a5408917d433290792.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E03/music/mus_the_twisting_spell.mp3"
+dest_files=["res://.godot/imported/mus_the_twisting_spell.mp3-447665f331d981a5408917d433290792.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://crp625xcq6dxc"]
+[gd_scene load_steps=12 format=3 uid="uid://crp625xcq6dxc"]
 
 [ext_resource type="Texture2D" uid="uid://fsok3oiybjx5" path="res://packs/__tests/assets2/Starfall City.png" id="1_rhpik"]
 [ext_resource type="TileSet" uid="uid://dq3q5bko77c77" path="res://packs/invo_E03/assets/rooms/cold_forest/set_cold_forest.tres" id="2_8m3aq"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" path="res://core/components/events/StarScriptEvent.gd" id="3_uv8mb"]
 [ext_resource type="Resource" uid="uid://vkmnfoapvbp7" path="res://packs/invo_CORE/TEST_FILES/newtest.ssh" id="4_n81x4"]
 [ext_resource type="Resource" uid="uid://b2p30d7x6scir" path="res://packs/__tests/assets2/dialogs.ssh" id="5_j21fj"]
+[ext_resource type="PackedScene" uid="uid://cf2cqsv3xu7y7" path="res://core/components/SightlessPingAnchor.tscn" id="6_emv3o"]
+[ext_resource type="Script" path="res://core/components/PulseEmitter.gd" id="7_q3e2o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adph6"]
 size = Vector2(21.4861, 7.16207)
@@ -17,13 +19,13 @@ size = Vector2(284, 119.103)
 [node name="_stest_scenes" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 800.0
+offset_left = 48.0
+offset_right = 848.0
 offset_bottom = 480.0
 scale = Vector2(6, 6)
 texture = ExtResource("1_rhpik")
 
-[node name="Floor" type="TileMap" parent="."]
-scale = Vector2(6, 6)
+[node name="Floor" type="TileMap" parent="TextureRect"]
 tile_set = ExtResource("2_8m3aq")
 format = 2
 layer_0/name = "Floor"
@@ -37,12 +39,12 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(655397, 65537, 1, 458784, 65537, 1, 524318, 65537, 0, 589856, 65537, 0, 524321, 65537, 0, 524324, 65537, 0, 655390, 65537, 0, 524316, 65537, 0, 589850, 65537, 0, 458779, 65537, 0, 720928, 65537, 0, 786459, 65537, 0, 720932, 65537, 0, 852006, 65537, 0)
 
-[node name="TilesColdForestLake" type="Sprite2D" parent="Floor"]
+[node name="TilesColdForestLake" type="Sprite2D" parent="TextureRect/Floor"]
 position = Vector2(1024, 232)
 scale = Vector2(1.117, 1.117)
 texture = ExtResource("3_5yai5")
 
-[node name="StarScriptEvent" type="Area2D" parent="Floor/TilesColdForestLake"]
+[node name="StarScriptEvent" type="Area2D" parent="TextureRect/Floor/TilesColdForestLake"]
 position = Vector2(14.3749, 11.5145)
 collision_layer = 6
 collision_mask = 6
@@ -51,13 +53,40 @@ trigger_condition = 1
 event_pool = ExtResource("5_j21fj")
 event_key = "wet_floor_sign"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor/TilesColdForestLake/StarScriptEvent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/Floor/TilesColdForestLake/StarScriptEvent"]
 modulate = Color(1, 0.117647, 0.0352941, 1)
 position = Vector2(-0.0508423, 2.80959)
 shape = SubResource("RectangleShape2D_adph6")
 
+[node name="Mode C" type="Node2D" parent="TextureRect"]
+position = Vector2(32, -32)
+z_index = 3
+
+[node name="PING" parent="TextureRect/Mode C" instance=ExtResource("6_emv3o")]
+position = Vector2(292.667, 390.5)
+panning_strength = 2.0
+
+[node name="PING2" parent="TextureRect/Mode C" instance=ExtResource("6_emv3o")]
+position = Vector2(352, 392)
+panning_strength = 2.0
+
+[node name="PING3" parent="TextureRect/Mode C" instance=ExtResource("6_emv3o")]
+position = Vector2(576, 416)
+panning_strength = 2.0
+
+[node name="PING4" parent="TextureRect/Mode C" instance=ExtResource("6_emv3o")]
+position = Vector2(256, 456)
+panning_strength = 2.0
+
+[node name="PING5" parent="TextureRect/Mode C" instance=ExtResource("6_emv3o")]
+position = Vector2(240, 392)
+panning_strength = 2.0
+
+[node name="Pulser" type="Node2D" parent="TextureRect/Mode C"]
+script = ExtResource("7_q3e2o")
+
 [node name="Character" parent="." instance=ExtResource("2_r6y4b")]
-position = Vector2(2279.46, 2180.84)
+position = Vector2(6336, 1728)
 
 [node name="Camera2D" type="Camera2D" parent="Character"]
 position = Vector2(0, -64)

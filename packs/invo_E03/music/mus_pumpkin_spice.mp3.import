@@ -1,0 +1,16 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://yric2yag8sy7"
+path="res://.godot/imported/mus_pumpkin_spice.mp3-eda53a81896d39415a49c690ea0be5c1.mp3str"
+
+[deps]
+
+source_file="res://packs/invo_E03/music/mus_pumpkin_spice.mp3"
+dest_files=["res://.godot/imported/mus_pumpkin_spice.mp3-eda53a81896d39415a49c690ea0be5c1.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0
