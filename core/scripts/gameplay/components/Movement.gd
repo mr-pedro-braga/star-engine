@@ -94,7 +94,7 @@ func move_free(delta):
 		parent.velocity.x = move_toward(parent.velocity.x, input_vector.x * motion_maximum_speed, motion_acceleration * delta)
 		parent.velocity += motion_gravity_direction * motion_gravity_magnitude * delta
 		parent.move_and_slide()
-		if get_parent().position.y > 135:
+		if parent.is_on_floor() and Input.is_action_pressed(input_action_up) and motion_jump_active:
 			parent.velocity.y = - motion_gravity_magnitude * motion_jump_strength
 	else:
 		parent.velocity = parent.velocity.move_toward(

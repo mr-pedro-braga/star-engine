@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd31g1wrpmpc5"]
+
+[ext_resource type="Script" path="res://packs/invo_CORE/battle/DBS/BulletBoard.gd" id="1_bmyi4"]
+[ext_resource type="Texture2D" uid="uid://be7k2bnig0ug2" path="res://packs/invo_CORE/battle/sprite_battle_board_BG_dark.png" id="2_yb10t"]
+[ext_resource type="Texture2D" uid="uid://lcevr1tg8y2p" path="res://packs/invo_CORE/battle/sprite_battle_board_border.png" id="3_mm0ki"]
+
+[node name="BulletBoard" type="Control"]
+offset_left = 304.0
+offset_top = 112.0
+offset_right = 1232.0
+offset_bottom = 656.0
+script = ExtResource("1_bmyi4")
+metadata/_edit_group_ = true
+
+[node name="BG" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 0.167
+anchor_bottom = 0.167
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6, 6)
+texture = ExtResource("2_yb10t")
+ignore_texture_size = true
+stretch_mode = 1
+metadata/_edit_use_custom_anchors = true
+metadata/_edit_layout_mode = 1
+
+[node name="Texture" type="NinePatchRect" parent="."]
+anchor_right = 0.167
+anchor_bottom = 0.167
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(6, 6)
+texture = ExtResource("3_mm0ki")
+draw_center = false
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+metadata/_edit_layout_mode = 1
+metadata/_edit_use_custom_anchors = true
+
+[node name="Mask" type="Control" parent="."]
+clip_contents = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = 18.0
+offset_right = -18.0
+offset_bottom = -18.0
+metadata/_edit_use_custom_anchors = true

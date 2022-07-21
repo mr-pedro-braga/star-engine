@@ -1,18 +1,20 @@
 CollisionShape2D
+StaticBody2D
+Sprite2D
+TextureRect
+Control
+PointLight2D
+NinePatchRect
 StarScriptEvent (StarScriptEvent.gd)
 CanvasModulate
 AnimationPlayer
 AudioStreamPlayer
 Node2D
-Sprite2D
-StaticBody2D
 Camera2D
 TextureProgressBar
 Label
 AnimatedSprite2D
-TextureRect
 HBoxContainer
-Control
 SpriteSheetRect (SpriteSheetRect.gd)
 SpriteSheetSprite2D (SpriteSheetSprite2D.gd)
 TileMap
@@ -28,5 +30,3 @@ AudioStreamPlayer2D
 SubViewport
 GPUParticles2D
 CPUParticles2D
-LightOccluder2D
-DirectionalLight2D

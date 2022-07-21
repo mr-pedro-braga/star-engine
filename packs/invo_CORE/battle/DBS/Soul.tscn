@@ -82,7 +82,7 @@ animations = [{
 _data = [Vector2(0, 1), 0.0, 0.516005, 0, 0, Vector2(1, 0), 0.108391, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_jcjvg"]
+[sub_resource type="CurveTexture" id="CurveTexture_2swhw"]
 curve = SubResource("Curve_jiu82")
 
 [sub_resource type="ParticlesMaterial" id="ParticlesMaterial_fj2vi"]
@@ -93,18 +93,21 @@ gravity = Vector3(0, 0, 0)
 orbit_velocity_min = 0.0
 orbit_velocity_max = 0.0
 scale_max = 24.0
-scale_curve = SubResource("CurveTexture_jcjvg")
+scale_curve = SubResource("CurveTexture_2swhw")
 attractor_interaction_enabled = false
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n0ktr"]
 radius = 24.0
 
 [node name="Soul" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
 
 [node name="Movement2D" type="Node2D" parent="." node_paths=PackedStringArray("animation_visual_sprite")]
 script = ExtResource("3")
 motion_mode = 0
 motion_gravity_active = true
+motion_jump_active = true
 animation_visual_sprite = NodePath("../Texture2D")
 animation_squash_and_stretch_active = true
 animation_squash_and_stretch_target_scale = Vector2(6, 6)
@@ -119,10 +122,10 @@ color = Color(0, 0, 0, 1)
 [node name="Texture2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 frames = SubResource("SpriteFrames_ya4va")
-animation = &"claire"
+animation = &"sam"
 
 [node name="Trail" type="GPUParticles2D" parent="Texture2D"]
-self_modulate = Color(0.160784, 0.101961, 0.392157, 1)
+self_modulate = Color(0.0392157, 0.231373, 0.215686, 1)
 show_behind_parent = true
 texture_filter = 1
 scale = Vector2(0.166667, 0.166667)

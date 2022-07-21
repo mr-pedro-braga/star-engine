@@ -132,6 +132,7 @@ func write(_text):
 	show_input_request(false)
 	resumed.emit()
 	completed.emit()
+	clear()
 
 func beep():
 	if has_node("beep"):

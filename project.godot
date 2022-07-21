@@ -9,6 +9,11 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "TextureRect",
+"class": &"AllyBattleInfo",
+"language": &"GDScript",
+"path": "res://packs/invo_CORE/battle/AllyBattleInfo.gd"
+}, {
 "base": "__GameplayCoreBase",
 "class": &"AudioCore",
 "language": &"GDScript",
@@ -185,6 +190,7 @@ _global_script_classes=[{
 "path": "res://core/scripts/architecture/Shell.gd"
 }]
 _global_script_class_icons={
+"AllyBattleInfo": "",
 "AudioCore": "res://core/scripts/icons/icon_music.svg",
 "BattleCore": "res://core/scripts/icons/icon_event_pathway.svg",
 "BattleInstance": "",
